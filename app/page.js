@@ -1,4 +1,4 @@
-import Image from "next/image";
+
 
 export default function Home() {
   return (
@@ -9,6 +9,9 @@ export default function Home() {
           style={{ fontFamily: 'Pacifico' }}>
             This is the home page.
         </h1>
+        <p className="text-3xl text-center">
+          This is some text.
+        </p>
       </div>
     </main>
   );

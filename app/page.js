@@ -1,4 +1,4 @@
-import Image from "next/image";
+
 
 export default function Home() {
   return (
@@ -10,6 +10,9 @@ export default function Home() {
             This is the home page.
             Testing branches.
         </h1>
+        <p className="text-3xl text-center">
+          This is some text.
+        </p>
       </div>
     </main>
   );

@@ -22,19 +22,19 @@ export default function Navbar() {
               <div className="mr-2 flex items-baseline space-x-3">             
                 
                     <p className={`block py-2.5 px-4 rounded transition duration-200 
-                            link ${pathname === '/' ? 'text-green font-bold' : 'hover:text-green'}`}>
+                            link ${pathname === '/' ? 'text-green font-bold' : 'hover:text-green text-white'}`}>
                         <Link href={'/'}>Home</Link>
                     </p>
                     <p className={`block py-2.5 px-4 rounded transition duration-200 
-                            link ${pathname === '/apply' ? 'text-green font-bold' : 'hover:text-green'}`}>
+                            link ${pathname === '/apply' ? 'text-green font-bold' : 'hover:text-green text-white'}`}>
                         <Link href={'/apply'}>Apply</Link>
                     </p>
                     <p className={`block py-2.5 px-4 rounded transition duration-200 
-                            link ${pathname === '/about' ? 'text-green font-bold' : 'hover:text-green'}`}>
+                            link ${pathname === '/about' ? 'text-green font-bold' : 'hover:text-green text-white'}`}>
                         <Link href={'/about'}>About</Link>
                     </p>
                     <p className={`block py-2.5 px-4 rounded transition duration-200 
-                            link ${pathname === '/contact' ? 'text-green font-bold' : 'hover:text-green'}`}>
+                            link ${pathname === '/contact' ? 'text-green font-bold' : 'hover:text-green text-white'}`}>
                         <Link href={'/contact'}>Contact</Link>
                     </p>
                 

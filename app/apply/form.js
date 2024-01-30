@@ -98,7 +98,7 @@ export default function Form(){
                 <div className="flex flex-col mb-10 w-1/2">
                     <label>Email:</label>
                     <input 
-                    className="text-black"
+                    className="text-black border-2 border-rose-500"
                     required
                     type="text"
                     value={userEmail} 
@@ -108,7 +108,7 @@ export default function Form(){
                 <div className="flex flex-col mb-10 w-1/2">
                     <label>password</label>
                     <input 
-                    className="text-black"
+                    className="text-black border-2 border-rose-500"
                     required
                     type="password"
                     value={userPassword} 
@@ -131,14 +131,14 @@ export default function Form(){
                     
     </div> */}
                 
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit"> User register</button>
+                <button className="bg-blue-500 hover:bg-blue-700 text-black border-2 border-rose-500 font-bold py-2 px-4 rounded" type="submit"> User register</button>
             </form>
 
            <form onSubmit={handleAdminSubmit}>
                 <div className="flex flex-col mb-10 w-1/2">
                     <label>Email:</label>
                     <input 
-                    className="text-black"
+                    className="text-black border-2 border-rose-500"
                     required
                     type="text"
                     value={adminEmail} 
@@ -148,7 +148,7 @@ export default function Form(){
                 <div className="flex flex-col mb-10 w-1/2">
                     <label>password</label>
                     <input 
-                    className="text-black"
+                    className="text-black border-2 border-rose-500"
                     required
                     type="password"
                     value={adminPassword} 
@@ -170,7 +170,7 @@ export default function Form(){
                     </select> 
                     
 </div>  */}
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">Admin Register</button>
+                <button className="bg-blue-500 hover:bg-blue-700 text-black border-2 border-rose-500 font-bold py-2 px-4 rounded" type="submit">Admin Register</button>
             </form>
         </div>
     );

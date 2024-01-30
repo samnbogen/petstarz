@@ -12,7 +12,7 @@ export default function Home() {
           style={{ fontFamily: 'Pacifico' }}>
             This is the home page.
         </h1>
-        <p className="text-3xl text-black">
+        <p className="text-3xl">
           This is some text.
         </p>
       </div>

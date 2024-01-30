@@ -1,14 +1,16 @@
-
+"use client";
+import { useState } from 'react';
+import Navbar from './navbar';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
+    <main>
+      <Navbar />
+      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex pt-36">
         <h1 
-          className="text-3xl text-center text-white hover:text-light-violet z-40"
+          className="text-3xl text-center text-white hover:text-light-gray"
           style={{ fontFamily: 'Pacifico' }}>
             This is the home page.
-            Testing branches.
         </h1>
         <p className="text-3xl text-center">
           This is some text.

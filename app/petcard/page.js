@@ -13,131 +13,130 @@ export default function Home() {
           style={{ fontFamily: 'Pacifico' }}>
             This is the petcard page.
         </h1>
-        <Link href="/">Home</Link>
         {/* pet card form starts here */}
-        <div  className="border border-solid border-white p-4 w-128">
+        <div  className="border border-solid border-gray p-4 w-128 bg-white">
             <div>
-                <h1>General Information</h1>
+                <h1 class="">General Information</h1>
             </div>
             <div className="flex flex-row">
-                <div className="border border-white h-16 w-16">
+                <div className="bg-gray h-16 w-16">
                     {/* image will go here */}
                 </div>
                 <div className="border border-white">
                     <div className="p-1">
-                        <label for="currentOwner">Current Owner</label>
-                        <input type="text" id="currentOwner" name="currentOwner" />
+                        <label class="text-gray block" for="currentOwner">Current Owner</label>
+                        <input class="border border-gray rounded" type="text" id="currentOwner" name="currentOwner" />
                     </div>
                     <div className="p-1">
-                        <label for="petName">Pet Name</label>
-                        <input type="text" id="petName" name="petName" />
+                        <label class="text-gray block" for="petName">Pet Name</label>
+                        <input class="border border-gray rounded" type="text" id="petName" name="petName" />
                     </div>
                     <div className="flex flex-row">
                         <div className="p-1">
-                            <label for="species">Species</label>
-                            <input type="text" id="species" name="species" />
+                            <label class="text-gray block" for="species">Species</label>
+                            <input class="border border-gray rounded" type="text" id="species" name="species" />
                         </div>
                         <div className="p-1">
-                            <label for="breed">Breed</label>
-                            <input type="text" id="breed" name="breed" />
+                            <label class="text-gray block" for="breed">Breed</label>
+                            <input class="border border-gray rounded" type="text" id="breed" name="breed" />
                         </div>
                     </div>
                 <div  className="border border-solid border-white p-4 w-128">
                     <div className="flex flex-row">
                         <div className="p-1">
-                            <label for="postalCodeLocation">Postal Code Location</label>
-                            <input type="text" id="postalCodeLocation" name="postalCodeLocation" />
+                            <label class="text-gray block" for="postalCodeLocation">Postal Code Location</label>
+                            <input class="border border-gray rounded" type="text" id="postalCodeLocation" name="postalCodeLocation" />
                         </div>
                         <div className="p-1">
-                            <label for="price">Price</label>
-                            <input type="text" id="price" name="price" />
+                            <label class="text-gray block" for="price">Price</label>
+                            <input class="border border-gray rounded" type="text" id="price" name="price" />
                         </div>
                     </div>
                     <div className="flex flex-row">
                         <div className="p-1">
-                            <label for="dob">Date of Birth (DOB)</label>
-                            <input type="text" id="dob" name="dob" />
+                            <label class="text-gray block" for="dob">Date of Birth (DOB)</label>
+                            <input class="border border-gray rounded" type="text" id="dob" name="dob" />
                         </div>
                         <div className="p-1">
-                            <label for="adoptionDate">Adoption Date</label>
-                            <input type="text" id="adoptionDate" name="adoptionDate" />
+                            <label class="text-gray block" for="adoptionDate">Adoption Date</label>
+                            <input class="border border-gray rounded" type="text" id="adoptionDate" name="adoptionDate" />
                         </div>
                         <div className="p-1">
-                            <label for="dod">Date of Death (DOD)</label>
-                            <input type="text" id="dod" name="dod" />
+                            <label class="text-gray block" for="dod">Date of Death (DOD)</label>
+                            <input class="border border-gray rounded" type="text" id="dod" name="dod" />
                         </div>
                     </div>
                     <div className="flex flex-col">
                         <div className="p-1">
-                            <p>Add Additional Photos</p>
+                            <p class="block text-gray">Add Additional Photos</p>
                         </div>
-                        <div className="border border-white h-16 w-16 p-1">
+                        <div className="bg-gray h-16 w-16 p-1">
                             {/* image will go here */}
                         </div>
                         <div className="p-1">
-                            <label for="aboutPet">About Pet</label>
-                            <input type="text" id="aboutPet" name="aboutPet" />
+                            <label class="text-gray block" for="aboutPet">About Pet</label>
+                            <input class="border border-gray rounded" type="text" id="aboutPet" name="aboutPet" />
                         </div>
                     </div>
                     <div className="flex flex-row">
                         <div className="p-1">
-                            <label for="sex">Sex</label>
-                            <input type="text" id="sex" name="sex" />
+                            <label class="text-gray block" for="sex">Sex</label>
+                            <input class="border border-gray rounded" type="text" id="sex" name="sex" />
                         </div>
                         <div className="p-1">
-                            <label for="reproductiveStatus">Reproductive Status</label>
-                            <input type="text" id="reproductiveStatus" name="reproductiveStatus" />
+                            <label class="text-gray block" for="reproductiveStatus">Reproductive Status</label>
+                            <input class="border border-gray rounded" type="text" id="reproductiveStatus" name="reproductiveStatus" />
                         </div>
                         <div className="p-1">
-                            <label for="alteredDate">Altered Date</label>
-                            <input type="text" id="alteredDate" name="alteredDate" />
-                        </div>
-                    </div>
-                    <div className="flex flex-row">
-                        <div className="p-1">
-                            <label for="tattooNumber">Tattoo Number</label>
-                            <input type="text" id="tattooNumber" name="tattooNumber" />
-                        </div>
-                        <div className="p-1">
-                            <label for="microchipNumber">Microchip Number</label>
-                            <input type="text" id="microchipNumber" name="microchipNumber" />
-                        </div>
-                        <div className="p-1">
-                            <label for="petSize">Pet Size</label>
-                            <input type="text" id="petSize" name="petSize" />
+                            <label class="text-gray block" for="alteredDate">Altered Date</label>
+                            <input class="border border-gray rounded" type="text" id="alteredDate" name="alteredDate" />
                         </div>
                     </div>
                     <div className="flex flex-row">
                         <div className="p-1">
-                            <label for="energyLevel">Energy Level</label>
-                            <input type="text" id="energyLevel" name="energyLevel" />
+                            <label class="text-gray block" for="tattooNumber">Tattoo Number</label>
+                            <input class="border border-gray rounded" type="text" id="tattooNumber" name="tattooNumber" />
                         </div>
                         <div className="p-1">
-                            <label for="hairLength">Hair Length</label>
-                            <input type="text" id="hairLength" name="hairLength" />
+                            <label class="text-gray block" for="microchipNumber">Microchip Number</label>
+                            <input class="border border-gray rounded" type="text" id="microchipNumber" name="microchipNumber" />
                         </div>
                         <div className="p-1">
-                            <label for="eyeColor">Eye Color</label>
-                            <input type="text" id="eyeColor" name="eyeColor" />
+                            <label class="text-gray block" for="petSize">Pet Size</label>
+                            <input class="border border-gray rounded" type="text" id="petSize" name="petSize" />
                         </div>
                     </div>
                     <div className="flex flex-row">
                         <div className="p-1">
-                            <label for="hairColor">Hair Color</label>
-                            <input type="text" id="hairColor" name="hairColor" />
+                            <label class="text-gray block" for="energyLevel">Energy Level</label>
+                            <input class="border border-gray rounded" type="text" id="energyLevel" name="energyLevel" />
                         </div>
                         <div className="p-1">
-                            <label for="specialNeeds">Special Needs</label>
-                            <input type="text" id="specialNeeds" name="specialNeeds" />
+                            <label class="text-gray block" for="hairLength">Hair Length</label>
+                            <input class="border border-gray rounded" type="text" id="hairLength" name="hairLength" />
                         </div>
                         <div className="p-1">
-                            <label for="socializedWith">Socialized With</label>
-                            <input type="text" id="socializedWith" name="socializedWith" />
+                            <label class="text-gray block" for="eyeColor">Eye Color</label>
+                            <input class="border border-gray rounded" type="text" id="eyeColor" name="eyeColor" />
+                        </div>
+                    </div>
+                    <div className="flex flex-row">
+                        <div className="p-1">
+                            <label class="text-gray block" for="hairColor">Hair Color</label>
+                            <input class="border border-gray rounded" type="text" id="hairColor" name="hairColor" />
+                        </div>
+                        <div className="p-1">
+                            <label class="text-gray block" for="specialNeeds">Special Needs</label>
+                            <input class="border border-gray rounded" type="text" id="specialNeeds" name="specialNeeds" />
+                        </div>
+                        <div className="p-1">
+                            <label class="text-gray block" for="socializedWith">Socialized With</label>
+                            <input class="border border-gray rounded" type="text" id="socializedWith" name="socializedWith" />
                         </div>
                     </div>
                     <div className="p-1">
-                        <label for="socializedWith">Socialized With</label>
-                        <input type="text" id="socializedWith" name="socializedWith" />
+                        <label class="text-gray block" for="socializedWith">Socialized With</label>
+                        <input class="border border-gray rounded" type="text" id="socializedWith" name="socializedWith" />
                     </div>
                     <div className="flex flex-row">
                         <div className="p-1">

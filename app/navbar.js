@@ -7,9 +7,12 @@ export default function Navbar() {
     <nav className="fixed w-full z-10">
     <div>
       <div className="bg-green max-w-screen h-16 flex flew-row items-center">
-        <img src={'/flag.svg'} alt="description" />
+        <div className="flex items-center ml-10">
+        <img src={'/flag.svg'} alt="description"/>
+        <h1 className="text-black text-xs ml-2">Canadian residents only</h1>
+        </div>
       </div>
-      <div className="bg-white flex flew-row items-center justify-between h-14">
+      <div className="bg-white flex flew-row items-center justify-end h-14">
           <div className="flex items-center">
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">

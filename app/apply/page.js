@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import Form from './form';
+import LoginForm from './login';
 
 export default function Page() {
 
@@ -12,6 +13,9 @@ export default function Page() {
     }
 
     return (
-        <Form onAddQuestion={handleAddQuestion} />
+        <>
+            <Form onAddQuestion={handleAddQuestion} />
+            <LoginForm />
+        </>
     )
 }

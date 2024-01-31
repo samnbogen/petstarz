@@ -1,23 +1,47 @@
+"use client"
 import React, { useState } from "react";
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname()
 
   return (
     <nav className="fixed w-full z-10">
     <div>
       <div className="bg-green max-w-screen h-16 flex flew-row items-center">
-        <img src={'/flag.svg'} alt="description" />
+        <div className="flex items-center ml-10">
+        <img src={'/flag.svg'} alt="description"/>
+        <h1 className="text-black text-xs ml-2">Canadian residents only</h1>
+        </div>
       </div>
-      <div className="bg-white flex flew-row items-center justify-between h-14">
+      <div className="bg-black flex flew-row items-center justify-end h-14">
           <div className="flex items-center">
             <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                <a href="#" className="text-light-gray hover:text-green px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                <a href="#" className="text-light-gray hover:text-green px-3 py-2 rounded-md text-sm font-medium">Services</a>
-                <a href="#" className="text-light-gray hover:text-green px-3 py-2 rounded-md text-sm font-medium">About</a>
-                <a href="#" className="text-light-gray hover:text-green px-3 py-2 rounded-md text-sm font-medium">Contact</a>
-              </div>
+              <div className="mr-2 flex items-baseline space-x-3">             
+                
+                    <p className={`block py-2.5 px-4 rounded transition duration-200 
+                            link ${pathname === '/' ? 'text-green font-bold' : 'hover:text-green text-white'}`}>
+                        <Link href={'/'}>Home</Link>
+                    </p>
+                    <p className={`block py-2.5 px-4 rounded transition duration-200 
+                            link ${pathname === '/apply' ? 'text-green font-bold' : 'hover:text-green text-white'}`}>
+                        <Link href={'/apply'}>Apply</Link>
+                    </p>
+                    <p className={`block py-2.5 px-4 rounded transition duration-200 
+                            link ${pathname === '/about' ? 'text-green font-bold' : 'hover:text-green text-white'}`}>
+                        <Link href={'/about'}>About</Link>
+                    </p>
+                    <p className={`block py-2.5 px-4 rounded transition duration-200 
+                            link ${pathname === '/contact' ? 'text-green font-bold' : 'hover:text-green text-white'}`}>
+                        <Link href={'/contact'}>Contact</Link>
+                    </p>
+                
+                <button className="ml-10 bg-green hover:bg-light-gray text-white text-xs py-2 px-4 rounded-full">
+                    register now
+                </button>
+              </div>              
             </div>
           </div>
           <div className="-mr-2 flex md:hidden">

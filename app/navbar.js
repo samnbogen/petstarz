@@ -8,7 +8,7 @@ export default function Navbar() {
   const pathname = usePathname()
 
   return (
-    <nav className="fixed w-full z-10">
+    <nav className="fixed w-full z-50">
     <div>
       <div className="bg-green max-w-screen h-16 flex flew-row items-center">
         <div className="flex items-center ml-10">
@@ -16,8 +16,13 @@ export default function Navbar() {
         <h1 className="text-black text-xs ml-2">Canadian residents only</h1>
         </div>
       </div>
-      <div className="bg-black flex flew-row items-center justify-end h-14">
-          <div className="flex items-center">
+      <div className="bg-black flex flew-row items-center justify-between h-14">
+        <div className="max-w-7xl sm:px-6 lg:px-8 flex flex-row items-center justify-start">
+            <img src={'/logo-petstarz-w.svg'} alt="description" className="h-8 w-auto"/>
+            <h2 className="text-white text-xs ml-4">PAWSitive PetStarz Inc.</h2>
+        </div>
+        
+        <div className="flex items-center flew-row justify-end  ">
             <div className="hidden md:block">
               <div className="mr-2 flex items-baseline space-x-3">             
                 

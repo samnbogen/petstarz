@@ -19,7 +19,7 @@ export default function PetCardForm() {
                         <input type="text" id="petName" name="petName" />
                     </div>
                     <div>
-                        <label for="species">Species</label>
+                        <label class="border border-gray" for="species">Species</label>
                         <input type="text" id="species" name="species" />
                     </div>
                 </div>

@@ -140,11 +140,11 @@ export default function Home() {
                     </div>
                     <div className="flex flex-row">
                         <div className="p-1">
-                            <label for="save">Save</label>
+                            <label class="border-2 border-green rounded-lg bg-green hover:cursor-pointer hover:bg-white hover:text-green" for="save">save</label>
                             <input type="button" id="save" name="save" />
                         </div>
                         <div className="p-1">
-                            <label for="delete">Delete</label>
+                            <label class="border-2 border-red rounded-lg bg-red hover:cursor-pointer hover:bg-white hover:text-red" for="delete">delete</label>
                             <input type="button" id="delete" name="delete" />
                         </div>
                     </div>

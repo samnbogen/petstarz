@@ -8,8 +8,16 @@ export default function Home() {
     <main>
       <Navbar />
       <header className="relative flex h-full pt-28">
-      <h1 className="z-10 pt-44 text-5xl text-center text-white font-bold">This is the home page.</h1>
-      <img src={'/cat.svg'} alt="description" className='z-0 absolute w-full h-72 object-cover brightness-50'/>
+        <div className='z-10 pt-36'>
+          <h1 className="text-5xl text-center text-white font-bold">
+            This is the home page.
+          </h1>
+          <h2 className="text-3xl text-center text-green"
+            style={{ fontFamily: 'Pacifico' }}>
+              The  Pawsitive  Online Source for Finding Pets.
+          </h2>
+        </div>
+        <img src={'/cat.svg'} alt="description" className='z-0 absolute w-full h-72 object-cover brightness-50'/>
         
       </header>
 

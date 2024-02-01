@@ -9,19 +9,20 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <h1 
-          className="text-3xl text-center text-white hover:text-light-violet z-40"
+          className="text-3xl text-center text-black hover:text-light-violet z-40"
           style={{ fontFamily: 'Pacifico' }}>
             This is the petcard page.
         </h1>
         {/* pet card form starts here */}
         <div  className="border border-solid border-gray p-4 w-128 bg-white">
             <div>
-                <h1 class="">General Information</h1>
+                <h1 class="text-lg">General Information</h1>
             </div>
             <div className="flex flex-row">
-                <div className="bg-gray h-16 w-16">
-                    {/* image will go here */}
-                </div>
+            <div className="ml-2 bg-gray h-16 w-16">
+                        {/* image will go here */}
+                    </div>
+                <div class="text-justify-center">
                 <div className="border border-white">
                     <div className="p-1">
                         <label class="text-gray block" for="currentOwner">Current Owner</label>
@@ -41,6 +42,7 @@ export default function Home() {
                             <input class="border border-gray rounded" type="text" id="breed" name="breed" />
                         </div>
                     </div>
+                </div>
                 <div  className="border border-solid border-white p-4 w-128">
                     <div className="flex flex-row">
                         <div className="p-1">
@@ -81,7 +83,11 @@ export default function Home() {
                     <div className="flex flex-row">
                         <div className="p-1">
                             <label class="text-gray block" for="sex">Sex</label>
-                            <input class="border border-gray rounded" type="text" id="sex" name="sex" />
+                            <select class="border border-gray rounded w-40" type="text" id="sex" name="sex">
+                                <option selected>Choose a sex</option>
+                                <option value = "male">Male</option>
+                                <option value = "female">Female</option>
+                            </select>
                         </div>
                         <div className="p-1">
                             <label class="text-gray block" for="reproductiveStatus">Reproductive Status</label>
@@ -138,14 +144,16 @@ export default function Home() {
                         <label class="text-gray block" for="socializedWith">Socialized With</label>
                         <input class="border border-gray rounded" type="text" id="socializedWith" name="socializedWith" />
                     </div>
-                    <div className="flex flex-row">
-                        <div className="p-1">
-                            <label class="border-2 border-green rounded-lg bg-green hover:cursor-pointer hover:bg-white hover:text-green" for="save">save</label>
-                            <input type="button" id="save" name="save" />
+                    <div className="flex flex-row p-1">
+                        <div class="mr-1">
+                            <div class="text-center text-white p-1 w-40 border-2 border-green bg-green rounded-lg hover:bg-white hover:cursor-pointer hover:text-green">
+                                <p>Save</p>
+                            </div>
                         </div>
-                        <div className="p-1">
-                            <label class="border-2 border-red rounded-lg bg-red hover:cursor-pointer hover:bg-white hover:text-red" for="delete">delete</label>
-                            <input type="button" id="delete" name="delete" />
+                        <div class="ml-1">
+                            <div class="text-center text-white p-1 w-40 border-2 border-red bg-red rounded-lg hover:bg-white hover:cursor-pointer hover:text-red">
+                                <p>Cancel</p>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -11,14 +11,14 @@ export async function POST(req) {
     const collection = db.collection("users");
 
     //change it to if (action === "sign up") to register
-    if(action === "register"){
+    if(action === "sign up"){
         const hash = await bcrypt.hash(password, saltRounds);
         try{
             await collection.insertOne({email, password: hash,role});
             return new Response(JSON.stringify({success: true}), {status: 200});
         } catch (error){
-            console.error("Error registering user", error);
-            return new Response(JSON.stringify({error: "Failed to register user"}), {status: 500});
+            console.error("Error signing up user", error);
+            return new Response(JSON.stringify({error: "Failed to sign up user"}), {status: 500});
         }
     } else if (action === "login"){
         const user = await collection.findOne({email});

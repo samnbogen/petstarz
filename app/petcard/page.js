@@ -1,13 +1,8 @@
 "use client";
 
 import Image from "next/image";
-<<<<<<< Updated upstream
 import PetCardForm from "./Form.js";
 import Navbar from '/app/components/navbar.js';
-=======
-import PetCardForm from "./form.js";
-import Navbar from '/app/navbar.js';
->>>>>>> Stashed changes
 import FormNav from "./formnav.js";
 import RecordsForm from "./recordsform.js";
 

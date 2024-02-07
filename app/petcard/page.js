@@ -1,9 +1,15 @@
 "use client";
 
 import Image from "next/image";
+<<<<<<< Updated upstream
 import PetCardForm from "./Form.js";
 import Navbar from '/app/components/navbar.js';
+=======
+import PetCardForm from "./form.js";
+import Navbar from '/app/navbar.js';
+>>>>>>> Stashed changes
 import FormNav from "./formnav.js";
+import RecordsForm from "./recordsform.js";
 
 export default function Home() {
   return (
@@ -17,8 +23,9 @@ export default function Home() {
                     This is the petcard page.
                 </h1>
             </div>
-            <FormNav />
+            <FormNav /> {/* FormNav will allow the user to switch between forms with ease. For now, all forms are displayed for ease of development */}
             <PetCardForm />
+            <RecordsForm />
         </div>
     </main>
   );

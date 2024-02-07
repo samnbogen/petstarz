@@ -53,12 +53,12 @@ export default function Form(){
     };    
 
     return(
-        <div className='mx-20 '>
+        <div className='m-28 '>
             <form onSubmit={handleSubmit}>
                 <div className="flex flex-col mb-10 w-1/2">
                     <label>First Name</label>
                     <input 
-                    className="text-black"
+                    className="text-black border-2 border-black"
                     required
                     type="text"
                     value={firstName} 
@@ -68,7 +68,7 @@ export default function Form(){
                 <div className="flex flex-col mb-10 w-1/2">
                     <label>Last Name</label>
                     <input 
-                    className="text-black"
+                    className="text-black border-2 border-black"
                     required
                     type="text"
                     value={lastName} 
@@ -78,7 +78,7 @@ export default function Form(){
                 <div className="flex flex-col mb-10 w-1/2">
                     <label>Email</label>
                     <input 
-                    className="text-black"
+                    className="text-black border-2 border-black"
                     required
                     type="text"
                     value={email} 
@@ -88,7 +88,7 @@ export default function Form(){
                 <div className="flex flex-col mb-10 w-1/2">
                     <label>Address</label>
                     <input 
-                    className="text-black"
+                    className="text-black border-2 border-black"
                     required
                     type="text"
                     value={address} 
@@ -98,7 +98,7 @@ export default function Form(){
                 <div className="flex flex-col mb-10 w-1/2">
                     <label>City</label>
                     <input 
-                    className="text-black"
+                    className="text-black border-2 border-black"
                     required
                     type="text"
                     value={city} 
@@ -108,7 +108,7 @@ export default function Form(){
                 <div className="flex flex-col mb-10 w-1/2">
                     <label>Postal Code</label>
                     <input 
-                    className="text-black"
+                    className="text-black border-2 border-black"
                     required
                     type="text"
                     value={postalCode} 
@@ -118,14 +118,14 @@ export default function Form(){
                 <div className="flex flex-col mb-10 w-1/2">
                     <label>Phone</label>
                     <input 
-                    className="text-black"
+                    className="text-black border-2 border-black"
                     required
                     type="text"
                     value={phone} 
                     onChange={(e) => setPhone(e.target.value)} 
                     />
                 </div>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">Submit</button>
+                <button className="bg-green hover:bg-gray text-white font-bold py-2 px-4 rounded" type="submit">Submit</button>
             </form>
         </div>
     );

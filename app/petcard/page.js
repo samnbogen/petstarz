@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import PetCardForm from "./Form.js";
-import Navbar from '/app/navbar.js';
+import Navbar from '/app/components/navbar.js';
 import FormNav from "./formnav.js";
 
 export default function Home() {

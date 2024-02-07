@@ -9,8 +9,9 @@ export default function Header({text, text2}) {
             style={{ fontFamily: 'Pacifico' }}>
               {text2}
           </h2>
-            </div>
-        <img src={'/cat.svg'} alt="description" className='z-0 absolute w-full h-72 object-cover brightness-50'/>
+        </div>
+            
+        <img src={'/cat.svg'} alt="description" className='z-0 absolute w-full h-72 object-cover object-left brightness-50 '/>
       </header>
     )
 }

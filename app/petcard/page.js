@@ -5,6 +5,7 @@ import PetCardForm from "./Form.js";
 import Navbar from '/app/components/navbar.js';
 import FormNav from "./formnav.js";
 import RecordsForm from "./recordsform.js";
+import ContactsForm from "./contactsform.js";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
             <FormNav /> {/* FormNav will allow the user to switch between forms with ease. For now, all forms are displayed for ease of development */}
             <PetCardForm />
             <RecordsForm />
+            <ContactsForm />
         </div>
     </main>
   );

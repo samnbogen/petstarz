@@ -1,11 +1,10 @@
 "use client";
 import React, { useState } from 'react';
-import Form from './form';
-import LoginForm from './login';
+import SignUp from './signup';
 
 export default function Page() {
 
-    const [questionnaire, setQuestionnaire] = useState([])
+    /*const [questionnaire, setQuestionnaire] = useState([])
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userRole, setUserRole] = useState(null); //'user' or 'admin' or null
 
@@ -22,12 +21,12 @@ export default function Page() {
     function handleAddQuestion(answer) {
 
         setQuestionnaire((prevAnswer) => [...(prevAnswer || []), answer]);
-    }
+    }*/
 
     return (
         <>
-            <Form onAddQuestion={handleAddQuestion} />
-            <div>
+            <SignUp />
+            {/*<div>
                 {isLoggedIn ? (
                     <div>
                         <h1>Welcome!</h1>
@@ -41,7 +40,7 @@ export default function Page() {
                 ) : (
                     <LoginForm onLoginSuccess={handleLogin} />
                 )}
-            </div>
+            </div>*/}
         </>
     )
 }

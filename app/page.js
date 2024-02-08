@@ -1,9 +1,11 @@
 "use client";
 import { useState } from 'react';
 import Navbar from './navbar';
+import AuthProvider from './auth-provider';
 
 export default function Home() {
   return (
+    <AuthProvider>
     <main>
       <Navbar />
       <div className="z-10 max-w-5xl w-full items-center justify-between text-sm lg:flex pt-36">
@@ -17,5 +19,6 @@ export default function Home() {
         </p>
       </div>
     </main>
+    </AuthProvider>
   );
 }

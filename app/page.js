@@ -21,7 +21,7 @@ export default function Home() {
         </h1>
         <p>
           This is some text.
-        </p>        
+        </p>
       </div>
       <Review />
       <Footer />

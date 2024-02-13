@@ -20,7 +20,7 @@ export async function POST(request) {
      // Insert the comment into the "review" collection
      await db.collection("supplierReview").insertOne({
         username: data.username,
-        data: data.date,
+        date: data.date,
         review: data.review,
      });
      

@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
+import AuthProvider from './auth-provider';
 import Link from "next/link";
 
 export default function Navbar() {
@@ -13,6 +14,7 @@ export default function Navbar() {
   console.log(session);
 
   return (
+    <AuthProvider>
     <nav className="fixed w-full z-50">
       <div>
         <div className="bg-green max-w-screen h-16 flex flew-row items-center">
@@ -165,5 +167,6 @@ export default function Navbar() {
         </div>
       </div>
     </nav>
+    </AuthProvider>
   );
 }

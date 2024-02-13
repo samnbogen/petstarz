@@ -24,6 +24,7 @@ export default function Review() {
             if (response.ok) {
                 const data = await response.json();
                 console.log("Review submitted:", data);
+                fetchReviews();
                 setUsername("");
                 setReview("");
             } else {
@@ -55,31 +56,34 @@ export default function Review() {
     return(
         <main>
             <div className="flex flex-col items-center justify-center">
-                <h1 className="text-3xl text-center text-black" style={{ fontFamily: 'Pacifico' }}>
-                    Leave a Review
-                </h1>
+               
                { role === "user" &&
-                <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center">
-                    <input
-                        type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        placeholder="Your Name"
-                        className="w-1/2 p-2 m-2 text-black border-2 border-black"
-                    />
-                    <textarea
-                        value={review}
-                        onChange={(e) => setReview(e.target.value)}
-                        placeholder="Your Review"
-                        className="w-1/2 p-2 m-2 text-black border-2 border-black"
-                    />
-                    <button
-                        type="submit"
-                        className="w-1/2 p-2 m-2 bg-blue-500 hover:bg-blue-700 text-black border-2 border-black font-bold py-2 px-4 rounded"
-                    >
-                        Add Review
-                    </button>
-                </form>}
+               <>
+                    <h1 className="text-3xl text-center text-black" style={{ fontFamily: 'Pacifico' }}>
+                        Leave Supplier Review
+                    </h1>
+                    <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center">
+                        <input
+                            type="text"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            placeholder="Your Name"
+                            className="w-1/2 p-2 m-2 text-black border-2 border-black"
+                        />
+                        <textarea
+                            value={review}
+                            onChange={(e) => setReview(e.target.value)}
+                            placeholder="Your Review"
+                            className="w-1/2 p-2 m-2 text-black border-2 border-black"
+                        />
+                        <button
+                            type="submit"
+                            className="w-1/2 p-2 m-2 bg-blue-500 hover:bg-blue-700 text-black border-2 border-black font-bold py-2 px-4 rounded"
+                        >
+                            Add supplier Review
+                        </button>
+                    </form>
+                </>}
                 <div className="flex flex-col items-center justify-center">
                     <h2 className="text-3xl text-center text-black" style={{ fontFamily: 'Pacifico' }}>
                         Reviews
@@ -87,9 +91,11 @@ export default function Review() {
                     <ul>
                         {listReview.map((review, index) => (
                             <li key={index} className="text-black">
-                                <p>{review.username}</p>
-                                <p>{review.date}</p>
-                                <p>{review.review}</p>
+                                <div>
+                                    <p>Username: {review.username}</p>
+                                    <p className="text-black">Date: {review.date}</p>
+                                    <p>Reviews: {review.review}</p>
+                                </div>
                             </li>
                         ))}
                     </ul>

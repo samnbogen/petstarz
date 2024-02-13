@@ -1,4 +1,13 @@
-import Navbar from '/app/components/navbar.js';
+import AuthProvider from "../auth-provider";
+import LogIn from "../login/login";
+
+export default function Page() {
+    return (
+        <AuthProvider>
+            <LogIn />
+        </AuthProvider>
+    );
+}import Navbar from '/app/components/navbar.js';
 import Footer from '/app/components/footer.js';
 import Header from '/app/components/header.js';
 

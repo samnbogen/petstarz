@@ -6,6 +6,7 @@ import Header from './components/header';
 
 export default function Home() {
   return (
+    <AuthProvider>
     <main>
       <Navbar />
       <Header text="PetStarz" text2="The  Pawsitive  Online Source for Finding Pets."/>
@@ -30,5 +31,6 @@ export default function Home() {
       </div>
       <Footer />
     </main>
+    </AuthProvider>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
+import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 
 export default function Navbar() {
@@ -8,6 +9,7 @@ export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const pathname = usePathname();
 
+  const { data: session } = useSession();
   return (
     <nav className="fixed w-full z-50">
       <div>
@@ -114,6 +116,7 @@ export default function Navbar() {
                           <Link href={'/login'}>Login</Link>
                       </button>
                   )}
+                
               </div>
             </div>
           </div>

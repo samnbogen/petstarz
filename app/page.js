@@ -20,15 +20,7 @@ export default function Home() {
         </h1>
         <p>
           This is some text.
-        </p>
-        <p>
-          This is some more text.
-        </p>
-        <a href="/login">
-          <button className="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded">
-            Login
-          </button>
-        </a>
+        </p>        
       </div>
       <Footer />
     </main>

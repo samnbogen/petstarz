@@ -103,9 +103,17 @@ export default function Navbar() {
                   )}
                 </div>
 
-                <button className="ml-10 bg-green hover:bg-light-gray text-white text-xs py-2 px-4 rounded-full">
-                  register now
-                </button>
+                {session ? (
+                      <button className="ml-10 bg-green hover:bg-light-gray text-white text-xs py-2 px-4 rounded-full" onClick={() => signOut()}>
+                        Email: {session.user.email} | Role: {session.user.role} |
+                        Log out
+                      </button>
+                    ):(
+                      <button className="ml-10 bg-green hover:bg-light-gray text-white text-xs py-2 px-4 rounded-full">
+                          
+                          <Link href={'/login'}>Login</Link>
+                      </button>
+                  )}
               </div>
             </div>
           </div>

@@ -1,10 +1,6 @@
-"use client";
-
-import {useState} from "react";
-
 export default function PetCardForm() {
     return (
-        <div  className="border border-solid border-gray p-4 w-128 bg-white">
+        <div  className="border border-solid border-gray p-4 w-2/5 bg-white">
             <div>
                 <h1 class="text-lg">General Information</h1>
             </div>
@@ -16,20 +12,20 @@ export default function PetCardForm() {
                 <div className="border border-white">
                     <div className="p-1">
                         <label class="text-gray block" for="currentOwner">Current Owner</label>
-                        <input class="border border-gray rounded" type="text" id="currentOwner" name="currentOwner" />
+                        <input class="w-1/3 border border-gray rounded" type="text" id="currentOwner" name="currentOwner" />
                     </div>
                     <div className="p-1">
                         <label class="text-gray block" for="petName">Pet Name</label>
-                        <input class="border border-gray rounded" type="text" id="petName" name="petName" />
+                        <input class=" w-1/3 border border-gray rounded" type="text" id="petName" name="petName" />
                     </div>
                     <div className="flex flex-row">
                         <div className="p-1">
                             <label class="text-gray block" for="species">Species</label>
-                            <input class="border border-gray rounded" type="text" id="species" name="species" />
+                            <input class=" border border-gray rounded" type="text" id="species" name="species" />
                         </div>
                         <div className="p-1">
                             <label class="text-gray block" for="breed">Breed</label>
-                            <input class="border border-gray rounded" type="text" id="breed" name="breed" />
+                            <input class="w-1/2 border border-gray rounded" type="text" id="breed" name="breed" />
                         </div>
                     </div>
                 </div>

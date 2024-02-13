@@ -4,6 +4,9 @@ import Image from "next/image";
 import PetCardForm from "./Form.js";
 import Navbar from '/app/components/navbar.js';
 import FormNav from "./formnav.js";
+import RecordsForm from "./recordsform.js";
+import ContactsForm from "./contactsform.js";
+import PedigreeForm from "./pedigreeform.js";
 
 export default function Home() {
   return (
@@ -17,8 +20,11 @@ export default function Home() {
                     This is the petcard page.
                 </h1>
             </div>
-            <FormNav />
+            <FormNav /> {/* FormNav will allow the user to switch between forms with ease. For now, all forms are displayed for ease of development */}
             <PetCardForm />
+            <RecordsForm />
+            <ContactsForm />
+            <PedigreeForm />
         </div>
     </main>
   );

@@ -11,7 +11,7 @@ export default function Header({text, text2}) {
           </h2>
         </div>
             
-        <img src={'/cat.svg'} alt="description" className='z-0 absolute w-full h-72 object-cover object-left brightness-50 '/>
+        <img src={'/cat.svg'} alt="cat" className='z-0 absolute w-full h-72 object-cover object-left brightness-50 '/>
       </header>
     )
 }

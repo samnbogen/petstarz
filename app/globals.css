@@ -35,3 +35,13 @@ body {
     text-wrap: balance;
   }
 }
+
+@font-face {
+  font-family: "Pacifico";
+  src: url("/fonts/Pacifico-Regular.ttf"); 
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/Roboto-Regular.ttf"); 
+}

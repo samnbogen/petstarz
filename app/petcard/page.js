@@ -6,6 +6,7 @@ import Navbar from '/app/components/navbar.js';
 import FormNav from "./formnav.js";
 import RecordsForm from "./recordsform.js";
 import ContactsForm from "./contactsform.js";
+import PedigreeForm from "./pedigreeform.js";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
             <PetCardForm />
             <RecordsForm />
             <ContactsForm />
+            <PedigreeForm />
         </div>
     </main>
   );

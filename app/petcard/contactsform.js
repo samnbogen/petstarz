@@ -5,15 +5,15 @@ export default function ContactsForm() {
                 <h1 class="p-2 text-lg text-black">Contacts</h1>
                 <p class="p-2">Placeholder text</p>
             </div>
-            <div class="m-2 border border-gray">
+            <div class="m-2 h-64 border border-gray">
                 <h1 class="p-2 text-lg text-white bg-green">Service Type:</h1>
                 <p class="p-2">Placeholder text</p>
             </div>
-            <div class="m-2 border border-gray">
+            <div class="m-2 h-64 border border-gray">
                 <h1 class="p-2 text-lg text-white bg-gray">Service Type:</h1>
                 <p class="p-2">Placeholder text</p>
             </div>
-            <div class="m-2 border border-gray">
+            <div class="m-2 h-64 border border-gray">
                 <h1 class="p-2 text-lg text-white bg-gray">Service Type:</h1>
                 <p class="p-2">Placeholder text</p>
             </div>

@@ -3,9 +3,11 @@ import { useState } from 'react';
 import Navbar from './components/navbar';
 import Footer from './components/footer';
 import Header from './components/header';
+import AuthProvider from './auth-provider';
 
 export default function Home() {
   return (
+    <AuthProvider>
     <main>
       <Navbar />
       <Header text="PetStarz" text2="The  Pawsitive  Online Source for Finding Pets."/>
@@ -18,12 +20,10 @@ export default function Home() {
         </h1>
         <p>
           This is some text.
-        </p>
-        <p>
-          This is some more text.
-        </p>
+        </p>        
       </div>
       <Footer />
     </main>
+    </AuthProvider>
   );
 }

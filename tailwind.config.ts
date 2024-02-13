@@ -10,6 +10,7 @@ const config: Config = {
     extend: {      
       fontFamily: {
         'roboto': ['Roboto', 'sans-serif'],
+        'pacifico':['Pacifico', 'font-pacifico']
       },
     },
     colors: {

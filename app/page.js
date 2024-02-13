@@ -1,21 +1,34 @@
 "use client";
 import { useState } from 'react';
-import Navbar from './navbar';
+import Navbar from './components/navbar';
+import Footer from './components/footer';
+import Header from './components/header';
 
 export default function Home() {
   return (
     <main>
       <Navbar />
-      <div className="z-10 max-w-5xl w-full items-center justify-between text-sm lg:flex pt-36">
+      <Header text="PetStarz" text2="The  Pawsitive  Online Source for Finding Pets."/>
+              
+      <div className="z-10 max-w-5xl w-screen h-screen items-center justify-between lg:flex ">
         <h1 
-          className="text-3xl text-center text-black hover:text-light-gray"
+          className="text-3xl text-center hover:text-light-gray"
           style={{ fontFamily: 'Pacifico' }}>
             This is the home page.
         </h1>
-        <p className="text-3xl">
+        <p>
           This is some text.
         </p>
+        <p>
+          This is some more text.
+        </p>
+        <a href="/login">
+          <button className="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded">
+            Login
+          </button>
+        </a>
       </div>
+      <Footer />
     </main>
   );
 }

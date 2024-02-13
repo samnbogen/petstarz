@@ -8,8 +8,10 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const pathname = usePathname();
-
   const { data: session } = useSession();
+
+  console.log(session);
+
   return (
     <nav className="fixed w-full z-50">
       <div>

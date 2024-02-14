@@ -1,16 +1,11 @@
-"use client";
-import { useState } from 'react';
-import Navbar from './components/navbar';
-import Footer from './components/footer';
+
 import Header from './components/header';
 import AuthProvider from './auth-provider';
 import Review from './review/review';
 
 export default function Home() {
   return (
-    <AuthProvider>
-    <main>
-      <Navbar />
+    <main>      
       <Header text="PetStarz" text2="The  Pawsitive  Online Source for Finding Pets."/>
               
       <div className="z-10 max-w-5xl w-screen h-screen items-center justify-between lg:flex ">
@@ -26,6 +21,5 @@ export default function Home() {
       <Review />
       <Footer />
     </main>
-    </AuthProvider>
   );
 }

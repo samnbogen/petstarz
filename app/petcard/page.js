@@ -1,13 +1,12 @@
 "use client";
 
+import Header from '/app/components/header.js';
 import { useState } from 'react';
-import PetCardForm from "./Form.js";
-import Navbar from '/app/components/navbar.js';
-import Footer from '/app/components/footer.js';
+import PetCardForm from "./form.js";
 import RecordsForm from "./recordsform.js";
 import ContactsForm from "./contactsform.js";
 import PedigreeForm from "./pedigreeform.js";
-import AuthProvider from '../auth-provider.js'; // Don't remove this, it might break the whole page :) 
+import AuthProvider from '../auth-provider.js'; // Don't remove or change anything to do with this, it might break the whole page :) 
 
 export default function Home() {
 
@@ -19,13 +18,16 @@ export default function Home() {
 
   return (
     <main>
+      <Header text="PetStarz" text2="The  Pawsitive  Online Source for Finding Pets."/>
           <div className="flex min-h-screen flex-col items-center p-24">
-              <div className="mt-10 z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-                  <h1 
-                  className="text-3xl text-center text-black hover:text-light-violet z-40 font-pacifico">
-                      This is the petcard page.
-                  </h1>
+            <div class="flex flex-row">
+              <div>
+                <h1 class="text-3xl pr-1">Pet</h1>
               </div>
+              <div>
+                <h1 class="text-3xl text-green">cards</h1>
+              </div>
+            </div>
               <div class="h-10 flex flex-row w-2/5">
                 <div onClick={() => handleFormChange('form1')} class=" mr-1 p-1 rounded-t-lg w-1/4 bg-green hover:cursor-pointer"
                 style={{ backgroundColor: selectedForm === 'form1' ? '#50D9A2' : 'gray' }}>

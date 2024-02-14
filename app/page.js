@@ -1,4 +1,3 @@
-
 import Header from './components/header';
 import AuthProvider from './auth-provider';
 
@@ -17,7 +16,6 @@ export default function Home() {
           This is some text.
         </p>
       </div>
-      <Footer />
     </main>
   );
 }

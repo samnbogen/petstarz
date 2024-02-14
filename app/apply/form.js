@@ -111,6 +111,7 @@ export default function Form(){
                     className="text-black border-2 border-black"
                     required
                     type="text"
+                    pattern='/[A-Za-z]\d[A-Za-z] ?\d[A-Za-z]\d/'
                     value={postalCode} 
                     onChange={(e) => setPostalCode(e.target.value)} 
                     />
@@ -120,7 +121,8 @@ export default function Form(){
                     <input 
                     className="text-black border-2 border-black"
                     required
-                    type="text"
+                    type="tel"
+                    pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
                     value={phone} 
                     onChange={(e) => setPhone(e.target.value)} 
                     />

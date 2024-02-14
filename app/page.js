@@ -4,7 +4,6 @@ import Navbar from './components/navbar';
 import Footer from './components/footer';
 import Header from './components/header';
 import AuthProvider from './auth-provider';
-import Review from './review/review';
 
 export default function Home() {
   return (
@@ -23,7 +22,6 @@ export default function Home() {
           This is some text.
         </p>
       </div>
-      <Review />
       <Footer />
     </main>
     </AuthProvider>

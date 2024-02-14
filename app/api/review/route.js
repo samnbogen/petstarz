@@ -15,7 +15,7 @@ export async function POST(request) {
      const client = await clientPromise;
 
      // Connect to the MongoDB database
-     const db = client.db("fosters");
+     const db = client.db("supplier");
 
      // Insert the comment into the "review" collection
      await db.collection("supplierReview").insertOne({

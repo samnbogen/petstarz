@@ -103,7 +103,7 @@ export default function Navbar() {
                     ):(
                       <button className="ml-10 bg-green hover:bg-light-gray text-white text-xs py-2 px-4 rounded-full">
                           
-                          <Link href={'/login'}>Login</Link>
+                          <Link href={'/tab/login'}>Login</Link>
                       </button>
                   )}
                 

@@ -6,7 +6,6 @@ import PetCardForm from "./form.js";
 import RecordsForm from "./recordsform.js";
 import ContactsForm from "./contactsform.js";
 import PedigreeForm from "./pedigreeform.js";
-import AuthProvider from '../auth-provider.js'; // Don't remove or change anything to do with this, it might break the whole page :) 
 
 export default function Home() {
 

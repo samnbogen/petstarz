@@ -18,7 +18,6 @@ export default function Home() {
           This is some text.
         </p>
       </div>
-      <Review />
     </main>
   );
 }

@@ -18,10 +18,8 @@ export default function Page() {
 
     return (
         <main>
-            <Navbar />
             <Header text="Apply"/>
             <Form onAddQuestion={handleAddQuestion}/>
-            <Footer />
         </main>
     )
 }

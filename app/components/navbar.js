@@ -43,7 +43,7 @@ export default function Navbar() {
                 <p
                   className={`block py-2.5 px-4 rounded transition duration-200 
                 link ${pathname === "/apply" ? "text-green font-bold" : "hover:text-green text-white"}`}>
-                  <Link href={"/apply"}>Apply</Link>
+                  <Link href={"/userFoster/apply"}>Apply</Link>
                 </p>
                 <p
                   className={`block py-2.5 px-4 rounded transition duration-200 
@@ -73,19 +73,19 @@ export default function Navbar() {
                         aria-orientation="vertical"
                         aria-labelledby="options-menu">
                         <Link
-                          href={"/petcard"}
+                          href={"/userSupplier/petcard"}
                           className="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray"
                           role="menuitem">
                           Petcard
                         </Link>
                         <Link
-                          href={"/about"}
+                          href={"/tab/about"}
                           className="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray"
                           role="menuitem">
                           About
                         </Link>
                         <Link
-                          href={"/contact"}
+                          href={"/tab/contact"}
                           className="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray"
                           role="menuitem">
                           Contact
@@ -103,7 +103,7 @@ export default function Navbar() {
                     ):(
                       <button className="ml-10 bg-green hover:bg-light-gray text-white text-xs py-2 px-4 rounded-full">
                           
-                          <Link href={'/login'}>Login</Link>
+                          <Link href={'/tab/login'}>Login</Link>
                       </button>
                   )}
                 

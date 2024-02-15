@@ -1,10 +1,10 @@
 export default function PedigreeForm(){
     return (
-        <div class="border border-black w-2/5">
-            <h1 class="text-lg">Pedigree</h1>
-            <p>Placeholder text.</p>
+        <div class="border border-light-gray rounded-b-lg w-2/5">
+            <h1 class="text-lg p-2">Pedigree</h1>
+            <p class="p-2">Placeholder text.</p>
             <div>
-                <div class="flex flex-col border border-black m-2">
+                <div class="flex flex-col border border-light-gray m-2">
                 <h1 class="p-2 text-lg bg-green text-white">Pet Information</h1>
                     <div class="p-2">
                         <label class="text-gray block" for="sire">Sire</label>

@@ -1,6 +1,6 @@
 export default function PetCardForm() {
     return (
-        <div  className="border rounded-b-lg border-gray p-4 w-2/5 bg-white">
+        <div  className="border rounded-b-lg border-light-gray p-4 w-2/5 bg-white">
             <div>
                 <div>
                     <div>

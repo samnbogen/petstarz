@@ -1,25 +1,44 @@
 export default function PetCardForm() {
     return (
         <div  className="border rounded-b-lg border-light-gray p-4 w-2/5 bg-white">
-            <div>
+            <div class="flex flex-row">
+                <div className="p-1">
+                    <label class="text-gray block" for="currentOwner">Current Owner</label>
+                    <input class="border border-light-gray rounded" type="text" id="currentOwner" name="currentOwner" />
+                </div>
                 <div>
-                    <div>
-                        <div className="flex flex-row p-1">
-                            <div class="mr-1">
-                                <div class="text-center text-white p-1 w-40 border-2 border-green bg-green rounded-lg hover:bg-white hover:cursor-pointer hover:text-green">
-                                    <p>Save</p>
-                                </div>
-                            </div>
-                            <div class="ml-1">
-                                <div class="text-center text-white p-1 w-40 border-2 border-red bg-red rounded-lg hover:bg-white hover:cursor-pointer hover:text-red">
-                                    <p>Cancel</p>
-                                </div>
-                        </div>
+                    <p>Placeholder for "searchable" toggle button</p>
+                </div>
+            </div>
+            <div class="flex flex-row">
+                <div className="p-1">
+                    <label class="text-gray block" for="petName">Pet Name</label>
+                    <input class=" border border-light-gray rounded" type="text" id="petName" name="petName" />
+                </div>
+                <div>
+                    <p>Placeholder for "active" toggle button</p>
+                </div>
+            </div>
+            <div className="flex flex-row border border-red p-1"> {/*Why does this get pushed outside of the box??*/}
+                    <label class="text-gray block" for="species">Species</label>
+                    <input class=" border border-light-gray rounded" type="text" id="species" name="species" />
+                    <label class="text-gray block" for="species">Species</label>
+                    <input class=" border border-light-gray rounded" type="text" id="species" name="species" />
+            </div>
+            {/*New form is above this line*/}
+            <div className="flex flex-row p-1">
+                <div class="mr-1">
+                    <div class="text-center text-white p-1 w-40 border-2 border-green bg-green rounded-lg hover:bg-white hover:cursor-pointer hover:text-green">
+                        <p>Save</p>
+                    </div>
+                </div>
+                <div class="ml-1">
+                    <div class="text-center text-white p-1 w-40 border-2 border-red bg-red rounded-lg hover:bg-white hover:cursor-pointer hover:text-red">
+                        <p>Cancel</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     )
 };
 

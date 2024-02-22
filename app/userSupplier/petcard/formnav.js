@@ -10,11 +10,10 @@ const FormNav = () => {
     const handleFormChange = (form) => {
         setSelectedForm(form);
     };
-    
 
     return (
         <div className="flex min-h-screen flex-col items-center p-24">
-            <div class="flex flex-row">
+            <div class="flex flex-row pb-6">
               <div>
                 <h1 class="text-3xl pr-1">Pet</h1>
               </div>
@@ -22,7 +21,7 @@ const FormNav = () => {
                 <h1 class="text-3xl text-green">cards</h1>
               </div>
             </div>
-              <div class="h-10 flex flex-row w-2/5">
+            <div class="h-10 flex flex-row w-2/5">
                 <div onClick={() => handleFormChange('form1')} class=" mr-1 p-1 rounded-t-lg w-1/4 bg-green hover:cursor-pointer"
                 style={{ backgroundColor: selectedForm === 'form1' ? '#50D9A2' : 'gray' }}>
                     <h1 class="text-lg text-center text-white">General</h1>
@@ -39,12 +38,12 @@ const FormNav = () => {
                 style={{ backgroundColor: selectedForm === 'form4' ? '#50D9A2' : 'gray' }}>
                     <h1 class="text-lg text-center text-white">Pedigree</h1>
                 </div>
-              </div>
+            </div>
             {selectedForm === 'form1' && <PetCardForm />}
             {selectedForm === 'form2' && <RecordsForm />}
             {selectedForm === 'form3' && <ContactsForm />}
             {selectedForm === 'form4' && <PedigreeForm />}
-          </div>
+        </div>
     )
 };
 

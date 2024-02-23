@@ -1,4 +1,15 @@
 export default function PetCardForm() {
+
+// add photo
+// fixed - yes/no 
+// size - small, medium, large, extra large
+// about section (additional info)
+// name required
+// age required 
+// sex - drop down 
+// species - drop down (dog, cat, other)
+// if cat or dog (breed) if other (type)
+
     return (
         <div  className="border rounded-b-lg border-light-gray p-4 w-2/5 bg-white">
             <div class="flex flex-row">

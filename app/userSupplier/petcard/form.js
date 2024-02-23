@@ -2,41 +2,63 @@ export default function PetCardForm() {
 
 // add photo
 // fixed - yes/no 
-// size - small, medium, large, extra large
+// size - small, medium, large, extra large (done)
 // about section (additional info)
-// name required
-// age required 
-// sex - drop down 
-// species - drop down (dog, cat, other)
-// if cat or dog (breed) if other (type)
+// name required (done)
+// age required (done)
+// sex - drop down (done)
+// species - drop down (dog, cat, other) (done)
+// if cat or dog (breed) if other (type) (done-ish)
 
     return (
         <div  className="border rounded-b-lg border-light-gray p-4 w-2/5 bg-white">
-            <div class="flex flex-row">
-                <div className="p-1">
-                    <label class="text-gray block" for="currentOwner">Current Owner</label>
-                    <input class="border border-light-gray rounded" type="text" id="currentOwner" name="currentOwner" />
-                </div>
-                <div>
-                    <p>Placeholder for "searchable" toggle button</p>
-                </div>
-            </div>
-            <div class="flex flex-row">
-                <div className="p-1">
+            <h1 class="text-lg p-1">General Information</h1>
+            <div class="flex flex-row border border-red"> {/*border visible for flex box work*/}
+                <div class="p-1">
                     <label class="text-gray block" for="petName">Pet Name</label>
-                    <input class=" border border-light-gray rounded" type="text" id="petName" name="petName" />
+                    <input class="border border-light-gray rounded" type="text" id="petName" name="petName" />
                 </div>
-                <div>
-                    <p>Placeholder for "active" toggle button</p>
+                <div class="p-1">
+                    <label class="text-gray block" for="petAge">Pet Age</label>
+                    <input class="border border-light-gray rounded" type="text" id="petAge" name="petAge" />
                 </div>
             </div>
-            <div className="flex flex-row border border-red p-1"> {/*Why does this get pushed outside of the box??*/}
+            <div class="flex flex-row border border-red"> {/*border visible for flex box work*/}
+                <div class="p-1">
                     <label class="text-gray block" for="species">Species</label>
-                    <input class=" border border-light-gray rounded" type="text" id="species" name="species" />
-                    <label class="text-gray block" for="species">Species</label>
-                    <input class=" border border-light-gray rounded" type="text" id="species" name="species" />
+                    <select class="border border-light-gray rounded" type="text" id="species" name="species">
+                        <option selected></option>
+                        <option value = "dog">Dog</option>
+                        <option value = "cat">Cat</option>
+                        <option value = "other">Other</option>
+                    </select>
+                </div>
+                <div class="p-1">
+                    <label class="text-gray block" for="breed">Breed</label> {/*if other, change to type instead of breed*/}
+                    <input class="border border-light-gray rounded" type="text" id="breed" name="breed" />
+                </div>
             </div>
-            {/*New form is above this line*/}
+            <div class="flex flex-row border border-red"> {/*border visible for flex box work*/}
+                <div class="p-1">
+                    <label class="text-gray block" for="sex">Sex</label>
+                    <select class="border border-light-gray rounded" type="text" id="sex" name="sex">
+                        <option selected></option>
+                        <option value = "male">Male</option>
+                        <option value = "female">Female</option>
+                    </select>
+                </div>
+                <div class="p-1">
+                    <label class="text-gray block" for="size">Size</label>
+                    <select class="border border-light-gray rounded" type="text" id="size" name="size">
+                        <option selected></option>
+                        <option value = "small">S</option>
+                        <option value = "medium">M</option>
+                        <option value = "large">L</option>
+                        <option value = "extraLarge">XL</option>
+                    </select>
+                </div>
+            </div>
+            {/*New form content is above this line*/}
             <div className="flex flex-row p-1">
                 <div class="mr-1">
                     <div class="text-center text-white p-1 w-40 border-2 border-green bg-green rounded-lg hover:bg-white hover:cursor-pointer hover:text-green">

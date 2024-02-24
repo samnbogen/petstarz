@@ -95,7 +95,9 @@ export default function Form() {
                         <span>Have your other pets been socialized?</span>
                         <textarea className="border-2 border-black rounded-md p-2" type="text" value={currentPetsSocialization} onChange={(e) => setCurrentPetsSocialization(e.target.value)} />
                     </label>
-                    <button type="submit" className="bg-blue-500 text-black px-4 py-2 rounded-md">Submit</button>
+                    <div className="flex justify-center">
+                        <button type="submit" className="bg-green text-white py-1 px-2 w-24 rounded-full">Submit</button>
+                    </div>
                 </form>
             </div>
         </main>

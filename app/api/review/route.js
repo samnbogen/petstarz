@@ -36,7 +36,7 @@ export async function POST(request) {
 export async function GET(request) {
   try {
     const client = await clientPromise;
-    const db = client.db("fosters");
+    const db = client.db("supplier");
     const collection = db.collection("supplierReview");
     const reviews = await collection.find({}).toArray();
     return new Response(JSON.stringify(reviews), { status: 200 });

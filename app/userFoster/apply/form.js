@@ -1,135 +1,105 @@
 "use client";
+import { useState } from "react";
+import { useSession } from "next-auth/react";
 
-import { useState } from 'react';
-
-export default function Form(){
-
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [email, setEmail] = useState("");
-    const [address, setAddress] = useState("");
-    const [city, setCity] = useState("");
-    const [postalCode, setPostalCode] = useState("");
-    const [phone, setPhone] = useState("");
+export default function Form() {
+    const [homeEnv, setHomeEnv] = useState("");
+    const [rentOrOwn, setRentOrOwn] = useState("");
+    const [homeSqrFT, setHomeSqrFT] = useState("");
+    const [fosterEXP, setFosterEXP] = useState("");
+    const [homeComposition, setHomeComposition] = useState("");
+    const [petLevelOfComfort, setPetLevelOfComfort] = useState("");
+    const [openToSpecialNeeds, setOpenToSpecialNeeds] = useState("");
+    const [currentPets, setCurrentPets] = useState("");
+    const [currentPetsSocialization, setCurrentPetsSocialization] = useState("");
+    const { data: session } = useSession();
+    const email = session?.user?.email;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
-        const application = {
-            firstName,
-            lastName,
-            email,
-            address,
-            city,
-            postalCode,
-            phone
-        };
 
-        //to make sure it is working
-        console.log(application);
-    
-        // Send a POST request to the server-side function
-        const response = await fetch("http://localhost:3000/api", {  
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(application),
-        });
-    
-        if (response.ok) {
-            console.log('Data saved successfully');
-        } else {
-            console.error('Error saving data');
+        try {
+            const response = await fetch("/api/foster/applyForm", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ homeEnv, rentOrOwn, homeSqrFT,
+                    fosterEXP, homeComposition, petLevelOfComfort,
+                    openToSpecialNeeds, currentPets, currentPetsSocialization,
+                    email}),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log("Application submitted:", data);
+                setHomeEnv("");
+                setRentOrOwn("");
+                setHomeSqrFT("");
+                setFosterEXP("");
+                setHomeComposition("");
+                setPetLevelOfComfort("");
+                setOpenToSpecialNeeds("");
+                setCurrentPets("");
+                setCurrentPetsSocialization("");
+            } else {
+                console.error("Application submission failed:", response);
+            }
+        } catch (error) {
+            console.error("Application submission failed:", error);
         }
-    
-        setFirstName("");
-        setLastName("");
-        setEmail("");
-        setAddress("");
-        setCity("");
-        setPostalCode("");
-        setPhone("");
-    };    
+    }
 
     return(
-        <div className='m-28 '>
-            <form onSubmit={handleSubmit}>
-                <div className="flex flex-col mb-10 w-1/2">
-                    <label>First Name</label>
-                    <input 
-                    className="text-black border-2 border-black"
-                    required
-                    type="text"
-                    value={firstName} 
-                    onChange={(e) => setFirstName(e.target.value)} 
-                    />
-                </div>
-                <div className="flex flex-col mb-10 w-1/2">
-                    <label>Last Name</label>
-                    <input 
-                    className="text-black border-2 border-black"
-                    required
-                    type="text"
-                    value={lastName} 
-                    onChange={(e) => setLastName(e.target.value)} 
-                    />
-                </div>
-                <div className="flex flex-col mb-10 w-1/2">
-                    <label>Email</label>
-                    <input 
-                    className="text-black border-2 border-black"
-                    required
-                    type="text"
-                    value={email} 
-                    onChange={(e) => setEmail(e.target.value)} 
-                    />
-                </div>
-                <div className="flex flex-col mb-10 w-1/2">
-                    <label>Address</label>
-                    <input 
-                    className="text-black border-2 border-black"
-                    required
-                    type="text"
-                    value={address} 
-                    onChange={(e) => setAddress(e.target.value)} 
-                    />
-                </div>
-                <div className="flex flex-col mb-10 w-1/2">
-                    <label>City</label>
-                    <input 
-                    className="text-black border-2 border-black"
-                    required
-                    type="text"
-                    value={city} 
-                    onChange={(e) => setCity(e.target.value)} 
-                    />
-                </div>
-                <div className="flex flex-col mb-10 w-1/2">
-                    <label>Postal Code</label>
-                    <input 
-                    className="text-black border-2 border-black"
-                    required
-                    type="text"
-                    pattern='/[A-Za-z]\d[A-Za-z] ?\d[A-Za-z]\d/'
-                    value={postalCode} 
-                    onChange={(e) => setPostalCode(e.target.value)} 
-                    />
-                </div>
-                <div className="flex flex-col mb-10 w-1/2">
-                    <label>Phone</label>
-                    <input 
-                    className="text-black border-2 border-black"
-                    required
-                    type="tel"
-                    pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
-                    value={phone} 
-                    onChange={(e) => setPhone(e.target.value)} 
-                    />
-                </div>
-                <button className="bg-green hover:bg-gray text-white font-bold py-2 px-4 rounded" type="submit">Submit</button>
-            </form>
-        </div>
+        <main>
+            <div className="flex flex-col items-center justify-center pt-40">
+                <h1>Become a foster parent</h1>
+                <p>Questionnaire for foster parent</p>
+                <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+                    <label className="flex flex-col">
+                        <span>Describe your home environment urban,suburban,rural?</span>
+                        <textarea className="border-2 border-black rounded-md p-2" type="text" value={homeEnv} onChange={(e) => setHomeEnv(e.target.value)} />
+                    </label>
+                    <label className="flex flex-col">
+                        <span>Do you rent or own your home?</span>
+                        <textarea className="border-2 border-black rounded-md p-2" 
+                        type="text" 
+                        value={rentOrOwn} 
+                        onChange={(e) => setRentOrOwn(e.target.value)} />
+                    </label>
+                    <label className="flex flex-col">
+                        <span>What is the approximate square footage of your resident?</span>
+                        <textarea className="border-2 border-black rounded-md p-2" type="text" value={homeSqrFT} onChange={(e) => setHomeSqrFT(e.target.value)} />
+                    </label>
+                    <label className="flex flex-col">
+                        <span>Do any household members have experience with fostering or adoption?</span>
+                        <textarea className="border-2 border-black rounded-md p-2" type="text" value={fosterEXP} onChange={(e) => setFosterEXP(e.target.value)} />
+                    </label>
+                    <label className="flex flex-col">
+                        <span>Please list all the people who live in your home and their ages:</span>
+                        <textarea className="border-2 border-black rounded-md p-2" type="text" value={homeComposition} onChange={(e) => setHomeComposition(e.target.value)} />
+                    </label>
+                    <label className="flex flex-col">
+                        <span>What age range and gender do you feel most comfortable fostering?</span>
+                        <textarea className="border-2 border-black rounded-md p-2" type="text" value={petLevelOfComfort} onChange={(e) => setPetLevelOfComfort(e.target.value)} />
+                    </label>
+                    <label className="flex flex-col">
+                        <span>Are you open to fostering pets with special needs or medical conditions?</span>
+                        <textarea className="border-2 border-black rounded-md p-2" type="text" value={openToSpecialNeeds} onChange={(e) => setOpenToSpecialNeeds(e.target.value)} />
+                    </label>
+                    <label className="flex flex-col">
+                        <span>Do you have any other pets currently? please list the species breed and age of all pets</span>
+                        <textarea className="border-2 border-black rounded-md p-2" type="text" value={currentPets} onChange={(e) => setCurrentPets(e.target.value)} />
+                    </label>
+                    <label className="flex flex-col">
+                        <span>Have your other pets been socialized?</span>
+                        <textarea className="border-2 border-black rounded-md p-2" type="text" value={currentPetsSocialization} onChange={(e) => setCurrentPetsSocialization(e.target.value)} />
+                    </label>
+                    <button type="submit" className="bg-blue-500 text-black px-4 py-2 rounded-md">Submit</button>
+                </form>
+            </div>
+        </main>
     );
-
 }
+
+

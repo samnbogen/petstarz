@@ -26,7 +26,7 @@ export default function PetCardForm() {
                     </select>
                 </div>
                 <div class="p-1">
-                    <label class="text-gray block" for="breed">Breed</label> {/*if other, change to type instead of breed*/}
+                    <label class="text-gray block" for="breed">Breed/Type</label> {/*Find a way to make it so that, if "other" selected for species, change to "type" instead of "breed"*/}
                     <input class="border border-light-gray rounded" type="text" id="breed" name="breed" />
                 </div>
             </div>

@@ -1,19 +1,11 @@
 export default function PetCardForm() {
 
-// add photo
-// fixed - yes/no 
-// size - small, medium, large, extra large (done)
-// about section (additional info)
-// name required (done)
-// age required (done)
-// sex - drop down (done)
-// species - drop down (dog, cat, other) (done)
-// if cat or dog (breed) if other (type) (done-ish)
+// "add photo" still needs to be added
 
     return (
         <div  className="border rounded-b-lg border-light-gray p-4 w-2/5 bg-white">
             <h1 class="text-lg p-1">General Information</h1>
-            <div class="flex flex-row border border-red"> {/*border visible for flex box work*/}
+            <div class="flex flex-row"> {/*border visible for flex box work*/}
                 <div class="p-1">
                     <label class="text-gray block" for="petName">Pet Name</label>
                     <input class="border border-light-gray rounded" type="text" id="petName" name="petName" />
@@ -23,7 +15,7 @@ export default function PetCardForm() {
                     <input class="border border-light-gray rounded" type="text" id="petAge" name="petAge" />
                 </div>
             </div>
-            <div class="flex flex-row border border-red"> {/*border visible for flex box work*/}
+            <div class="flex flex-row"> {/*border visible for flex box work*/}
                 <div class="p-1">
                     <label class="text-gray block" for="species">Species</label>
                     <select class="border border-light-gray rounded" type="text" id="species" name="species">
@@ -38,7 +30,7 @@ export default function PetCardForm() {
                     <input class="border border-light-gray rounded" type="text" id="breed" name="breed" />
                 </div>
             </div>
-            <div class="flex flex-row border border-red"> {/*border visible for flex box work*/}
+            <div class="flex flex-row"> {/*border visible for flex box work*/}
                 <div class="p-1">
                     <label class="text-gray block" for="sex">Sex</label>
                     <select class="border border-light-gray rounded" type="text" id="sex" name="sex">
@@ -57,6 +49,19 @@ export default function PetCardForm() {
                         <option value = "extraLarge">XL</option>
                     </select>
                 </div>
+                <div class="p-1">
+                    <label class="text-gray block" for="fixed">Fixed</label>
+                    <select class="border border-light-gray rounded" type="text" id="fixed" name="fixed">
+                        <option selected></option>
+                        <option value = "yes">Yes</option>
+                        <option value = "no">No</option>
+                        <option value= "unknown">Unknown</option> {/*is it a good idea to have an "unknown" for this?*/}
+                    </select>
+                </div>
+            </div>
+            <div class="p-1">
+                <label class="text-gray block" for="additionalInfo">Additional Info</label>
+                <textarea class="border border-light-gray rounded-lg w-full h-32" type="text" id="additionalInfo" name="additionalInfo" />
             </div>
             {/*New form content is above this line*/}
             <div className="flex flex-row p-1">
@@ -74,135 +79,3 @@ export default function PetCardForm() {
         </div>
     )
 };
-
-
-//  <div>
-//                 <h1 class="text-lg">General Information</h1>
-//             </div>
-//             <div className="flex flex-row">
-//             <div className="ml-2 bg-gray h-16 w-16">
-                
-//             </div>
-//                 <div class="text-justify-center">
-//                 <div className="border border-white">
-//                     <div className="p-1">
-//                         <label class="text-gray block" for="currentOwner">Current Owner</label>
-//                         <input class="w-1/3 border border-gray rounded" type="text" id="currentOwner" name="currentOwner" />
-//                     </div>
-//                     <div className="p-1">
-//                         <label class="text-gray block" for="petName">Pet Name</label>
-//                         <input class=" w-1/3 border border-gray rounded" type="text" id="petName" name="petName" />
-//                     </div>
-//                     <div className="flex flex-row">
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="species">Species</label>
-//                             <input class=" border border-gray rounded" type="text" id="species" name="species" />
-//                         </div>
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="breed">Breed</label>
-//                             <input class="w-1/2 border border-gray rounded" type="text" id="breed" name="breed" />
-//                         </div>
-//                     </div>
-//                 </div>
-//                 <div  className="border border-solid border-white p-4 w-128">
-//                     <div className="flex flex-row">
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="postalCodeLocation">Postal Code Location</label>
-//                             <input class="border border-gray rounded" type="text" id="postalCodeLocation" name="postalCodeLocation" />
-//                         </div>
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="price">Price</label>
-//                             <input class="border border-gray rounded" type="text" id="price" name="price" />
-//                         </div>
-//                     </div>
-//                     <div className="flex flex-row">
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="dob">Date of Birth (DOB)</label>
-//                             <input class="border border-gray rounded" type="text" id="dob" name="dob" />
-//                         </div>
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="adoptionDate">Adoption Date</label>
-//                             <input class="border border-gray rounded" type="text" id="adoptionDate" name="adoptionDate" />
-//                         </div>
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="dod">Date of Death (DOD)</label>
-//                             <input class="border border-gray rounded" type="text" id="dod" name="dod" />
-//                         </div>
-//                     </div>
-//                     <div className="flex flex-col">
-//                         <div className="p-1">
-//                             <p class="block text-gray">Add Additional Photos</p>
-//                         </div>
-//                         <div className="bg-gray h-16 w-16 p-1">
-                        
-//                         </div>
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="aboutPet">About Pet</label>
-//                             <input class="border border-gray rounded" type="text" id="aboutPet" name="aboutPet" />
-//                         </div>
-//                     </div>
-//                     <div className="flex flex-row">
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="sex">Sex</label>
-//                             <select class="border border-gray rounded w-40" type="text" id="sex" name="sex">
-//                                 <option selected>Choose a sex</option>
-//                                 <option value = "male">Male</option>
-//                                 <option value = "female">Female</option>
-//                             </select>
-//                         </div>
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="reproductiveStatus">Reproductive Status</label>
-//                             <input class="border border-gray rounded" type="text" id="reproductiveStatus" name="reproductiveStatus" />
-//                         </div>
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="alteredDate">Altered Date</label>
-//                             <input class="border border-gray rounded" type="text" id="alteredDate" name="alteredDate" />
-//                         </div>
-//                     </div>
-//                     <div className="flex flex-row">
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="tattooNumber">Tattoo Number</label>
-//                             <input class="border border-gray rounded" type="text" id="tattooNumber" name="tattooNumber" />
-//                         </div>
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="microchipNumber">Microchip Number</label>
-//                             <input class="border border-gray rounded" type="text" id="microchipNumber" name="microchipNumber" />
-//                         </div>
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="petSize">Pet Size</label>
-//                             <input class="border border-gray rounded" type="text" id="petSize" name="petSize" />
-//                         </div>
-//                     </div>
-//                     <div className="flex flex-row">
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="energyLevel">Energy Level</label>
-//                             <input class="border border-gray rounded" type="text" id="energyLevel" name="energyLevel" />
-//                         </div>
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="hairLength">Hair Length</label>
-//                             <input class="border border-gray rounded" type="text" id="hairLength" name="hairLength" />
-//                         </div>
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="eyeColor">Eye Color</label>
-//                             <input class="border border-gray rounded" type="text" id="eyeColor" name="eyeColor" />
-//                         </div>
-//                     </div>
-//                     <div className="flex flex-row">
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="hairColor">Hair Color</label>
-//                             <input class="border border-gray rounded" type="text" id="hairColor" name="hairColor" />
-//                         </div>
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="specialNeeds">Special Needs</label>
-//                             <input class="border border-gray rounded" type="text" id="specialNeeds" name="specialNeeds" />
-//                         </div>
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="socializedWith">Socialized With</label>
-//                             <input class="border border-gray rounded" type="text" id="socializedWith" name="socializedWith" />
-//                         </div>
-//                     </div>
-//                     <div className="p-1">
-//                         <label class="text-gray block" for="socializedWith">Socialized With</label>
-//                         <input class="border border-gray rounded" type="text" id="socializedWith" name="socializedWith" />
-//                     </div> /*}
-//                 </div>

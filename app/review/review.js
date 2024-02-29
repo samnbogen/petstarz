@@ -93,7 +93,7 @@ export default function Review() {
                             <li key={index} className="text-black">
                                 <div>
                                     <p>Username: {review.username}</p>
-                                    <p className="text-black">Date: {review.date}</p>
+                                    <p>Date: {review.date}</p>
                                     <p>Reviews: {review.review}</p>
                                 </div>
                             </li>

@@ -67,7 +67,7 @@ export default function Page() {
               <button className="self-center text-black font-bold py-2 px-4 rounded mt-4 border border-black" type="submit">Login</button>
             </form>
           </div>
-          <a href="/signup" className="text-center block mt-4 text-rose-500 font-semibold">Don't have an account? Sign up here</a>
+          <a href="./signup" className="text-center block mt-4 text-rose-500 font-semibold">Don't have an account? Sign up here</a>
         </div>
       );
     }

@@ -42,9 +42,9 @@ export default function SignUp(){
     return(
     <>
         <div className="flex items-center justify-center h-screen bg-gray-100">
-            <div className='flex'>
-                <form onSubmit={handleUserSubmit} className="bg-white p-8 rounded shadow-md mr-10">
-                    <h2 className="text-2xl font-semibold mb-4">User Sign Up</h2>
+            <div className='flex mr-50 flex-grow h-50 w-full items-center justify-center'> 
+                <form onSubmit={handleUserSubmit} className="bg-white p-8 rounded shadow-md mr-5 h-50 w-1/2 flex flex-col items-center">
+                    <h2 className="text-2xl font-bold mb-4 text-center">User <span className='text-green'>Sign Up</span></h2>
                         <div>
                             <label className="block text-gray-700 text-sm font-medium mb-2">Email:</label>
                             <input 
@@ -64,12 +64,12 @@ export default function SignUp(){
                             />
                         </div>
                         <div className='flex justify-center'>
-                            <button className=" text-black font-bold py-2 px-4 rounded mt-4 border border-black" type="submit"> User Register</button>
+                            <button className=" text-white font-bold py-2 px-4 rounded-full mt-4 bg-green" type="submit"> User Sign Up</button>
                         </div>
                 </form>
 
-                <form onSubmit={handleSupplierSubmit} className="bg-white p-8 rounded shadow-md items-center">
-                    <h2 className="text-2xl font-semibold mb-4">Supplier Sign Up</h2>
+                <form onSubmit={handleSupplierSubmit} className="bg-white p-8 rounded shadow-md h-50 w-1/2 flex flex-col items-center">
+                    <h2 className="text-2xl font-bold mb-4">Supplier <span className='text-green'>Sign Up</span></h2>
                         <div>
                             <label className="block text-gray-700 text-sm font-medium mb-2">Email:</label>
                             <input 
@@ -89,7 +89,7 @@ export default function SignUp(){
                             />
                         </div>
                     <div className='flex justify-center'>
-                        <button className=" text-black font-bold py-2 px-4 rounded mt-4 border border-black" type="submit">Supplier Register</button>
+                        <button className="text-white font-bold py-2 px-4 rounded-full mt-4 bg-green" type="submit">Supplier Sign Up</button>
                     </div>
                 </form> 
             </div>

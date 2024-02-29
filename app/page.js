@@ -1,6 +1,5 @@
 import Header from './components/header';
 import AuthProvider from './auth-provider';
-import Review from './review/review';
 
 export default function Home() {
   return (

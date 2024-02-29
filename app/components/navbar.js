@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
-import AuthProvider from './auth-provider';
 import Link from "next/link";
 
 export default function Navbar() {
@@ -14,13 +13,21 @@ export default function Navbar() {
   console.log(session);
 
   return (
-    <AuthProvider>
     <nav className="fixed w-full z-50">
       <div>
-        <div className="bg-green max-w-screen h-16 flex flew-row items-center">
+        <div className="bg-green max-w-screen h-16 flex flew-row justify-between items-center">
           <div className="flex items-center ml-10">
             <img src={"/flag.svg"} alt="description" />
             <h1 className="text-black text-xs ml-2">Canadian residents only</h1>
+          </div>
+          <div className="flex items-center flew-row justify-end mr-10">
+            {session ? (
+                      <Link href={"/userFoster"} className="text-black text-xs">
+                        Email: {session.user.email} | Role: {session.user.role} |
+                      </Link>
+                    ):(
+                      <></>
+                  )}
           </div>
         </div>
         <div className="bg-black flex flew-row items-center justify-between h-14">
@@ -81,16 +88,16 @@ export default function Navbar() {
                           Petcard
                         </Link>
                         <Link
-                          href={"/tab/about"}
+                          href={"/tab/pets"}
                           className="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray"
                           role="menuitem">
-                          About
+                          Pets
                         </Link>
                         <Link
-                          href={"/tab/contact"}
+                          href={"/userSupplier"}
                           className="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray"
                           role="menuitem">
-                          Contact
+                          Supplier
                         </Link>
                       </div>
                     </div>
@@ -99,13 +106,12 @@ export default function Navbar() {
 
                 {session ? (
                       <button className="ml-10 bg-green hover:bg-light-gray text-white text-xs py-2 px-4 rounded-full" onClick={() => signOut()}>
-                        Email: {session.user.email} | Role: {session.user.role} |
                         Log out
                       </button>
                     ):(
                       <button className="ml-10 bg-green hover:bg-light-gray text-white text-xs py-2 px-4 rounded-full">
                           
-                          <Link href={'/login'}>Login</Link>
+                          <Link href={'/tab/login'}>Login</Link>
                       </button>
                   )}
                 
@@ -155,6 +161,5 @@ export default function Navbar() {
         </div>
       </div>
     </nav>
-    </AuthProvider>
   );
 }

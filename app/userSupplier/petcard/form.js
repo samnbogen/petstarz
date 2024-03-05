@@ -1,80 +1,138 @@
+"use client";
+import React, { useState } from 'react';
+//import { useSession } from "next-auth/react";
+
 export default function PetCardForm() {
+// const { data: session } = useSession();
+
+    const [name, setPetName] = useState("");
+    const [age, setPetAge] = useState("");
+    const [species, setSpecies] = useState("");
+    const [breedAndType, setBreedAndType] = useState("");
+    const [sex, setSex] = useState("");
+    const [size, setSize] = useState("");
+    const [fixed, setFixed] = useState("");
+    const [additionalInfo, setAdditionalInfo] = useState("");
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await fetch("/api/foster/petCard", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ name, age, species, breedAndType,
+                    sex, size, fixed, additionalInfo}),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log("Pet Card submitted:", data);
+                setPetName("");
+                setPetAge("");
+                setSpecies("");
+                setBreedAndType("");
+                setSex("");
+                setSize("");
+                setFixed("");
+                setAdditionalInfo("");
+            } else {
+                console.error("Pet Card submission failed:", response);
+            }
+        } catch (error) {
+            console.error("Pet Card submission failed:", error);
+        }
+    }
+
+
+
 
 // "add photo" still needs to be added
 
-    return (
-        <div  className="border rounded-b-lg border-light-gray p-4 w-2/5 bg-white">
-            <h1 class="text-lg p-1">General Information</h1>
-            <div class="flex flex-row"> 
-                <div class="p-1">
-                    <label class="text-gray block" for="petName">Pet Name</label>
-                    <input class="border border-light-gray rounded" type="text" id="petName" name="petName" />
-                </div>
-                <div class="p-1">
-                    <label class="text-gray block" for="petAge">Pet Age</label>
-                    <input class="border border-light-gray rounded" type="text" id="petAge" name="petAge" />
-                </div>
+return (
+    <form onSubmit={handleSubmit} className="border w-2/5 rounded-b-lg border-light-gray p-4 max-w-xl mx-auto bg-white">
+        <h1 className="text-lg p-1">General Information</h1>
+        <div className="flex flex-row">
+            <div className="p-1 w-1/2">
+                <label className="text-gray block" htmlFor="petName">Pet Name</label>
+                <input className="border border-light-gray rounded w-full" type="text" id="petName" name="petName" 
+                value={name} onChange={(e) => setPetName(e.target.value)} />
             </div>
-            <div class="flex flex-row"> 
-                <div class="p-1">
-                    <label class="text-gray block" for="species">Species</label>
-                    <select class="border border-light-gray rounded" type="text" id="species" name="species">
-                        <option selected></option>
-                        <option value = "dog">Dog</option>
-                        <option value = "cat">Cat</option>
-                        <option value = "other">Other</option>
-                    </select>
-                </div>
-                <div class="p-1">
-                    <label class="text-gray block" for="breed">Breed/Type</label> {/*Find a way to make it so that, if "other" selected for species, change to "type" instead of "breed"*/}
-                    <input class="border border-light-gray rounded" type="text" id="breed" name="breed" /> {/*^^^ not priority*/}
-                </div>
-            </div>
-            <div class="flex flex-row"> 
-                <div class="p-1">
-                    <label class="text-gray block" for="sex">Sex</label>
-                    <select class="border border-light-gray rounded" type="text" id="sex" name="sex">
-                        <option selected></option>
-                        <option value = "male">Male</option>
-                        <option value = "female">Female</option>
-                    </select>
-                </div>
-                <div class="p-1">
-                    <label class="text-gray block" for="size">Size</label>
-                    <select class="border border-light-gray rounded" type="text" id="size" name="size">
-                        <option selected></option>
-                        <option value = "small">S</option>
-                        <option value = "medium">M</option>
-                        <option value = "large">L</option>
-                        <option value = "extraLarge">XL</option>
-                    </select>
-                </div>
-                <div class="p-1">
-                    <label class="text-gray block" for="fixed">Fixed</label>
-                    <select class="border border-light-gray rounded" type="text" id="fixed" name="fixed">
-                        <option selected></option>
-                        <option value = "yes">Yes</option>
-                        <option value = "no">No</option>
-                        <option value= "unknown">Unknown</option> {/*is it a good idea to have an "unknown" for this?*/}
-                    </select>
-                </div>
-            </div>
-            <div class="p-1">
-                <label class="text-gray block" for="additionalInfo">Additional Info</label>
-                <textarea class="border border-light-gray rounded-lg w-full h-32" type="text" id="additionalInfo" name="additionalInfo" />
-            </div>
-            <div className="flex flex-row p-1">
-                <div class="mr-1">
-                    <div class="text-center text-white p-1 w-40 border-2 border-green bg-green rounded-lg hover:bg-white hover:cursor-pointer hover:text-green">
-                        <p>Save</p>
-                    </div>
-                </div>
-                <div class="ml-1">
-                    <div class="text-center text-white p-1 w-40 border-2 border-red bg-red rounded-lg hover:bg-white hover:cursor-pointer hover:text-red">
-                        <p>Cancel</p>
-                    </div>
-                </div>
+            <div className="p-1 w-1/2">
+                <label className="text-gray block" htmlFor="petAge">Pet Age</label>
+                <input className="border border-light-gray rounded w-full" type="text" id="petAge" name="petAge" 
+                value={age} onChange={(e) => setPetAge(e.target.value)} />
             </div>
         </div>
-    )
+        <div className="flex flex-row">
+            <div className="p-1 w-1/2">
+                <label className="text-gray block" htmlFor="species">Species</label>
+                <select className="border border-light-gray rounded w-full" type="text" id="species" name="species"
+                value={species} onChange={(e) => setSpecies(e.target.value)}>
+                    <option selected></option>
+                    <option value="dog">Dog</option>
+                    <option value="cat">Cat</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div className="p-1 w-1/2">
+                <label className="text-gray block" htmlFor="breed">Breed/Type</label>
+                <input className="border border-light-gray rounded w-full" type="text" id="breed" name="breed"
+                value={breedAndType} onChange={(e) => setBreedAndType(e.target.value)} />
+            </div>
+        </div>
+        <div className="flex flex-row">
+            <div className="p-1 w-1/3">
+                <label className="text-gray block" htmlFor="sex">Sex</label>
+                <select className="border border-light-gray rounded w-full" type="text" id="sex" name="sex"
+                value={sex} onChange={(e) => setSex(e.target.value)}>
+                    <option selected></option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div className="p-1 w-1/3">
+                <label className="text-gray block" htmlFor="size">Size</label>
+                <select className="border border-light-gray rounded w-full" type="text" id="size" name="size"
+                value={size} onChange={(e) => setSize(e.target.value)}>
+                    <option selected></option>
+                    <option value="small">S</option>
+                    <option value="medium">M</option>
+                    <option value="large">L</option>
+                    <option value="extraLarge">XL</option>
+                </select>
+            </div>
+            <div className="p-1 w-1/3">
+                <label className="text-gray block" htmlFor="fixed">Fixed</label>
+                <select className="border border-light-gray rounded w-full" type="text" id="fixed" name="fixed"
+                value={fixed} onChange={(e) => setFixed(e.target.value)}>
+                    <option selected></option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                    <option value="unknown">Unknown</option>
+                </select>
+            </div>
+        </div>
+        <div className="p-1">
+            <label className="text-gray block" htmlFor="additionalInfo">Additional Info</label>
+            <textarea className="border border-light-gray rounded-lg w-full h-32" type="text" id="additionalInfo" name="additionalInfo" 
+            value={additionalInfo} onChange={(e) => setAdditionalInfo(e.target.value)}/>
+        </div>
+        <div className="flex flex-row p-1">
+            <div className="w-1/2">
+                <button type="submit" className="text-center text-white p-1 w-40 border-2 border-green bg-green rounded-lg hover:bg-white hover:cursor-pointer hover:text-green">
+                    Save
+                </button>
+            </div>
+            <div className=" ml-12 w-1/2">
+                <button type="button" className="text-center text-white p-1 w-40 border-2 border-red bg-red rounded-lg hover:bg-white hover:cursor-pointer hover:text-red">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </form>
+)
+
 };

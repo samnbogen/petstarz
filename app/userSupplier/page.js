@@ -16,11 +16,11 @@ export default function Page() {
                 </div>
                 <div className='w-full md:w-3/4 flex flex-wrap'>
                     <div className='w-1/2 p-10'>
-                        <h1>Company</h1>
-                        <h1>Location</h1>
-                        <h1>Phone Number</h1>
-                        <h1>Email</h1>
-                        <h1>Website</h1>
+                        <h1 class="font-bold">Company</h1>
+                        <h1 class="font-bold">Location</h1>
+                        <h1 class="font-bold">Phone Number</h1>
+                        <h1 class="font-bold">Email</h1>
+                        <h1 class="font-bold">Website</h1>
                     </div>
                     <div className='w-1/2 p-10'>
                         <h2>Patty's Pets</h2>
@@ -36,7 +36,7 @@ export default function Page() {
             </div>
             <div className='flex flex-col md:flex-row m-12 border-green border-2'>
                 <div className='w-full flex justify-center items-center'>
-                    <h1>Available Pets</h1>                    
+                    <h1 class="font-bold">Available Pets</h1>                    
                 </div>
             </div>
             <div className='flex flex-col md:flex-row m-12 border-green border-2'>

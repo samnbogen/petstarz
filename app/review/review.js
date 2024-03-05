@@ -85,7 +85,7 @@ export default function Review() {
                     </form>
                 </>}
                 <div className="flex flex-col items-center justify-center">
-                    <h2 className="text-3xl text-center text-black">
+                    <h2 className="text-3xl text-center text-black font-bold">
                         Reviews
                     </h2>
                     <ul>

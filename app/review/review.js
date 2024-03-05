@@ -59,7 +59,7 @@ export default function Review() {
                
                { role === "user" &&
                <>
-                    <h1 className="text-3xl text-center text-black" style={{ fontFamily: 'Pacifico' }}>
+                    <h1 className="text-3xl text-center text-black">
                         Leave Supplier Review
                     </h1>
                     <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center">
@@ -68,24 +68,24 @@ export default function Review() {
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             placeholder="Your Name"
-                            className="w-1/2 p-2 m-2 text-black border-2 border-black"
+                            className="w-full p-2 m-2 text-black border-2 border-black"
                         />
                         <textarea
                             value={review}
                             onChange={(e) => setReview(e.target.value)}
                             placeholder="Your Review"
-                            className="w-1/2 p-2 m-2 text-black border-2 border-black"
+                            className="w-full p-2 m-2 text-black border-2 border-black"
                         />
                         <button
                             type="submit"
-                            className="w-1/2 p-2 m-2 bg-blue-500 hover:bg-blue-700 text-black border-2 border-black font-bold py-2 px-4 rounded"
+                            className="w-full p-2 m-2 bg-blue-500 hover:bg-blue-700 text-black border-2 border-black font-bold py-2 px-4 rounded"
                         >
                             Add supplier Review
                         </button>
                     </form>
                 </>}
                 <div className="flex flex-col items-center justify-center">
-                    <h2 className="text-3xl text-center text-black" style={{ fontFamily: 'Pacifico' }}>
+                    <h2 className="text-3xl text-center text-black">
                         Reviews
                     </h2>
                     <ul>

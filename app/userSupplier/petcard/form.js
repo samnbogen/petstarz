@@ -1,9 +1,13 @@
 "use client";
 import React, { useState } from 'react';
-//import { useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 export default function PetCardForm() {
-// const { data: session } = useSession();
+const { data: session } = useSession();
+
+//only a supplier can save the petcard form
+    //the form will be saved to the database
+    //send with the email of the supplier
 
     const [name, setPetName] = useState("");
     const [age, setPetAge] = useState("");
@@ -14,6 +18,8 @@ export default function PetCardForm() {
     const [fixed, setFixed] = useState("");
     const [additionalInfo, setAdditionalInfo] = useState("");
 
+    const supplierEmail = session?.user?.email;
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -23,7 +29,7 @@ export default function PetCardForm() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ name, age, species, breedAndType,
+                body: JSON.stringify({ email: supplierEmail,name, age, species, breedAndType,
                     sex, size, fixed, additionalInfo}),
             });
 

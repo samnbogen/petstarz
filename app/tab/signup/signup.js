@@ -6,12 +6,19 @@ import Link from 'next/link';
 export default function SignUp(){
 
     const [message, setErrorMessage] = useState("");
-    const [passwordCheckList, setPasswordCheckList] = useState({
-        minLenght: false,
-        upperCase: false,
-        lowerCase: false,
-        number: false,
-        specialChar: false,
+    const [userPasswordChecklist, setUserPasswordChecklist] = useState({
+        minLength: false,
+        lowercase: false,
+        uppercase: false,
+        digit: false,
+        specialCharacter: false
+    });
+    const [supplierPasswordChecklist, setSupplierPasswordChecklist] = useState({
+        minLength: false,
+        lowercase: false,
+        uppercase: false,
+        digit: false,
+        specialCharacter: false
     });
 
     const handleUserSubmit = (event) => {
@@ -30,18 +37,35 @@ export default function SignUp(){
         onSubmit({email, password, role});
     };
     
-    const checkPassword = (password) => {
-        const minLenght = password.length >= 8;
-        const upperCase = /[A-Z]/.test(password);
-        const lowerCase = /[a-z]/.test(password);
-        const number = /[0-9]/.test(password);
-        const specialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(password);
-        setPasswordCheckList({
-            minLenght,
-            upperCase,
-            lowerCase,
-            number,
-            specialChar,
+    const checkUserPasswordRequirements = (password) => {
+        const minLength = password.length >= 8;
+        const lowercase = /[a-z]/.test(password);
+        const uppercase = /[A-Z]/.test(password);
+        const digit = /\d/.test(password);
+        const specialCharacter = /[!@#$%^&*]/.test(password);
+        
+        setUserPasswordChecklist({
+            minLength,
+            lowercase,
+            uppercase,
+            digit,
+            specialCharacter
+        });
+    };
+
+    const checkSupplierPasswordRequirements = (password) => {
+        const minLength = password.length >= 8;
+        const lowercase = /[a-z]/.test(password);
+        const uppercase = /[A-Z]/.test(password);
+        const digit = /\d/.test(password);
+        const specialCharacter = /[!@#$%^&*]/.test(password);
+        
+        setSupplierPasswordChecklist({
+            minLength,
+            lowercase,
+            uppercase,
+            digit,
+            specialCharacter
         });
     };
 
@@ -54,14 +78,15 @@ export default function SignUp(){
         if(response?.ok){
             console.log("Sign up successful", response);
         } else {
-            //if(response?.error === "User already exists"){
             setErrorMessage(response.error);
+            setTimeout(() => setErrorMessage(""), 5000);
             console.error("Sign up failed", response);
-            //}
+            
         }
 
     } catch (error){
         console.error(error);
+        setTimeout(() => setErrorMessage(""), 5000);
         setErrorMessage("Sign up failed");
     };
 };
@@ -69,9 +94,8 @@ export default function SignUp(){
 
     return(
     <>
-        
         <div className="flex items-center justify-center h-screen bg-gray-100">
-            <div className='flex mr-50 flex-grow h-50 w-full items-center justify-center'> 
+            <div className='flex mr-50 flex-grow h-50 w-full items-center justify-center mt-40 mb-20'> 
                 <form onSubmit={handleUserSubmit} className="bg-white p-8 rounded shadow-md mr-5 h-50 w-1/2 flex flex-col items-center">
                     <h2 className="text-2xl font-bold mb-4 text-center">User <span className='text-green'>Sign Up</span></h2>
                         <div>
@@ -90,18 +114,16 @@ export default function SignUp(){
                             required
                             type="password"
                             name='password'
-                            onChange={(e) => checkPassword(e.target.value)}
+                            onChange={(e) => checkUserPasswordRequirements(e.target.value)}
                             />
                         </div>
                         <div className='text-left mt-2'>
                             <ul className='list-disc list-inside'>
-                                <li className={passwordCheckList.minLenght ? "text-green" : "text-red"}>Minimum 8 characters</li>
-                                <li className={passwordCheckList.upperCase ? "text-green" : "text-red"}>At least one uppercase letter</li>
-                                <li className={passwordCheckList.lowerCase ? "text-green" : "text-red"}>At least one lowercase letter</li>
-                                <li className={passwordCheckList.number ? "text-green" : "text-red"}>At least one number</li>
-                                <li className={passwordCheckList.specialChar ? "text-green" : "text-red"}>At least one special character</li>
-                                {/* Error message */}
-                                {message && <p className="text-red text-center">{message}</p>}
+                                <li className={userPasswordChecklist.minLength ? 'text-green' : 'text-red'}>Minimum 8 characters</li>
+                                <li className={userPasswordChecklist.lowercase ? 'text-green' : 'text-red'}>At least one lowercase letter</li>
+                                <li className={userPasswordChecklist.uppercase ? 'text-green' : 'text-red'}>At least one uppercase letter</li>
+                                <li className={userPasswordChecklist.digit ? 'text-green' : 'text-red'}>At least one digit</li>
+                                <li className={userPasswordChecklist.specialCharacter ? 'text-green' : 'text-red'}>At least one special character: !@#$%^&*</li>
                             </ul>
                         </div>
                         <div className='flex justify-center'>
@@ -127,26 +149,30 @@ export default function SignUp(){
                             required
                             type="password"
                             name='password'
-                            onChange={(e) => checkPassword(e.target.value)}
+                            onChange={(e) => checkSupplierPasswordRequirements(e.target.value)} 
                             />
                         </div>
                         <div className='text-left mt-2'>
                             <ul className='list-disc list-inside'>
-                                <li className={passwordCheckList.minLenght ? "text-green" : "text-red"}>Minimum 8 characters</li>
-                                <li className={passwordCheckList.upperCase ? "text-green" : "text-red"}>At least one uppercase letter</li>
-                                <li className={passwordCheckList.lowerCase ? "text-green" : "text-red"}>At least one lowercase letter</li>
-                                <li className={passwordCheckList.number ? "text-green" : "text-red"}>At least one number</li>
-                                <li className={passwordCheckList.specialChar ? "text-green" : "text-red"}>At least one special character</li>
+                                <li className={supplierPasswordChecklist.minLength ? 'text-green' : 'text-red'}>Minimum 8 characters</li>
+                                <li className={supplierPasswordChecklist.lowercase ? 'text-green' : 'text-red'}>At least one lowercase letter</li>
+                                <li className={supplierPasswordChecklist.uppercase ? 'text-green' : 'text-red'}>At least one uppercase letter</li>
+                                <li className={supplierPasswordChecklist.digit ? 'text-green' : 'text-red'}>At least one digit</li>
+                                <li className={supplierPasswordChecklist.specialCharacter ? 'text-green' : 'text-red'}>At least one special character</li>
+                                
                             </ul>
                         </div>
                     <div className='flex justify-center'>
                         <button className="text-white font-bold py-2 px-4 rounded-full mt-4 bg-green" type="submit">Supplier Sign Up</button>
                     </div>
+                    
                 </form> 
             </div>
         </div>
         {/* Link at the bottom */}
         <div className="text-center">
+        {/* error message */}
+        {message && <p className="text-red">{message}</p>}
             <Link className="text-center block mt-4 font-semibold" href="./login">Already have an account? Log in</Link>
         </div>
     </>

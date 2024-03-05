@@ -1,4 +1,7 @@
 export default function ContactsForm() {
+    //only a supplier can save the petcard form
+    //the form will be saved to the database
+    //send with the email of the supplier
     return (
         <div class="flex flex-col w-2/5 border border-light-gray rounded-b-lg">
             <div>

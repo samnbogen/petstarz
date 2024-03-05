@@ -33,7 +33,8 @@ const authOptions = {
                         throw new Error("Invalid email or password");
                     }
                 } catch (error){
-                    throw new Error("Authentication failed");
+                    console.error("Error in signup authorize:", error);
+                    throw error;
                 }
             },
         }),
@@ -58,11 +59,11 @@ const authOptions = {
 
                     //validate password against regex pattern
                     if (!passwordPattern.test(credentials.password)) {
-                        throw new Error("Password must contain at least 8 characters, one uppercase letter, one lowercase letter,one special character and one number");
+                        throw new Error("Password does not meet the requirements. Please try again.");
                     }
 
                     if (existingUser) {
-                        throw new Error("User already exists");
+                        throw new Error("User already exists, please try logging in instead.");
 
                     } else {
                         const hashedPassword = await hash(credentials.password, 10);
@@ -70,11 +71,6 @@ const authOptions = {
                         return newUser;
                     }
                 } catch (error){
-                    /*console.error("Error in signup authorize:", error);
-                    if (error.message.includes("User already exists")) {
-                        throw new Error("User already exists");
-                    }
-                    throw new Error("Registration failed");*/
                     console.error("Error in signup authorize:", error);
                     throw error;
                 }

@@ -113,6 +113,30 @@ export default function PetList() {
 
     ]);
 
+
+    //Testing getting th list of pets from the database
+    const fetchPets = async () => {
+        try{
+            const response = await fetch("/api/foster/petCard");
+             /*   
+             //see if i need the get method
+             , {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });*/
+            if (response.ok) {
+                const data = await response.json();
+                setOriginalPets(data);
+            } else {
+                console.error("Pet Card submission failed:", response);
+            }
+        } catch (error) {
+            console.error("Pet Card submission failed:", error);
+        }
+    }
+
     const [filteredPets, setFilteredPets] = useState([]);
 
     useEffect(() => {

@@ -17,6 +17,7 @@ export async function POST(request) {
 
     // Insert the comment into the "review" collection
     await db.collection("petCard").insertOne({
+      email: data.email,
        name: data.name,
        age: data.age,
        species: data.species,

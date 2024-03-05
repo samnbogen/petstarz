@@ -24,7 +24,8 @@ export default function PetList() {
     };
     
 
-    const [originalPets, setOriginalPets] = useState([
+    const [originalPets, setOriginalPets] = useState([]);
+    /*useState([
         {
             name: "Fluffy",
             species: "cat",
@@ -111,21 +112,20 @@ export default function PetList() {
         }
 
 
-    ]);
+    ]);*/
 
 
     //Testing getting th list of pets from the database
     const fetchPets = async () => {
         try{
-            const response = await fetch("/api/foster/petCard");
-             /*   
-             //see if i need the get method
-             , {
-                    method: "GET",
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                });*/
+            const response = await fetch("/api/foster/petCard",{
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json",
+                },
+            });
+                
+            
             if (response.ok) {
                 const data = await response.json();
                 setOriginalPets(data);
@@ -140,8 +140,13 @@ export default function PetList() {
     const [filteredPets, setFilteredPets] = useState([]);
 
     useEffect(() => {
+        //setFilteredPets(originalPets);
+        fetchPets();
+    }, []);
+
+    useEffect(() => {
         setFilteredPets(originalPets);
-    }, [originalPets]);
+    },[originalPets])
 
 
     return (

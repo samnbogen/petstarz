@@ -2,6 +2,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
+//import {useHistory} from "react-router-dom";
 import Link from "next/link";
 
 // Component definition
@@ -10,6 +11,7 @@ export default function Page() {
   const [credentials, setCredentials] = useState({ email: "", password: ""});
   const [auth, setAuth] = useState(false);
   const [message, setErrorMessage] = useState("");
+  //const history = useHistory();
 
   // Use the useSession hook to get session data
   const { data: session, status } = useSession();
@@ -38,6 +40,7 @@ export default function Page() {
     useEffect(() => {
       if (session) {
         console.log("Login page page successful");
+        //history.push('/');
         setAuth(true);
 
       } else {
@@ -49,7 +52,7 @@ export default function Page() {
       return <div>Loading...</div>
     } else if (auth === true) {
       return(
-        <div>
+        <div className="flex flex-col items-center justify-center bg-gray-100 ">
             <h1>Welcome you're logged in!</h1>
             <a href="/">Click here to go to main page</a>
             <button className="border-2 border-rose-500" onClick={signOut}>Log out</button>
@@ -71,7 +74,7 @@ export default function Page() {
               {message && <p className="text-red text-center">{message}</p>}
               <button className="self-center text-black font-bold py-2 px-4 rounded mt-2 border border-black" type="submit">Login</button>
               <div>
-                <Link href="/signup" className="text-center block mt-4 font-semibold">Don't have an account? Sign up here</Link>
+                <Link href="/tab/signup" className="text-center block mt-4 font-semibold">Don't have an account? Sign up here</Link>
               </div>
             </form>
           </div>

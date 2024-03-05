@@ -17,15 +17,16 @@ export async function POST(request) {
 
     // Insert the comment into the "review" collection
     await db.collection("petCard").insertOne({
-      email: data.email,
+       email: data.email,
        name: data.name,
        age: data.age,
        species: data.species,
-       breedAndType: data.breedAndType,
+       breed: data.breed,
        sex: data.sex,
        size: data.size,
        fixed: data.fixed,
        additionalInfo: data.additionalInfo,
+       photo: data.photo,
     
     });
     
@@ -45,7 +46,7 @@ export async function GET(request) {
     const collection = db.collection("petCard");
     //this is to include the _id, name, age, species, breedAndType fields
     //1 to include, 0 to exclude
-    const projection = { _id: 1, name: 1, age: 1, species: 1, breedAndType: 1 };
+    const projection = { _id: 1, name: 1, age: 1, species: 1, breed: 1, photo:1 };
     const pets = await collection.find({}, { projection }).toArray();
 
     //const pets = await collection.find({}).toArray();

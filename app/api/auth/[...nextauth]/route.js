@@ -3,6 +3,10 @@ import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import clientPromise from "../../../lib/mongodb";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { compare, hash } from "bcrypt";
+import { error } from "console";
+
+//regex pattern for password validation
+const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{8,}$/;
 
 const authOptions = {
     providers: [
@@ -51,19 +55,28 @@ const authOptions = {
                     const collection = db.collection("users");
                     const existingUser = await collection.findOne({ email: credentials.email });
                     console.log("existing role",existingUser); 
-                    console.log(credentials.role);
 
+                    //validate password against regex pattern
+                    if (!passwordPattern.test(credentials.password)) {
+                        throw new Error("Password must contain at least 8 characters, one uppercase letter, one lowercase letter,one special character and one number");
+                    }
 
-                    if (existingUser) { 
+                    if (existingUser) {
                         throw new Error("User already exists");
+
                     } else {
                         const hashedPassword = await hash(credentials.password, 10);
                         const newUser = await collection.insertOne({ email: credentials.email, password: hashedPassword, role: credentials.role});
                         return newUser;
                     }
                 } catch (error){
-                    console.error("Sign up failed next auth", error);
-                    throw new Error("Sign up failed next auth");
+                    /*console.error("Error in signup authorize:", error);
+                    if (error.message.includes("User already exists")) {
+                        throw new Error("User already exists");
+                    }
+                    throw new Error("Registration failed");*/
+                    console.error("Error in signup authorize:", error);
+                    throw error;
                 }
             },
         }),

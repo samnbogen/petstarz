@@ -1,8 +1,18 @@
 "use client";
 import { useState } from 'react';
 import{ signIn} from "next-auth/react";
+import Link from 'next/link';
 
 export default function SignUp(){
+
+    const [message, setErrorMessage] = useState("");
+    const [passwordCheckList, setPasswordCheckList] = useState({
+        minLenght: false,
+        upperCase: false,
+        lowerCase: false,
+        number: false,
+        specialChar: false,
+    });
 
     const handleUserSubmit = (event) => {
         event.preventDefault();
@@ -17,9 +27,23 @@ export default function SignUp(){
         const email = event.target.elements.email.value.toLowerCase();
         const password = event.target.elements.password.value;
         const role = "supplier";
-        onSubmit( {email, password, role});
+        onSubmit({email, password, role});
     };
     
+    const checkPassword = (password) => {
+        const minLenght = password.length >= 8;
+        const upperCase = /[A-Z]/.test(password);
+        const lowerCase = /[a-z]/.test(password);
+        const number = /[0-9]/.test(password);
+        const specialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(password);
+        setPasswordCheckList({
+            minLenght,
+            upperCase,
+            lowerCase,
+            number,
+            specialChar,
+        });
+    };
 
 
     const onSubmit = async (user) => {
@@ -27,20 +51,25 @@ export default function SignUp(){
             const response = await signIn("signup", {...user,
             redirect: false,
         });
-        console.log(response);
         if(response?.ok){
             console.log("Sign up successful", response);
-        } else{
-            console.error("Sign up failed response", response.error);
+        } else {
+            //if(response?.error === "User already exists"){
+            setErrorMessage(response.error);
+            console.error("Sign up failed", response);
+            //}
         }
+
     } catch (error){
         console.error(error);
+        setErrorMessage("Sign up failed");
     };
 };
 
 
     return(
     <>
+        
         <div className="flex items-center justify-center h-screen bg-gray-100">
             <div className='flex mr-50 flex-grow h-50 w-full items-center justify-center'> 
                 <form onSubmit={handleUserSubmit} className="bg-white p-8 rounded shadow-md mr-5 h-50 w-1/2 flex flex-col items-center">
@@ -61,7 +90,19 @@ export default function SignUp(){
                             required
                             type="password"
                             name='password'
+                            onChange={(e) => checkPassword(e.target.value)}
                             />
+                        </div>
+                        <div className='text-left mt-2'>
+                            <ul className='list-disc list-inside'>
+                                <li className={passwordCheckList.minLenght ? "text-green" : "text-red"}>Minimum 8 characters</li>
+                                <li className={passwordCheckList.upperCase ? "text-green" : "text-red"}>At least one uppercase letter</li>
+                                <li className={passwordCheckList.lowerCase ? "text-green" : "text-red"}>At least one lowercase letter</li>
+                                <li className={passwordCheckList.number ? "text-green" : "text-red"}>At least one number</li>
+                                <li className={passwordCheckList.specialChar ? "text-green" : "text-red"}>At least one special character</li>
+                                {/* Error message */}
+                                {message && <p className="text-red text-center">{message}</p>}
+                            </ul>
                         </div>
                         <div className='flex justify-center'>
                             <button className=" text-white font-bold py-2 px-4 rounded-full mt-4 bg-green" type="submit"> User Sign Up</button>
@@ -86,7 +127,17 @@ export default function SignUp(){
                             required
                             type="password"
                             name='password'
+                            onChange={(e) => checkPassword(e.target.value)}
                             />
+                        </div>
+                        <div className='text-left mt-2'>
+                            <ul className='list-disc list-inside'>
+                                <li className={passwordCheckList.minLenght ? "text-green" : "text-red"}>Minimum 8 characters</li>
+                                <li className={passwordCheckList.upperCase ? "text-green" : "text-red"}>At least one uppercase letter</li>
+                                <li className={passwordCheckList.lowerCase ? "text-green" : "text-red"}>At least one lowercase letter</li>
+                                <li className={passwordCheckList.number ? "text-green" : "text-red"}>At least one number</li>
+                                <li className={passwordCheckList.specialChar ? "text-green" : "text-red"}>At least one special character</li>
+                            </ul>
                         </div>
                     <div className='flex justify-center'>
                         <button className="text-white font-bold py-2 px-4 rounded-full mt-4 bg-green" type="submit">Supplier Sign Up</button>
@@ -96,7 +147,7 @@ export default function SignUp(){
         </div>
         {/* Link at the bottom */}
         <div className="text-center">
-            <a href="/login">Already have an account? Log in</a>
+            <Link className="text-center block mt-4 font-semibold" href="./login">Already have an account? Log in</Link>
         </div>
     </>
     );

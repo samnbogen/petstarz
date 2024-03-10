@@ -59,7 +59,7 @@ export default function Page() {
       //console.error("Login failed", response.error);
       return (
         <div className="flex flex-col items-center justify-center bg-gray-100">
-          <div className="bg-white p-8 rounded shadow-md mt-40 mb-8">
+          <div className="bg-white p-8 rounded shadow-md m-10">
             <h1 className="text-3xl font-bold mb-4">Log In</h1>
             <form onSubmit={handleLogin} className="flex flex-col space-y-2">
               <label htmlFor="email" className="text-gray-800 font-semibold">Email</label>

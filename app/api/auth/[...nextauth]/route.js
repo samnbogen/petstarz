@@ -104,7 +104,7 @@ const authOptions = {
             strategy: "jwt",
         },
         pages: {
-            signIn: "/login",
+            signIn: "/tab/login",
         },
 };
 

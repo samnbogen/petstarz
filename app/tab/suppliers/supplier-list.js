@@ -13,7 +13,7 @@ export default function SupplierList() {
 
     const fetchSuppliers = async () => {
         try {
-            const response = await fetch("/api/foster/supplierInfo", {
+            const response = await fetch("/api/supplier", {
                 method: "GET",
                 headers: {
                     "Content-type": "application/json",
@@ -43,7 +43,7 @@ export default function SupplierList() {
             <div className="flex flex-col items-center justify-center">
                 <h1 className="text-4xl font-bold mb-8">Suppliers</h1>
                 
-                <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-3 p-16">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 p-16">
                     {suppliers.map((supplier) => (
                         <Supplier key={supplier.id} {...supplier} />
                     ))}

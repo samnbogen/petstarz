@@ -1,14 +1,14 @@
 "use client";
 import { usePathname } from "next/navigation";
 import React, { useState, useEffect } from 'react';
-import Review from '/app/review/review.js'
+import Review from '../review';
+import DOMPurify from 'dompurify';
 
 export default function Page() {
     const pathname = usePathname();
     const lastPartOfPathname = pathname.split("/").pop();
 
     const [suppliers, setSuppliers] = useState([]);
-    const [foundSupplier, setFoundSupplier] = useState({});
 
     const fetchSuppliers = async () => {
         try {
@@ -42,12 +42,15 @@ export default function Page() {
             return (
                 <main className="pt-36">
                     <h1>{foundSupplier.Company}</h1>
+                    <div 
+                        style={{width: '200px', height: '200px', objectFit: 'cover'}}
+                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(foundSupplier.photo) }} />
                     <p>Location: {foundSupplier.location}</p>
                     <p>Phone Number: {foundSupplier.phoneNumber}</p>
                     <p>Email: {foundSupplier.email}</p>
                     <p>Website: {foundSupplier.website}</p>
                     <p>Description: {foundSupplier.description}</p>
-                    <img src={foundSupplier.photo} alt={foundSupplier.company} />
+                    
                     <Review supplierID={lastPartOfPathname} />
                 </main>
             );

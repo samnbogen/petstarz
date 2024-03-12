@@ -8,9 +8,6 @@ import DOMPurify from 'dompurify';
 
 export default function PetList() {
 
-    const [originalPets, setOriginalPets] = useState([]);
-    const [filteredPets, setFilteredPets] = useState([]);
-
     const handleSpecies = (event) => {
         const species = event.target.value;
         if (species === "all") {
@@ -30,7 +27,6 @@ export default function PetList() {
         const sortedPets = [...filteredPets].sort((a, b) => a.age - b.age);
         setFilteredPets(sortedPets);
     };
-<<<<<<< Updated upstream
     
 
     const [originalPets, setOriginalPets] = useState([]);
@@ -125,8 +121,6 @@ export default function PetList() {
 
     ]);*/
 
-=======
->>>>>>> Stashed changes
 
     //Testing getting th list of pets from the database
     const fetchPets = async () => {

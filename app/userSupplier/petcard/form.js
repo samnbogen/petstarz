@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useSession } from "next-auth/react";
 //to be able to add a photo
+//npm install react-quill
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
@@ -23,6 +24,7 @@ const { data: session } = useSession();
     const [photo, setPhoto] = useState("");
 
     const supplierEmail = session?.user?.email;
+    //const supplierID = session?.user?.id;
 
     const handleSubmit = async (e) => {
         e.preventDefault();

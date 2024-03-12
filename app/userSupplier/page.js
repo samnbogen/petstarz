@@ -15,10 +15,10 @@ export default function Page() {
                     <img src='/sam.jpg' alt='profile picture' style={{width: '200px', height: '200px', objectFit: 'cover', borderRadius: '20px'}}/>
                 </div>
                 <div className='w-full md:w-3/4 flex flex-wrap'>
-                    <div className="w-full pt-10 text-2xl font-bold">
-                        <h1>Patty's Pets</h1>
-                    </div>
                     <div className="border border-green flex flex-wrap w-full rounded-lg mt-10 mb-10 mr-10 pl-10">
+                        <div className="w-full pt-10 text-3xl font-bold">
+                            <h1>Patty's Pets</h1>
+                        </div>
                         <div className='w-1/2 pt-10'>
                             <h1 class="font-bold">Location</h1>
                             <h1 class="font-bold">Phone Number</h1>
@@ -39,12 +39,19 @@ export default function Page() {
             </div>
             <div className="flex flex-row w-full">
                 <div className='w-1/2 flex flex-col md:flex-row m-10 border-green border rounded-lg p-2'>
-                    <div className='flex justify-center items-center'>
-                        <h1 class="text-3xl text-black font-bold">Available Pets</h1>                    
+                    <div className='w-full p-10'>
+                        <h1 class="text-3xl w-full text-center text-black font-bold">
+                            Available Pets
+                        </h1>                    
                     </div>
                 </div>
-                <div className='w-1/2 flex flex-col md:flex-row m-10 border-green border rounded-lg p-2'>
-                    <div className='flex justify-center items-center'>
+                <div className='w-1/2 flex flex-col md:flex-col m-10 border-green border rounded-lg p-2'>
+                    <div className='w-full p-10'>
+                        <h2 className="text-3xl w-full text-center text-black font-bold">
+                            Reviews
+                        </h2>                  
+                    </div>
+                    <div>
                         <Review/>
                     </div>
                 </div>

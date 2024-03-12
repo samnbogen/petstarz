@@ -2,12 +2,15 @@
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 
-export default function Review() {
+export default function Review({supplierID}) {
     const [listReview, setListReview] = useState([]);
     const [username, setUsername] = useState("");
     const [review, setReview] = useState("");
     const { data: session } = useSession();
     const role = session?.user?.role;
+
+    //have to add a supplierId so that each review
+    //can be linked to a supplier
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -18,7 +21,7 @@ export default function Review() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ username, review, date: new Date().toLocaleDateString()}),
+                body: JSON.stringify({ username, review, date: new Date().toLocaleDateString(), supplierID}),
             });
 
             if (response.ok) {
@@ -37,7 +40,7 @@ export default function Review() {
 
     const fetchReviews = async () => {
         try {
-            const response = await fetch("/api/review");
+            const response = await fetch(`/api/review/${supplierID}`);
             if (response.ok) {
                 const reviewData = await response.json();
                 setListReview(reviewData);
@@ -51,7 +54,7 @@ export default function Review() {
 
     useEffect(() => {
         fetchReviews();
-    }, []);
+    }, [supplierID]);
 
     return(
         <main>

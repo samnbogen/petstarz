@@ -46,8 +46,8 @@ export async function GET(request) {
     const collection = db.collection("petCard");
     //this is to include the _id, name, age, species, breedAndType fields
     //1 to include, 0 to exclude
-    const projection = { _id: 1, name: 1, age: 1, species: 1, breed: 1, photo:1 };
-    const pets = await collection.find({}, { projection }).toArray();
+    //const projection = { _id: 1, name: 1, age: 1, species: 1, breed: 1, photo:1 };
+    const pets = await collection.find({}).toArray();
 
     //const pets = await collection.find({}).toArray();
     return new Response(JSON.stringify(pets), { status: 200 });

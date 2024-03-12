@@ -7,7 +7,6 @@ export default function Page() {
         <main className="pt-36">
             <LogIn />
         </main>
-        </main>
     );
 }
 

@@ -40,7 +40,7 @@ export default function Review({supplierID}) {
 
     const fetchReviews = async () => {
         try {
-            const response = await fetch(`/api/review/${supplierID}`);
+            const response = await fetch(`/api/review`);
             if (response.ok) {
                 const reviewData = await response.json();
                 setListReview(reviewData);

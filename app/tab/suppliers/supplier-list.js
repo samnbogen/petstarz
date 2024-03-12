@@ -1,15 +1,9 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Link } from "react";
 import Supplier from "./supplier";
 
 export default function SupplierList() {
     const [suppliers, setSuppliers] = useState([]);
-    //const [filteredSuppliers, setFilteredSuppliers] = useState([]);
-
-    /*const handleSupplierName = () => {
-        const sortedSuppliers = [...suppliers].sort((a, b) => a.Company.localeCompare(b.Company));
-        setFilteredSuppliers(sortedSuppliers);
-    };*/
 
     const fetchSuppliers = async () => {
         try {
@@ -23,7 +17,6 @@ export default function SupplierList() {
             if (response.ok) {
                 const data = await response.json();
                 setSuppliers(data);
-                //setFilteredSuppliers(data); 
             } else {
                 console.error("Supplier fetch failed:", response);
             }
@@ -36,8 +29,6 @@ export default function SupplierList() {
         fetchSuppliers();
     }, []);
 
-    //<button onClick={handleSupplierName}>Sort by Name</button>
-
     return (
         <main>
             <div className="flex flex-col items-center justify-center">
@@ -45,10 +36,11 @@ export default function SupplierList() {
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 p-16">
                     {suppliers.map((supplier) => (
-                        <Supplier key={supplier.id} {...supplier} />
+                        <Supplier {...supplier} />
                     ))}
                 </div>
             </div>
         </main>
     );
 }
+

@@ -99,6 +99,12 @@ export default function Navbar() {
                           role="menuitem">
                           Supplier
                         </Link>
+                        <Link
+                          href={"/tab/suppliers"}
+                          className="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray"
+                          role="menuitem">
+                          Supplier List
+                        </Link>
                       </div>
                     </div>
                   )}

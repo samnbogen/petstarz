@@ -2,9 +2,14 @@
 import React, { useState } from 'react';
 import { useSession } from "next-auth/react";
 //to be able to add a photo
+<<<<<<< Updated upstream
 //npm install react-quill
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+=======
+//import ReactQuill from 'react-quill';
+//import 'react-quill/dist/quill.snow.css';
+>>>>>>> Stashed changes
 
 export default function PetCardForm() {
 const { data: session } = useSession();

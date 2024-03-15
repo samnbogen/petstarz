@@ -31,10 +31,8 @@ export default function SupplierList() {
 
     return (
         <main>
-            <div className="flex flex-col items-center justify-center">
-                <h1 className="text-4xl font-bold mb-8">Suppliers</h1>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 p-16">
+            <div className="flex flex-col items-center justify-center pt-20">                
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3 p-16">
                     {suppliers.map((supplier) => (
                         <Supplier {...supplier} />
                     ))}

@@ -7,6 +7,7 @@ import DOMPurify from 'dompurify';
 //npm install react-modal
 
 export default function PetList() {
+    const [filteredPets, setFilteredPets] = useState([]);
 
     const handleSpecies = (event) => {
         const species = event.target.value;
@@ -32,94 +33,6 @@ export default function PetList() {
     const [originalPets, setOriginalPets] = useState([]);
     const [selectPets, setSelectPets] = useState(null);
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    /*useState([
-        {
-            name: "Fluffy",
-            species: "cat",
-            breed: "Siamese",
-            age: 2
-        },
-        {
-            name: "Fido",
-            species: "dog",
-            breed: "Golden Retriever",
-            age: 3
-        },
-        {
-            name: "Rex",
-            species: "dog",
-            breed: "Pitbull",
-            age: 5
-        },
-        {
-            name: "Whiskers",
-            species: "cat",
-            breed: "Persian",
-            age: 1
-        },
-        {
-            name: "Spike",
-            species: "dog",
-            breed: "Poodle",
-            age: 4
-        },
-        {
-            name: "Mittens",
-            species: "cat",
-            breed: "Tabby",
-            age: 6
-        },
-        {
-            name: "Buddy",
-            species: "dog",
-            breed: "Beagle",
-            age: 2
-        },
-        {
-            name: "Muffin",
-            species: "cat",
-            breed: "Calico",
-            age: 3
-        },
-        {
-            name: "Max",
-            species: "dog",
-            breed: "German Shepherd",
-            age: 5
-        },
-        {
-            name: "Smokey",
-            species: "cat",
-            breed: "Russian Blue",
-            age: 1
-        },
-        {
-            name: "Lucky",
-            species: "other",
-            breed: "lizard",
-            age: 4
-        },
-        {
-            name: "Nemo",
-            species: "other",
-            breed: "fish",
-            age: 2
-        },
-        {
-            name: "Polly",
-            species: "other",
-            breed: "parrot",
-            age: 3
-        },
-        {
-            name: "Bugs",
-            species: "other",
-            breed: "rabbit",
-            age: 1
-        }
-
-
-    ]);*/
 
 
     //Testing getting th list of pets from the database
@@ -190,8 +103,6 @@ export default function PetList() {
         </div>
     </div>
 )}
-
-
 
             <select onChange={handleSpecies}>
                 <option value="all">All Species</option>

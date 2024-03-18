@@ -15,8 +15,14 @@ export async function POST(request) {
     // Connect to the MongoDB database
     const db = client.db("supplier");
 
+    const findings = await db.collection("supplierInfo").find({email: data.email}).toArray();
+    const companyID = findings[0]._id;
+    //console.log("findings", findings);
+    //console.log("companyID", companyID);
+
     // Insert the comment into the "review" collection
     await db.collection("petCard").insertOne({
+       supplierID: companyID,
        email: data.email,
        name: data.name,
        age: data.age,

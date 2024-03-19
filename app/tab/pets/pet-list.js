@@ -8,7 +8,6 @@ import DOMPurify from 'dompurify';
 
 export default function PetList() {
     const [filteredPets, setFilteredPets] = useState([]);
-    const [filteredPets, setFilteredPets] = useState([]);
 
     const handleSpecies = (event) => {
         const species = event.target.value;

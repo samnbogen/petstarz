@@ -5,8 +5,6 @@ import { useSession } from "next-auth/react";
 //npm install react-quill
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-//import ReactQuill from 'react-quill';
-//import 'react-quill/dist/quill.snow.css';
 
 export default function PetCardForm() {
 const { data: session } = useSession();

@@ -33,6 +33,8 @@ const { data: session } = useSession();
         const photoToSend = photo || "<p><img src='/noImage.png' alt='no photo' /></p>";
 
         try {
+
+
             const response = await fetch("/api/foster/petCard", {
                 method: "POST",
                 headers: {
@@ -41,6 +43,8 @@ const { data: session } = useSession();
                 body: JSON.stringify({ email: supplierEmail,name, age, species, breed,
                     sex, size, fixed, additionalInfo, photo: photoToSend}),
             });
+
+           // console.log("supplierId", companyId);
 
             if (response.ok) {
                 const data = await response.json();

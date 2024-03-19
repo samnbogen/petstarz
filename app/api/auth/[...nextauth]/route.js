@@ -98,6 +98,7 @@ const authOptions = {
     adapter: MongoDBAdapter(clientPromise),
         jwt: {
             secret: process.env.NEXTAUTH_SECRET,
+            //maxAge: 2 * 24 * 60 * 60; // 2 days
             maxAge: 30 * 24 * 60 * 60, // 30 days
         },
         session : {

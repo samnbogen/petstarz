@@ -1,8 +1,25 @@
 "use client";
 import { useState } from 'react';
 import{ signIn} from "next-auth/react";
+import Link from 'next/link';
 
 export default function SignUp(){
+
+    const [message, setErrorMessage] = useState("");
+    const [userPasswordChecklist, setUserPasswordChecklist] = useState({
+        minLength: false,
+        lowercase: false,
+        uppercase: false,
+        digit: false,
+        specialCharacter: false
+    });
+    const [supplierPasswordChecklist, setSupplierPasswordChecklist] = useState({
+        minLength: false,
+        lowercase: false,
+        uppercase: false,
+        digit: false,
+        specialCharacter: false
+    });
 
     const handleUserSubmit = (event) => {
         event.preventDefault();
@@ -17,9 +34,40 @@ export default function SignUp(){
         const email = event.target.elements.email.value.toLowerCase();
         const password = event.target.elements.password.value;
         const role = "supplier";
-        onSubmit( {email, password, role});
+        onSubmit({email, password, role});
     };
     
+    const checkUserPasswordRequirements = (password) => {
+        const minLength = password.length >= 8;
+        const lowercase = /[a-z]/.test(password);
+        const uppercase = /[A-Z]/.test(password);
+        const digit = /\d/.test(password);
+        const specialCharacter = /[!@#$%^&*]/.test(password);
+        
+        setUserPasswordChecklist({
+            minLength,
+            lowercase,
+            uppercase,
+            digit,
+            specialCharacter
+        });
+    };
+
+    const checkSupplierPasswordRequirements = (password) => {
+        const minLength = password.length >= 8;
+        const lowercase = /[a-z]/.test(password);
+        const uppercase = /[A-Z]/.test(password);
+        const digit = /\d/.test(password);
+        const specialCharacter = /[!@#$%^&*]/.test(password);
+        
+        setSupplierPasswordChecklist({
+            minLength,
+            lowercase,
+            uppercase,
+            digit,
+            specialCharacter
+        });
+    };
 
 
     const onSubmit = async (user) => {
@@ -27,14 +75,19 @@ export default function SignUp(){
             const response = await signIn("signup", {...user,
             redirect: false,
         });
-        console.log(response);
         if(response?.ok){
             console.log("Sign up successful", response);
-        } else{
-            console.error("Sign up failed response", response.error);
+        } else {
+            setErrorMessage(response.error);
+            setTimeout(() => setErrorMessage(""), 5000);
+            console.error("Sign up failed", response);
+            
         }
+
     } catch (error){
         console.error(error);
+        setTimeout(() => setErrorMessage(""), 5000);
+        setErrorMessage("Sign up failed");
     };
 };
 
@@ -61,7 +114,17 @@ export default function SignUp(){
                             required
                             type="password"
                             name='password'
+                            onChange={(e) => checkUserPasswordRequirements(e.target.value)}
                             />
+                        </div>
+                        <div className='text-left mt-2'>
+                            <ul className='list-disc list-inside'>
+                                <li className={userPasswordChecklist.minLength ? 'text-green' : 'text-red'}>Minimum 8 characters</li>
+                                <li className={userPasswordChecklist.lowercase ? 'text-green' : 'text-red'}>At least one lowercase letter</li>
+                                <li className={userPasswordChecklist.uppercase ? 'text-green' : 'text-red'}>At least one uppercase letter</li>
+                                <li className={userPasswordChecklist.digit ? 'text-green' : 'text-red'}>At least one digit</li>
+                                <li className={userPasswordChecklist.specialCharacter ? 'text-green' : 'text-red'}>At least one special character: !@#$%^&*</li>
+                            </ul>
                         </div>
                         <div className='flex justify-center'>
                             <button className=" text-white font-bold py-2 px-4 rounded-full mt-4 bg-green" type="submit"> User Sign Up</button>
@@ -86,17 +149,31 @@ export default function SignUp(){
                             required
                             type="password"
                             name='password'
+                            onChange={(e) => checkSupplierPasswordRequirements(e.target.value)} 
                             />
+                        </div>
+                        <div className='text-left mt-2'>
+                            <ul className='list-disc list-inside'>
+                                <li className={supplierPasswordChecklist.minLength ? 'text-green' : 'text-red'}>Minimum 8 characters</li>
+                                <li className={supplierPasswordChecklist.lowercase ? 'text-green' : 'text-red'}>At least one lowercase letter</li>
+                                <li className={supplierPasswordChecklist.uppercase ? 'text-green' : 'text-red'}>At least one uppercase letter</li>
+                                <li className={supplierPasswordChecklist.digit ? 'text-green' : 'text-red'}>At least one digit</li>
+                                <li className={supplierPasswordChecklist.specialCharacter ? 'text-green' : 'text-red'}>At least one special character</li>
+                                
+                            </ul>
                         </div>
                     <div className='flex justify-center'>
                         <button className="text-white font-bold py-2 px-4 rounded-full mt-4 bg-green" type="submit">Supplier Sign Up</button>
                     </div>
+                    
                 </form> 
             </div>
         </div>
         {/* Link at the bottom */}
         <div className="text-center">
-            <a href="/login">Already have an account? Log in</a>
+        {/* error message */}
+        {message && <p className="text-red">{message}</p>}
+            <Link className="text-center block mt-4 font-semibold" href="./login">Already have an account? Log in</Link>
         </div>
     </>
     );

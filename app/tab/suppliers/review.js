@@ -3,14 +3,11 @@ import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 
 export default function Review({supplierID}) {
-    const [listReview, setListReview] = useState([]);
+    const [filteredReview, setFilteredReview] = useState([]);
     const [username, setUsername] = useState("");
     const [review, setReview] = useState("");
     const { data: session } = useSession();
     const role = session?.user?.role;
-
-    //have to add a supplierId so that each review
-    //can be linked to a supplier
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -40,21 +37,31 @@ export default function Review({supplierID}) {
 
     const fetchReviews = async () => {
         try {
-            const response = await fetch(`/api/review/${supplierID}`);
+            const response = await fetch("/api/review", {
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json",
+                },
+            });
+
             if (response.ok) {
-                const reviewData = await response.json();
-                setListReview(reviewData);
+                const data = await response.json();
+                if (supplierID) {
+                    const filteredReview = data.filter((review) => review.supplierID === supplierID);
+                    setFilteredReview(filteredReview);
+                }
+                
             } else {
-                console.error("Fetching reviews failed:", response);
+                console.error("Review fetch failed:", response);
             }
         } catch (error) {
-            console.error("Fetching reviews failed:", error);
+            console.error("Review fetch failed:", error);
         }
-    }
+    };
 
     useEffect(() => {
         fetchReviews();
-    }, [supplierID]);
+    }, [supplierID]);   
 
     return(
         <main>
@@ -88,16 +95,17 @@ export default function Review({supplierID}) {
                     </form>
                 </>}
                 <div className="flex flex-col items-center justify-center">
-                    <h2 className="text-3xl text-center text-black">
-                        Reviews
-                    </h2>
+                    <h1 className="text-3xl text-center text-black">
+                        Supplier Reviews
+                    </h1>
+                    
                     <ul>
-                        {listReview.map((review, index) => (
+                        {filteredReview.map((filteredReview, index) => (
                             <li key={index} className="text-black">
                                 <div>
-                                    <p>Username: {review.username}</p>
-                                    <p>Date: {review.date}</p>
-                                    <p>Reviews: {review.review}</p>
+                                    <p>Username: {filteredReview.username}</p>
+                                    <p>Date: {filteredReview.date}</p>
+                                    <p>Reviews: {filteredReview.review}</p>
                                 </div>
                             </li>
                         ))}

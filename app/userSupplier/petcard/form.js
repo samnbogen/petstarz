@@ -81,7 +81,7 @@ return (
             </div>
             <div className="p-1 w-1/2">
                 <label className="text-gray block" htmlFor="petAge">Pet Age</label>
-                <input className="border border-light-gray rounded w-full" type="text" id="petAge" name="petAge" 
+                <input className="border border-light-gray rounded w-full" type="number" id="petAge" name="petAge" 
                 value={age} onChange={(e) => setPetAge(e.target.value)} />
             </div>
         </div>

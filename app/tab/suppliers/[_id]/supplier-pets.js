@@ -1,34 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
-import Pet from "./pet.js";
-import Modal from 'react-modal';
+import Pet from "@/app/tab/pets/pet.js";
 import DOMPurify from 'dompurify';
 //npm install dompurify
 //npm install react-modal
 
-export default function PetList() {
-    const [filteredPets, setFilteredPets] = useState([]);
-
-    const handleSpecies = (event) => {
-        const species = event.target.value;
-        if (species === "all") {
-            setFilteredPets(originalPets);
-        } else {
-            const filtered = originalPets.filter(pet => pet.species === species);
-            setFilteredPets(filtered);
-        }
-    };
-
-    const handleBreed = () => {
-        const sortedPets = [...filteredPets].sort((a, b) => a.breed.localeCompare(b.breed));
-        setFilteredPets(sortedPets);
-    };
-    
-    const handleAge = () => {
-        const sortedPets = [...filteredPets].sort((a, b) => a.age - b.age);
-        setFilteredPets(sortedPets);
-    };    
-
+export default function PetList({supplierID}) {
     const [originalPets, setOriginalPets] = useState([]);
     const [selectPets, setSelectPets] = useState(null);
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -45,7 +22,11 @@ export default function PetList() {
             
             if (response.ok) {
                 const data = await response.json();
-                setOriginalPets(data);
+                //setOriginalPets(data);
+                if (supplierID) {
+                    const filteredPets = data.filter((pets) => pets.supplierID === supplierID);
+                    setOriginalPets(filteredPets);
+                }
             } else {
                 console.error("Pet Card submission failed:", response);
             }
@@ -68,9 +49,6 @@ export default function PetList() {
     
     }
 
-    useEffect(() => {
-        setFilteredPets(originalPets);
-    },[originalPets])
 
     return (
         <div>
@@ -99,25 +77,16 @@ export default function PetList() {
                     </div>
                 </div>
             )}
-
-            <div className="flex flex-row justify-center">
-                <select onChange={handleSpecies}
-                    className="bg-green hover:bg-gray text-white font-bold py-2 px-4 m-2 rounded w-40">
-                    <option value="all">All Species</option>
-                    <option value="cat">Cat</option>
-                    <option value="dog">Dog</option>
-                    <option value="other">Other</option>
-                </select>
-                <button className="bg-green hover:bg-gray text-white font-bold py-2 px-4 m-2 rounded w-40" onClick={handleBreed}>Sort by Breed</button>
-                <button className="bg-green hover:bg-gray text-white font-bold py-2 px-4 m-2 rounded w-40" onClick={handleAge}>Sort by Age</button>
-            </div>
+            <h1 className="text-3xl text-center text-black">
+                Available Pets
+            </h1>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 px-20 py-10 ">
-                {filteredPets.map(pet => (
+                {originalPets.map(pet => (
                     <div key={pet.id} onClick={() => handleSelectPets(pet)}>
                         <Pet {...pet} />
                     </div>
                 ))}
+            </div>     
             </div>
-        </div>        
     );
 }

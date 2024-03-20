@@ -1,6 +1,10 @@
 "use client";
 import React, { useState } from 'react';
 import { useSession } from "next-auth/react";
+//to be able to add a photo
+//npm install react-quill
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 export default function PetCardForm() {
 const { data: session } = useSession();
@@ -12,26 +16,35 @@ const { data: session } = useSession();
     const [name, setPetName] = useState("");
     const [age, setPetAge] = useState("");
     const [species, setSpecies] = useState("");
-    const [breedAndType, setBreedAndType] = useState("");
+    const [breed, setBreedAndType] = useState("");
     const [sex, setSex] = useState("");
     const [size, setSize] = useState("");
     const [fixed, setFixed] = useState("");
     const [additionalInfo, setAdditionalInfo] = useState("");
+    const [photo, setPhoto] = useState("");
 
     const supplierEmail = session?.user?.email;
+    //const supplierID = session?.user?.id;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        //if no photo is added, a default photo will be added
+        const photoToSend = photo || "<p><img src='/noImage.png' alt='no photo' /></p>";
+
         try {
+
+
             const response = await fetch("/api/foster/petCard", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ email: supplierEmail,name, age, species, breedAndType,
-                    sex, size, fixed, additionalInfo}),
+                body: JSON.stringify({ email: supplierEmail,name, age, species, breed,
+                    sex, size, fixed, additionalInfo, photo: photoToSend}),
             });
+
+           // console.log("supplierId", companyId);
 
             if (response.ok) {
                 const data = await response.json();
@@ -44,6 +57,7 @@ const { data: session } = useSession();
                 setSize("");
                 setFixed("");
                 setAdditionalInfo("");
+                setPhoto("");
             } else {
                 console.error("Pet Card submission failed:", response);
             }
@@ -51,7 +65,6 @@ const { data: session } = useSession();
             console.error("Pet Card submission failed:", error);
         }
     }
-
 
 
 
@@ -68,7 +81,7 @@ return (
             </div>
             <div className="p-1 w-1/2">
                 <label className="text-gray block" htmlFor="petAge">Pet Age</label>
-                <input className="border border-light-gray rounded w-full" type="text" id="petAge" name="petAge" 
+                <input className="border border-light-gray rounded w-full" type="number" id="petAge" name="petAge" 
                 value={age} onChange={(e) => setPetAge(e.target.value)} />
             </div>
         </div>
@@ -86,7 +99,7 @@ return (
             <div className="p-1 w-1/2">
                 <label className="text-gray block" htmlFor="breed">Breed/Type</label>
                 <input className="border border-light-gray rounded w-full" type="text" id="breed" name="breed"
-                value={breedAndType} onChange={(e) => setBreedAndType(e.target.value)} />
+                value={breed} onChange={(e) => setBreedAndType(e.target.value)} />
             </div>
         </div>
         <div className="flex flex-row">
@@ -126,6 +139,17 @@ return (
             <textarea className="border border-light-gray rounded-lg w-full h-32" type="text" id="additionalInfo" name="additionalInfo" 
             value={additionalInfo} onChange={(e) => setAdditionalInfo(e.target.value)}/>
         </div>
+        <div className='p-1'>
+            <label className="text-gray block" htmlFor="photo">Add Photo</label>
+            <ReactQuill className="border border-light-gray rounded-lg w-full" 
+             value={photo} onChange={setPhoto}
+             modules={{
+                toolbar:[
+                    ['image']
+                ]
+             }} />
+        </div>
+       {/* {!photo && <img src="/noImage.png" alt="no photo" className='mt-2'/>} */}
         <div className="flex flex-row p-1">
             <div className="w-1/2">
                 <button type="submit" className="text-center text-white p-1 w-40 border-2 border-green bg-green rounded-lg hover:bg-white hover:cursor-pointer hover:text-green">

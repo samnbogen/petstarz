@@ -99,6 +99,19 @@ export default function Navbar() {
                           role="menuitem">
                           Supplier
                         </Link>
+                        <Link
+                          href={"/tab/suppliers"}
+                          className="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray"
+                          role="menuitem">
+                          Supplier List
+                        </Link>
+                        <Link
+                          href={"/userSupplier/reportFraud"}
+                          className="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray"
+                          role="menuitem">
+                          Report Fraud
+                        </Link>  
+
                       </div>
                     </div>
                   )}
@@ -111,7 +124,7 @@ export default function Navbar() {
                     ):(
                       <button className="ml-10 bg-green hover:bg-light-gray text-white text-xs py-2 px-4 rounded-full">
                           
-                          <Link href={'./tab/login'}>Login</Link>
+                          <Link href={'/tab/login'}>Login</Link>
                       </button>
                   )}
                 

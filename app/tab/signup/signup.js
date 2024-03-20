@@ -95,7 +95,7 @@ export default function SignUp(){
     return(
     <>
         <div className="flex items-center justify-center h-screen bg-gray-100">
-            <div className='flex mr-50 flex-grow h-50 w-full items-center justify-center mt-40 mb-20'> 
+            <div className='flex mr-50 flex-grow h-50 w-full items-center justify-center'> 
                 <form onSubmit={handleUserSubmit} className="bg-white p-8 rounded shadow-md mr-5 h-50 w-1/2 flex flex-col items-center">
                     <h2 className="text-2xl font-bold mb-4 text-center">User <span className='text-green'>Sign Up</span></h2>
                         <div>

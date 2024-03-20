@@ -2,13 +2,16 @@
 //will have search bar
 
 import PetList from "./pet-list";
+import Header from '/app/components/header.js';
 
 export default function Page() {
 
     return (
-        <div className="pt-36">
-            <h1>Pets</h1>
-            <PetList />
-        </div>
+        <main>
+            <Header text="Available Pets"/>
+            <div className="pt-32">
+                <PetList />
+            </div>
+        </main>
     );
 }

@@ -2,6 +2,7 @@
 import { usePathname } from "next/navigation";
 import React, { useState, useEffect } from 'react';
 import Review from '../review';
+import PetList from "./supplier-pets";
 import DOMPurify from 'dompurify';
 
 export default function Page() {
@@ -50,8 +51,13 @@ export default function Page() {
                     <p>Email: {foundSupplier.email}</p>
                     <p>Website: {foundSupplier.website}</p>
                     <p>Description: {foundSupplier.description}</p>
-                    
+                    <div>
                     <Review supplierID={lastPartOfPathname} />
+                    </div>
+                    <div>
+
+                    <PetList supplierID={lastPartOfPathname} />
+                    </div>
                 </main>
             );
         }

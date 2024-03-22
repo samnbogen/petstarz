@@ -51,9 +51,9 @@ export default function Page() {
                     <p>Email: {foundSupplier.email}</p>
                     <p>Website: {foundSupplier.website}</p>
                     <p>Description: {foundSupplier.description}</p>
-                    <div className="border-t border-gray-200 w-full my-8"></div>
+                    <div className="border-t border-gray w-full my-8"/>
                     <Review supplierID={lastPartOfPathname} />
-                    <div className="border-t border-gray-200 w-full my-8"></div>
+                    <div className="border-t border-gray w-full my-8"/>
                     <PetList supplierID={lastPartOfPathname} />                    
                 </main>
             );

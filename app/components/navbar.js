@@ -51,16 +51,16 @@ export default function Navbar() {
                 </p>
                 <p
                   className={`block py-2.5 px-4 rounded transition duration-200 
-                link ${pathname === "/apply" ? "text-green font-bold" : "hover:text-green text-white"}`}>
+                link ${pathname === "/userFoster/apply" ? "text-green font-bold" : "hover:text-green text-white"}`}>
                   <Link href={"/userFoster/apply"}>Apply</Link>
                 </p>
                 <p
                   className={`block py-2.5 px-4 rounded transition duration-200 
-                link ${pathname === "/about"? "text-green font-bold" : "hover:text-green text-white"}`}>
+                link ${pathname === "/tab/about"? "text-green font-bold" : "hover:text-green text-white"}`}>
                   <Link href={"/tab/about"}>About</Link>
                 </p>
                 <p className={`block py-2.5 px-4 rounded transition duration-200 
-                            link ${ pathname === "/contact" ? "text-green font-bold" : "hover:text-green text-white" }`}>
+                            link ${ pathname === "/tab/contact" ? "text-green font-bold" : "hover:text-green text-white" }`}>
                   <Link href={"/tab/contact"}>Contact</Link>
                 </p>
                 

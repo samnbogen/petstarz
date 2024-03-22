@@ -75,24 +75,26 @@ export default function PetList() {
     return (
         <div>
            {modalIsOpen && (
-                <div className="fixed top-0 left-0 w-full h-100 pt-28 flex items-center justify-center bg-gray-900 bg-opacity-50 " onClick={closeModal}>
-                    <div className="border-green border-2 bg-lightest-gray p-4 rounded-lg w-60" onClick={(e) => e.stopPropagation()}>
+                <div className="absolute" onClick={closeModal}>
+                    <div className="border-green border-2 bg-lightest-gray p-4 rounded-lg w-80" onClick={(e) => e.stopPropagation()}>
                         {selectPets && (
                             <div className="flex flex-col items-center justify-center">
-                                <div className="rounded overflow-hidden mb-4" style={{ width: '150px', height: '150px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                <div className="rounded overflow-hidden mb-4" style={{ width: '200px', height: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                     <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(selectPets.photo) }} />
                                 </div>
-                                <h1 className="text-lg font-bold">{selectPets.name}</h1>
-                                <h2>{selectPets.species}</h2>
-                                <h2>{selectPets.breed}</h2>
-                                <h2>{selectPets.age}</h2>
-                                <h2>{selectPets.sex}</h2>
-                                <h2>{selectPets.size}</h2>
-                                <h2>{selectPets.fixed}</h2>
-                                <h2>{selectPets.additionalInfo}</h2>
+                                <div className="w-2/3 flex flex-col items-start justify-center">
+                                    <h1 className="text-lg font-bold">{selectPets.name}</h1>
+                                    <h2>{selectPets.species}</h2>
+                                    <h2>{selectPets.breed}</h2>
+                                    <h2>Age: {selectPets.age}</h2>
+                                    <h2>{selectPets.sex}</h2>
+                                    <h2>Size: {selectPets.size}</h2>
+                                    <h2>Fixed: {selectPets.fixed}</h2>
+                                    <h2>{selectPets.additionalInfo}</h2>
+                                </div>
                                 <div className="flex flex-row justify-center">
                                     <button className="border font-bold py-2 px-2 rounded mt-4">Favorites</button>
-                                    <button onClick={closeModal} className="border font-bold py-2 px-4 rounded mt-4">Close</button>
+                                    <button onClick={closeModal} className="border font-bold py-2 px-4 rounded mt-4 ml-2">Close</button>
                                 </div>
                             </div>
                         )}

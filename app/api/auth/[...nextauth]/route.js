@@ -3,6 +3,10 @@ import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import clientPromise from "../../../lib/mongodb";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { compare, hash } from "bcrypt";
+import { error } from "console";
+
+//regex pattern for password validation
+const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{8,}$/;
 
 const authOptions = {
     providers: [
@@ -29,7 +33,8 @@ const authOptions = {
                         throw new Error("Invalid email or password");
                     }
                 } catch (error){
-                    throw new Error("Authentication failed");
+                    console.error("Error in signup authorize:", error);
+                    throw error;
                 }
             },
         }),
@@ -51,19 +56,23 @@ const authOptions = {
                     const collection = db.collection("users");
                     const existingUser = await collection.findOne({ email: credentials.email });
                     console.log("existing role",existingUser); 
-                    console.log(credentials.role);
 
+                    //validate password against regex pattern
+                    if (!passwordPattern.test(credentials.password)) {
+                        throw new Error("Password does not meet the requirements. Please try again.");
+                    }
 
-                    if (existingUser) { 
-                        throw new Error("User already exists");
+                    if (existingUser) {
+                        throw new Error("User already exists, please try logging in instead.");
+
                     } else {
                         const hashedPassword = await hash(credentials.password, 10);
                         const newUser = await collection.insertOne({ email: credentials.email, password: hashedPassword, role: credentials.role});
                         return newUser;
                     }
                 } catch (error){
-                    console.error("Sign up failed next auth", error);
-                    throw new Error("Sign up failed next auth");
+                    console.error("Error in signup authorize:", error);
+                    throw error;
                 }
             },
         }),
@@ -89,13 +98,14 @@ const authOptions = {
     adapter: MongoDBAdapter(clientPromise),
         jwt: {
             secret: process.env.NEXTAUTH_SECRET,
+            //maxAge: 2 * 24 * 60 * 60; // 2 days
             maxAge: 30 * 24 * 60 * 60, // 30 days
         },
         session : {
             strategy: "jwt",
         },
         pages: {
-            signIn: "/login",
+            signIn: "/tab/login",
         },
 };
 

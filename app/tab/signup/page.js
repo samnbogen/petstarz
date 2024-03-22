@@ -5,9 +5,8 @@ import SignUp from './signup';
 export default function Page() {
 
     return (
-        <>
-            <SignUp />
-           
-        </>
+        <main className='pt-36'>
+            <SignUp />           
+        </main>
     )
 }

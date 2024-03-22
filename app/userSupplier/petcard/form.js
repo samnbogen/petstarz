@@ -1,156 +1,168 @@
+"use client";
+import React, { useState } from 'react';
+import { useSession } from "next-auth/react";
+//to be able to add a photo
+//npm install react-quill
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+
 export default function PetCardForm() {
-    return (
-        <div  className="border rounded-b-lg border-gray p-4 w-2/5 bg-white">
-            <div>
-                <div>
-                    <div>
-                        <div className="flex flex-row p-1">
-                            <div class="mr-1">
-                                <div class="text-center text-white p-1 w-40 border-2 border-green bg-green rounded-lg hover:bg-white hover:cursor-pointer hover:text-green">
-                                    <p>Save</p>
-                                </div>
-                            </div>
-                            <div class="ml-1">
-                                <div class="text-center text-white p-1 w-40 border-2 border-red bg-red rounded-lg hover:bg-white hover:cursor-pointer hover:text-red">
-                                    <p>Cancel</p>
-                                </div>
-                        </div>
-                    </div>
-                </div>
+const { data: session } = useSession();
+
+//only a supplier can save the petcard form
+    //the form will be saved to the database
+    //send with the email of the supplier
+
+    const [name, setPetName] = useState("");
+    const [age, setPetAge] = useState("");
+    const [species, setSpecies] = useState("");
+    const [breed, setBreedAndType] = useState("");
+    const [sex, setSex] = useState("");
+    const [size, setSize] = useState("");
+    const [fixed, setFixed] = useState("");
+    const [additionalInfo, setAdditionalInfo] = useState("");
+    const [photo, setPhoto] = useState("");
+
+    const supplierEmail = session?.user?.email;
+    //const supplierID = session?.user?.id;
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        //if no photo is added, a default photo will be added
+        const photoToSend = photo || "<p><img src='/noImage.png' alt='no photo' /></p>";
+
+        try {
+
+
+            const response = await fetch("/api/foster/petCard", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email: supplierEmail,name, age, species, breed,
+                    sex, size, fixed, additionalInfo, photo: photoToSend}),
+            });
+
+           // console.log("supplierId", companyId);
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log("Pet Card submitted:", data);
+                setPetName("");
+                setPetAge("");
+                setSpecies("");
+                setBreedAndType("");
+                setSex("");
+                setSize("");
+                setFixed("");
+                setAdditionalInfo("");
+                setPhoto("");
+            } else {
+                console.error("Pet Card submission failed:", response);
+            }
+        } catch (error) {
+            console.error("Pet Card submission failed:", error);
+        }
+    }
+
+
+
+// "add photo" still needs to be added
+
+return (
+    <form onSubmit={handleSubmit} className="border w-2/5 rounded-b-lg border-light-gray p-4 max-w-xl mx-auto bg-white">
+        <h1 className="text-lg p-1">General Information</h1>
+        <div className="flex flex-row">
+            <div className="p-1 w-1/2">
+                <label className="text-gray block" htmlFor="petName">Pet Name</label>
+                <input className="border border-light-gray rounded w-full" type="text" id="petName" name="petName" 
+                value={name} onChange={(e) => setPetName(e.target.value)} />
+            </div>
+            <div className="p-1 w-1/2">
+                <label className="text-gray block" htmlFor="petAge">Pet Age</label>
+                <input className="border border-light-gray rounded w-full" type="number" id="petAge" name="petAge" 
+                value={age} onChange={(e) => setPetAge(e.target.value)} />
             </div>
         </div>
-    </div>
-    )
+        <div className="flex flex-row">
+            <div className="p-1 w-1/2">
+                <label className="text-gray block" htmlFor="species">Species</label>
+                <select className="border border-light-gray rounded w-full" type="text" id="species" name="species"
+                value={species} onChange={(e) => setSpecies(e.target.value)}>
+                    <option selected></option>
+                    <option value="dog">Dog</option>
+                    <option value="cat">Cat</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div className="p-1 w-1/2">
+                <label className="text-gray block" htmlFor="breed">Breed/Type</label>
+                <input className="border border-light-gray rounded w-full" type="text" id="breed" name="breed"
+                value={breed} onChange={(e) => setBreedAndType(e.target.value)} />
+            </div>
+        </div>
+        <div className="flex flex-row">
+            <div className="p-1 w-1/3">
+                <label className="text-gray block" htmlFor="sex">Sex</label>
+                <select className="border border-light-gray rounded w-full" type="text" id="sex" name="sex"
+                value={sex} onChange={(e) => setSex(e.target.value)}>
+                    <option selected></option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div className="p-1 w-1/3">
+                <label className="text-gray block" htmlFor="size">Size</label>
+                <select className="border border-light-gray rounded w-full" type="text" id="size" name="size"
+                value={size} onChange={(e) => setSize(e.target.value)}>
+                    <option selected></option>
+                    <option value="small">S</option>
+                    <option value="medium">M</option>
+                    <option value="large">L</option>
+                    <option value="extraLarge">XL</option>
+                </select>
+            </div>
+            <div className="p-1 w-1/3">
+                <label className="text-gray block" htmlFor="fixed">Fixed</label>
+                <select className="border border-light-gray rounded w-full" type="text" id="fixed" name="fixed"
+                value={fixed} onChange={(e) => setFixed(e.target.value)}>
+                    <option selected></option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                    <option value="unknown">Unknown</option>
+                </select>
+            </div>
+        </div>
+        <div className="p-1">
+            <label className="text-gray block" htmlFor="additionalInfo">Additional Info</label>
+            <textarea className="border border-light-gray rounded-lg w-full h-32" type="text" id="additionalInfo" name="additionalInfo" 
+            value={additionalInfo} onChange={(e) => setAdditionalInfo(e.target.value)}/>
+        </div>
+        <div className='p-1'>
+            <label className="text-gray block" htmlFor="photo">Add Photo</label>
+            <ReactQuill className="border border-light-gray rounded-lg w-full" 
+             value={photo} onChange={setPhoto}
+             modules={{
+                toolbar:[
+                    ['image']
+                ]
+             }} />
+        </div>
+       {/* {!photo && <img src="/noImage.png" alt="no photo" className='mt-2'/>} */}
+        <div className="flex flex-row p-1">
+            <div className="w-1/2">
+                <button type="submit" className="text-center text-white p-1 w-40 border-2 border-green bg-green rounded-lg hover:bg-white hover:cursor-pointer hover:text-green">
+                    Save
+                </button>
+            </div>
+            <div className=" ml-12 w-1/2">
+                <button type="button" className="text-center text-white p-1 w-40 border-2 border-red bg-red rounded-lg hover:bg-white hover:cursor-pointer hover:text-red">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </form>
+)
+
 };
-
-
-//  <div>
-//                 <h1 class="text-lg">General Information</h1>
-//             </div>
-//             <div className="flex flex-row">
-//             <div className="ml-2 bg-gray h-16 w-16">
-                
-//             </div>
-//                 <div class="text-justify-center">
-//                 <div className="border border-white">
-//                     <div className="p-1">
-//                         <label class="text-gray block" for="currentOwner">Current Owner</label>
-//                         <input class="w-1/3 border border-gray rounded" type="text" id="currentOwner" name="currentOwner" />
-//                     </div>
-//                     <div className="p-1">
-//                         <label class="text-gray block" for="petName">Pet Name</label>
-//                         <input class=" w-1/3 border border-gray rounded" type="text" id="petName" name="petName" />
-//                     </div>
-//                     <div className="flex flex-row">
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="species">Species</label>
-//                             <input class=" border border-gray rounded" type="text" id="species" name="species" />
-//                         </div>
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="breed">Breed</label>
-//                             <input class="w-1/2 border border-gray rounded" type="text" id="breed" name="breed" />
-//                         </div>
-//                     </div>
-//                 </div>
-//                 <div  className="border border-solid border-white p-4 w-128">
-//                     <div className="flex flex-row">
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="postalCodeLocation">Postal Code Location</label>
-//                             <input class="border border-gray rounded" type="text" id="postalCodeLocation" name="postalCodeLocation" />
-//                         </div>
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="price">Price</label>
-//                             <input class="border border-gray rounded" type="text" id="price" name="price" />
-//                         </div>
-//                     </div>
-//                     <div className="flex flex-row">
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="dob">Date of Birth (DOB)</label>
-//                             <input class="border border-gray rounded" type="text" id="dob" name="dob" />
-//                         </div>
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="adoptionDate">Adoption Date</label>
-//                             <input class="border border-gray rounded" type="text" id="adoptionDate" name="adoptionDate" />
-//                         </div>
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="dod">Date of Death (DOD)</label>
-//                             <input class="border border-gray rounded" type="text" id="dod" name="dod" />
-//                         </div>
-//                     </div>
-//                     <div className="flex flex-col">
-//                         <div className="p-1">
-//                             <p class="block text-gray">Add Additional Photos</p>
-//                         </div>
-//                         <div className="bg-gray h-16 w-16 p-1">
-                        
-//                         </div>
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="aboutPet">About Pet</label>
-//                             <input class="border border-gray rounded" type="text" id="aboutPet" name="aboutPet" />
-//                         </div>
-//                     </div>
-//                     <div className="flex flex-row">
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="sex">Sex</label>
-//                             <select class="border border-gray rounded w-40" type="text" id="sex" name="sex">
-//                                 <option selected>Choose a sex</option>
-//                                 <option value = "male">Male</option>
-//                                 <option value = "female">Female</option>
-//                             </select>
-//                         </div>
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="reproductiveStatus">Reproductive Status</label>
-//                             <input class="border border-gray rounded" type="text" id="reproductiveStatus" name="reproductiveStatus" />
-//                         </div>
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="alteredDate">Altered Date</label>
-//                             <input class="border border-gray rounded" type="text" id="alteredDate" name="alteredDate" />
-//                         </div>
-//                     </div>
-//                     <div className="flex flex-row">
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="tattooNumber">Tattoo Number</label>
-//                             <input class="border border-gray rounded" type="text" id="tattooNumber" name="tattooNumber" />
-//                         </div>
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="microchipNumber">Microchip Number</label>
-//                             <input class="border border-gray rounded" type="text" id="microchipNumber" name="microchipNumber" />
-//                         </div>
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="petSize">Pet Size</label>
-//                             <input class="border border-gray rounded" type="text" id="petSize" name="petSize" />
-//                         </div>
-//                     </div>
-//                     <div className="flex flex-row">
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="energyLevel">Energy Level</label>
-//                             <input class="border border-gray rounded" type="text" id="energyLevel" name="energyLevel" />
-//                         </div>
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="hairLength">Hair Length</label>
-//                             <input class="border border-gray rounded" type="text" id="hairLength" name="hairLength" />
-//                         </div>
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="eyeColor">Eye Color</label>
-//                             <input class="border border-gray rounded" type="text" id="eyeColor" name="eyeColor" />
-//                         </div>
-//                     </div>
-//                     <div className="flex flex-row">
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="hairColor">Hair Color</label>
-//                             <input class="border border-gray rounded" type="text" id="hairColor" name="hairColor" />
-//                         </div>
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="specialNeeds">Special Needs</label>
-//                             <input class="border border-gray rounded" type="text" id="specialNeeds" name="specialNeeds" />
-//                         </div>
-//                         <div className="p-1">
-//                             <label class="text-gray block" for="socializedWith">Socialized With</label>
-//                             <input class="border border-gray rounded" type="text" id="socializedWith" name="socializedWith" />
-//                         </div>
-//                     </div>
-//                     <div className="p-1">
-//                         <label class="text-gray block" for="socializedWith">Socialized With</label>
-//                         <input class="border border-gray rounded" type="text" id="socializedWith" name="socializedWith" />
-//                     </div> /*}
-//                 </div>

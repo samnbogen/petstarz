@@ -7,7 +7,7 @@ export default function Page() {
 
     return (
         <>
-            <Header text="Apply"/>
+            <Header text="Apply" text2="Become a foster parent"/>
             <Form/>
         </>
     )

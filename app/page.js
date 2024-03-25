@@ -38,7 +38,7 @@ export default function Home() {
           Sign Up Today!
         </Link>                  
         </div>
-        <div className="border-t border-gray-200 w-full my-8"></div>
+        <div className="border-t border-gray w-full my-8"></div>
         <div class="flex justify-center mt-4">          
           <Link
             href={"/tab/pets"}

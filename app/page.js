@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <div>
-      <Header text="PetStarz" text2="The  Pawsitive  Online Source for Finding Pets."/>
+      <Header text ="Welcome To Petstarz" text2="the pawsitive online source for finding pets."/>
       <main className='mt-20 p-20'>      
         <h1 
           className="text-6xl text-green font-black  text-center"

@@ -11,12 +11,12 @@ export default function About() {
         }}>
             <Header text="About Us"/>
             <div className="flex flex-col justify-evenly text-sm pt-36 p-20 text-justify">
-                <div className='flex flex-row justify-between'>
-                    <p className="text-lg mr-20">
-                        At PetStarz, our vision is to revolutionize the pet sourcing industry by providing a trusted, safe, and ethical online platform where people can find and connect with reputable pet suppliers. We strive to create a centralized hub that empowers individuals and families to make informed decisions when bringing a new furry (or non-furry) friend into their lives. By fostering transparency, promoting responsible pet ownership, and combating industry fraud, we aim to ensure the well-being and happiness of both pets and their human companions.
-                    </p>                    
-                    <img src={'/dog.svg'} alt="dog"/>                
-                </div>
+            <div className='flex flex-row items-center justify-between'>
+            <p className="text-2xl max-w-none mr-4">
+    At PetStarz, our vision is to revolutionize the pet sourcing industry by providing a trusted, safe, and ethical online platform where people can find and connect with reputable pet suppliers. We strive to create a centralized hub that empowers individuals and families to make informed decisions when bringing a new furry (or non-furry) friend into their lives. By fostering transparency, promoting responsible pet ownership, and combating industry fraud, we aim to ensure the well-being and happiness of both pets and their human  companions.
+            </p>                
+            <img src={'/dog.svg'} alt="dog" className="h-full" style={{ flex: 'none' }} />                
+            </div>
                 <div>
                     <h1 className='text-5xl my-6 text-green'>
                         Core Values:
@@ -60,9 +60,8 @@ export default function About() {
                     <div className="mx-28">                
                         <Link 
                                 href="/tab/signup" 
-                                className="bg-green hover:bg-gray text-white text-center font-bold text-4xl py-4 w-52 h-52 flex items-center justify-center rounded-full relative z-10 "> {/* Add relative positioning and z-index to bring the button to the front */}
+                                className="bg-green hover:bg-gray text-white text-center font-bold text-4xl py-4 w-52 h-52 flex items-center justify-center rounded-full relative z-10">
                                 Sign Up Today!
-                            
                             <img 
                                 src="/20220308_154331.jpg"
                                 alt="Small Image"
@@ -71,20 +70,19 @@ export default function About() {
                         </Link> 
                     </div>
                     <div className="flex justify-center my-8 text-2xl">OR</div>
-                        <div className="flex justify-center m-28 relative h-28">
-                        <Link href={"/tab/pets"} className="bg-green hover:bg-gray text-white font-bold py-2 px-4 rounded flex items-center justify-center relative z-10">
+                        <div className="flex justify-center m-28 relative h-28" style={{ marginTop: '175px', transform: 'scale(0.8)', marginBottom: '-20px'}}>
+                        <Link href={"/tab/pets"} className="bg-green hover:bg-gray text-white text-2xl font-bold py-4 px-3 rounded flex items-center justify-center relative z-10">
                             Check Available Pets
                         <img 
                             src="/PetStarz3.png"
                             alt="Image Alt Text"
                             className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-50 h-25 rounded z-0 cursor-pointer"
-                            style={{ zIndex: -1, top: 'calc(50% - 120px)' }}
+                            style={{ zIndex: -1, top: 'calc(50% - 205px)' }}
                         />
                         </Link>
                     </div>
                 </div>  
             </div>
-            
         </main>
     );
 }

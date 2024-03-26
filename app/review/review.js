@@ -2,15 +2,12 @@
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 
-export default function Review({supplierID}) {
+export default function Review() {
     const [listReview, setListReview] = useState([]);
     const [username, setUsername] = useState("");
     const [review, setReview] = useState("");
     const { data: session } = useSession();
     const role = session?.user?.role;
-
-    //have to add a supplierId so that each review
-    //can be linked to a supplier
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,7 +18,7 @@ export default function Review({supplierID}) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ username, review, date: new Date().toLocaleDateString(), supplierID}),
+                body: JSON.stringify({ username, review, date: new Date().toLocaleDateString()}),
             });
 
             if (response.ok) {
@@ -40,7 +37,7 @@ export default function Review({supplierID}) {
 
     const fetchReviews = async () => {
         try {
-            const response = await fetch(`/api/review/${supplierID}`);
+            const response = await fetch("/api/review");
             if (response.ok) {
                 const reviewData = await response.json();
                 setListReview(reviewData);
@@ -54,7 +51,7 @@ export default function Review({supplierID}) {
 
     useEffect(() => {
         fetchReviews();
-    }, [supplierID]);
+    }, []);
 
     return(
         <main>
@@ -87,21 +84,14 @@ export default function Review({supplierID}) {
                         </button>
                     </form>
                 </>}
-                <div>
+                <div className="flex flex-col items-center justify-center">
                     <ul>
                         {listReview.map((review, index) => (
                             <li key={index} className="text-black">
-                                <div className="flex flex-row w-full items-center justify-center p-10 mb-5 border border-light-gray rounded-lg">
-                                    <div className="w-1/2">
-                                        <p className="font-bold">Username:</p>
-                                        <p className="font-bold">Date:</p>
-                                        <p className="font-bold">Review:</p>
-                                    </div>
-                                    <div className="w-1/2">
-                                        <p>{review.username}</p>
-                                        <p>{review.date}</p>
-                                        <p>{review.review}</p>
-                                    </div>
+                                <div>
+                                    <p>Username: {review.username}</p>
+                                    <p>Date: {review.date}</p>
+                                    <p>Reviews: {review.review}</p>
                                 </div>
                             </li>
                         ))}

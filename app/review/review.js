@@ -86,12 +86,19 @@ export default function Review() {
                 </>}
                 <div className="flex flex-col items-center justify-center">
                     <ul>
-                        {listReview.map((review, index) => (
+                    {listReview.map((review, index) => (
                             <li key={index} className="text-black">
-                                <div>
-                                    <p>Username: {review.username}</p>
-                                    <p>Date: {review.date}</p>
-                                    <p>Reviews: {review.review}</p>
+                                <div className="flex flex-row w-full items-center justify-center p-10 mb-5 border border-light-gray rounded-lg">
+                                    <div className="w-1/2">
+                                        <p className="font-bold">Username:</p>
+                                        <p className="font-bold">Date:</p>
+                                        <p className="font-bold">Review:</p>
+                                    </div>
+                                    <div className="w-1/2">
+                                        <p>{review.username}</p>
+                                        <p>{review.date}</p>
+                                        <p>{review.review}</p>
+                                    </div>
                                 </div>
                             </li>
                         ))}

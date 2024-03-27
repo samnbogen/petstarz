@@ -77,9 +77,7 @@ export default function PetList({supplierID}) {
                     </div>
                 </div>
             )}
-            <h1 className="text-3xl text-center text-black">
-                Available Pets
-            </h1>
+            
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6 px-20 py-10 ">
                 {originalPets.map(pet => (
                     <div key={pet.id} onClick={() => handleSelectPets(pet)}>

@@ -47,13 +47,13 @@ export default function Home() {
                     </div>
                     <div className="flex justify-center my-8 text-2xl">OR</div>
                         <div className="flex justify-center m-28 relative h-28">
-                        <Link href={"/tab/pets"} className="bg-green hover:bg-gray text-white font-bold py-2 px-4 rounded flex items-center justify-center relative z-10">
+                        <Link href={"/tab/pets"} className="bg-green hover:bg-gray text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center relative z-10">
                             <p className='mt-10'>Check Available Pets</p>
                         <img 
                             src="/PetStarz3.png"
                             alt="Image Alt Text"
                             className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-50 h-25 rounded z-0 cursor-pointer"
-                            style={{ zIndex: -1, top: 'calc(50% - 120px)' }}
+                            style={{ zIndex: -1, top: 'calc(50% - 120px)', borderRadius: '50px 50px 0 0'  }}
                         />
                         </Link>
                     </div>

@@ -9,8 +9,9 @@ export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const pathname = usePathname();
   const { data: session } = useSession();
+  const role = session?.user?.role;
 
-  console.log(session);
+  //console.log(session);
 
   return (
     <nav className="fixed w-full z-50">
@@ -81,24 +82,26 @@ export default function Navbar() {
                         role="menu"
                         aria-orientation="vertical"
                         aria-labelledby="options-menu">
+                      {role === "supplier" && (
                         <Link
                           href={"/userSupplier/petcard"}
                           className="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray"
                           role="menuitem">
                           Petcard
                         </Link>
+                      )}
                         <Link
                           href={"/tab/pets"}
                           className="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray"
                           role="menuitem">
                           Pets
                         </Link>
-                        <Link
+                        {/* <Link
                           href={"/userSupplier"}
                           className="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray"
                           role="menuitem">
                           Supplier
-                        </Link>
+                        </Link> */}
                         <Link
                           href={"/tab/suppliers"}
                           className="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray"

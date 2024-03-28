@@ -1,9 +1,11 @@
 import DOMPurify from 'dompurify';
+import Link from "next/link";
 //npm install dompurify
 
-export default function Pet ({name, age, species, breed, photo, supplierID, petID}) {
+export default function Pet ({name, age, species, breed, photo,_id, supplierID, petID}) {
     
     return (
+        <Link href={`/tab/pets/${_id}`}>
         <div className="flex flex-col w-30 h-72 items-center justify-center border-green border-2 p-4 rounded-lg">
             <div className= "rounded" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(photo) }} 
                 style={{width: '100px', height: '100px', objectFit: 'cover'}}/>
@@ -14,5 +16,6 @@ export default function Pet ({name, age, species, breed, photo, supplierID, petI
                 <h1 className="text-lg">Age: {age}</h1>
             </div>
         </div>
+        </Link>
     );
 }

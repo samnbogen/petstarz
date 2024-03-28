@@ -55,7 +55,7 @@ const authOptions = {
                     const db = client.db("fosters");
                     const collection = db.collection("users");
                     const existingUser = await collection.findOne({ email: credentials.email });
-                    console.log("existing role",existingUser); 
+                    //console.log("existing role",existingUser); 
 
                     //validate password against regex pattern
                     if (!passwordPattern.test(credentials.password)) {
@@ -98,8 +98,8 @@ const authOptions = {
     adapter: MongoDBAdapter(clientPromise),
         jwt: {
             secret: process.env.NEXTAUTH_SECRET,
-            //maxAge: 2 * 24 * 60 * 60; // 2 days
-            maxAge: 30 * 24 * 60 * 60, // 30 days
+            maxAge: 2 * 24 * 60 * 60, // 2 days
+            //maxAge: 30 * 24 * 60 * 60, // 30 days
         },
         session : {
             strategy: "jwt",

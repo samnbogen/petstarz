@@ -51,7 +51,7 @@ export default function Page() {
                     <p>Website: {foundSupplier.website}</p>
                     <p>Description: {foundSupplier.description}</p>
                     
-                    <Review supplierID={lastPartOfPathname} />
+                    <Review supplierID={lastPartOfPathname} email={foundSupplier.email}/>
                 </main>
             );
         }

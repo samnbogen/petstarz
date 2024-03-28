@@ -2,15 +2,22 @@
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 
-export default function Review({supplierID}) {
+export default function Review({supplierID, email}) {
     const [filteredReview, setFilteredReview] = useState([]);
     const [username, setUsername] = useState("");
     const [review, setReview] = useState("");
     const { data: session } = useSession();
     const role = session?.user?.role;
 
+    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if(session?.user?.email === email){
+            alert("You cannot leave a review on own company");
+            return;
+        }
 
         try {
             const response = await fetch("/api/review", {

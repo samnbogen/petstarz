@@ -1,24 +1,6 @@
+import React from 'react';
 import DOMPurify from 'dompurify';
-import Link from "next/link";
-//npm install dompurify
 
-export default function Pet ({name, age, species, breed, photo,_id, supplierID, petID}) {
-    
-    return (
-        <Link href={`/tab/pets/${_id}`}>
-        <div className="flex flex-col w-30 h-72 items-center justify-center border-green border-2 p-4 rounded-lg">
-            <div className= "rounded" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(photo) }} 
-                style={{width: '100px', height: '100px', objectFit: 'cover'}}/>
-            <div className="text-center mt-4">
-                <h1 className="text-xl font-bold">{name}</h1>
-                <h1 className="text-lg">{species}</h1>
-                <h1 className="text-lg">{breed}</h1>    
-                <h1 className="text-lg">Age: {age}</h1>
-            </div>
-        </div>
-        </Link>
-    );
-}
 const PetCard = ({ photo, name, age }) => {
   const sanitizedPhoto = DOMPurify.sanitize(photo);
 
@@ -38,3 +20,5 @@ const PetCard = ({ photo, name, age }) => {
     </div>
   );
 };
+
+export default PetCard;

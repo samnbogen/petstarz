@@ -82,7 +82,7 @@ export default function Navbar() {
                         role="menu"
                         aria-orientation="vertical"
                         aria-labelledby="options-menu">
-                      {role === "supplier" && (
+                      {role === "supplier" && ( 
                         <Link
                           href={"/userSupplier/petcard"}
                           className="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray"

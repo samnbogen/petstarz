@@ -3,6 +3,7 @@ import { usePathname } from "next/navigation";
 import React, { useState, useEffect } from 'react';
 import Review from '../review';
 import DOMPurify from 'dompurify';
+import Link from "next/link";
 
 export default function Page() {
     const pathname = usePathname();
@@ -89,6 +90,11 @@ export default function Page() {
                             <Review supplierID={lastPartOfPathname} />
                         </div>
                     </div>
+                </div>
+                <div className="flex justify-center">
+                    <button className="bg-green hover:bg-gray text-white font-bold py-2 px-4 m-8 rounded w-40">
+                        <Link href={"./reportFraud"}>Report Fraud</Link>
+                    </button>
                 </div>
             </main>
                 

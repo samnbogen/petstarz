@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Review from '../review';
 import DOMPurify from 'dompurify';
 import Link from "next/link";
+import PetList from "./supplier-pets";
 
 export default function Page() {
     const pathname = usePathname();

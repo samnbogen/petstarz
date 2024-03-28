@@ -38,8 +38,3 @@ const PetCard = ({ photo, name, age }) => {
     </div>
   );
 };
-
-export default PetCard;
-
-
-

@@ -1,10 +1,11 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSession } from "next-auth/react";
 //to be able to add a photo
 //npm install react-quill
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import dynamic from 'next/dynamic';
 
 export default function PetCardForm() {
 const { data: session } = useSession();
@@ -24,7 +25,14 @@ const { data: session } = useSession();
     const [photo, setPhoto] = useState("");
 
     const supplierEmail = session?.user?.email;
-    //const supplierID = session?.user?.id;
+
+    useEffect(() => {
+        // Dynamically import ReactQuill on the client-side
+        const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+        // ReactQuill component can now be safely used
+      
+        // ... any other code that relies on the document object
+      }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -34,7 +42,6 @@ const { data: session } = useSession();
 
         try {
 
-
             const response = await fetch("/api/foster/petCard", {
                 method: "POST",
                 headers: {
@@ -43,8 +50,6 @@ const { data: session } = useSession();
                 body: JSON.stringify({ email: supplierEmail,name, age, species, breed,
                     sex, size, fixed, additionalInfo, photo: photoToSend}),
             });
-
-           // console.log("supplierId", companyId);
 
             if (response.ok) {
                 const data = await response.json();
@@ -65,10 +70,6 @@ const { data: session } = useSession();
             console.error("Pet Card submission failed:", error);
         }
     }
-
-
-
-// "add photo" still needs to be added
 
 return (
     <form onSubmit={handleSubmit} className="border w-2/5 rounded-b-lg border-light-gray p-4 max-w-xl mx-auto bg-white">
@@ -149,7 +150,6 @@ return (
                 ]
              }} />
         </div>
-       {/* {!photo && <img src="/noImage.png" alt="no photo" className='mt-2'/>} */}
         <div className="flex flex-row p-1">
             <div className="w-1/2">
                 <button type="submit" className="text-center text-white p-1 w-40 border-2 border-green bg-green rounded-lg hover:bg-white hover:cursor-pointer hover:text-green">
@@ -164,5 +164,4 @@ return (
         </div>
     </form>
 )
-
 };

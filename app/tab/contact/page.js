@@ -2,7 +2,7 @@
 import Header from '/app/components/header.js';
 import React, { useState } from 'react';
 
-export default function contact() {
+export default function Contact() {
     
         const [formData, setFormData] = useState({
           name: '',

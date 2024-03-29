@@ -2,15 +2,22 @@
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 
-export default function Review({supplierID}) {
+export default function Review({supplierID, email}) {
     const [filteredReview, setFilteredReview] = useState([]);
     const [username, setUsername] = useState("");
     const [review, setReview] = useState("");
     const { data: session } = useSession();
     const role = session?.user?.role;
 
+    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if(session?.user?.email === email){
+            alert("You cannot leave a review on own company");
+            return;
+        }
 
         try {
             const response = await fetch("/api/review", {
@@ -95,17 +102,20 @@ export default function Review({supplierID}) {
                     </form>
                 </>}
                 <div className="flex flex-col items-center justify-center">
-                    <h1 className="text-3xl text-center text-black">
-                        Supplier Reviews
-                    </h1>
-                    
                     <ul>
-                        {filteredReview.map((filteredReview, index) => (
+                    {filteredReview.map((review, index) => (
                             <li key={index} className="text-black">
-                                <div>
-                                    <p>Username: {filteredReview.username}</p>
-                                    <p>Date: {filteredReview.date}</p>
-                                    <p>Reviews: {filteredReview.review}</p>
+                                <div className="flex flex-row w-full items-center justify-center p-10 mb-5 border border-light-gray rounded-lg">
+                                    <div className="w-1/2">
+                                        <p className="font-bold">Username:</p>
+                                        <p className="font-bold">Date:</p>
+                                        <p className="font-bold">Review:</p>
+                                    </div>
+                                    <div className="w-1/2">
+                                        <p>{review.username}</p>
+                                        <p>{review.date}</p>
+                                        <p>{review.review}</p>
+                                    </div>
                                 </div>
                             </li>
                         ))}

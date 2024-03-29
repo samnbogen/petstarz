@@ -53,11 +53,10 @@ export default function Form() {
     return(
         <main>
             <div className="flex flex-col items-center justify-center pt-40">
-                <h1>Become a foster parent</h1>
                 <p>Questionnaire for foster parent</p>
                 <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
                     <label className="flex flex-col">
-                        <span>Describe your home environment urban,suburban,rural?</span>
+                        <span>Describe your home environment urban, suburban, rural?</span>
                         <textarea className="border-2 border-black rounded-md p-2" type="text" value={homeEnv} onChange={(e) => setHomeEnv(e.target.value)} />
                     </label>
                     <label className="flex flex-col">
@@ -68,11 +67,11 @@ export default function Form() {
                         onChange={(e) => setRentOrOwn(e.target.value)} />
                     </label>
                     <label className="flex flex-col">
-                        <span>What is the approximate square footage of your resident?</span>
+                        <span className="font-bold text-lg">What is the approximate square footage of your resident?</span>
                         <textarea className="border-2 border-black rounded-md p-2" type="text" value={homeSqrFT} onChange={(e) => setHomeSqrFT(e.target.value)} />
                     </label>
                     <label className="flex flex-col">
-                        <span>Do any household members have experience with fostering or adoption?</span>
+                        <span className="font-bold text-lg">Do any household members have experience with fostering or adoption?</span>
                         <textarea className="border-2 border-black rounded-md p-2" type="text" value={fosterEXP} onChange={(e) => setFosterEXP(e.target.value)} />
                     </label>
                     <label className="flex flex-col">

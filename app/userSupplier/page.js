@@ -1,78 +1,61 @@
-//build supplier profile page
-
 "use client";
-import React, { useState, useEffect } from 'react';
-import Review from '/app/review/review.js'
+import React, { useState } from 'react';
+import Header from '/app/components/header.js';
+import Review from '/app/review/review.js';
 
-export default function Page() {
-
-    //have to post all of this to the database 
-    //Company, Location, Phone Number, Email, Website
-    //Description, photos, 
-    //all linked by suppliedID available pets, reviews
-    const [suppliers, setSuppliers] = useState([]);
-    //const [selectedSupplier, setSelectedSupplier] = useState(null);
-
-    const fetchSuppliers = async () => {
-        try {
-            const response = await fetch('api/supplier',{
-                method: "GET",
-                headers: {
-                    "Content-type": "application/json",
-                },
-            });
-            if (response.ok) {
-                const supplierData = await response.json();
-                console.log("Supplier data",supplierData);
-                setSuppliers(supplierData);
-            } else {
-                console.error("Fetching suppliers failed:", response);
-            }
-        } catch (error) {
-            console.error("Fetching suppliers failed:", error);
-        }
-    }
-
-    useEffect(() => {
-        fetchSuppliers();
-    }, []);
-
-   /* const handleSupplierClick = (supplier) => {
-        setSelectedSupplier(supplier);
-    };
-
-    const closeModal = () => {
-        setSelectedSupplier(null);
-    }
-
-    function Modal({onClose, children}) {
-        return (
-            <div className='fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center'>
-                <div className='bg-white p-6 rounded-lg w-1/2'>
-                    <button onClick={onClose} className='float-right text-2xl'>&times;</button>
-                    {children}
-                </div>
-            </div>
-        );
-    }*/
+// export default function Page() {
 
     return (
-        <div>
-            <h1>Suppliers</h1>
-            <div>
-                {suppliers.map(supplier => (
-                    <div key={supplier._id} className="supplier-container">
-                        <h2>{supplier.company}</h2>
-                        <p>Location: {supplier.location}</p>
-                        <p>Phone Number: {supplier.phoneNumber}</p>
-                        <p>Email: {supplier.email}</p>
-                        <p>Website: {supplier.website}</p>
-                        <p>Description: {supplier.description}</p>
-                        <img src={supplier.photo} alt={supplier.company} />
-                        <Review supplierID={supplier._id} />
+        <main>
+            <Header text="Supplier Profile"/>
+            <div className=' flex flex-col md:flex-row mt-36 m-10 border-green border rounded-lg'>
+                <div className='w-full md:w-1/4 flex justify-center items-start m-10'>
+                    <img src='/sam.jpg' alt='profile picture' style={{width: '200px', height: '200px', objectFit: 'cover', borderRadius: '20px'}}/>
+                </div>
+                <div className='w-full md:w-3/4 flex flex-wrap'>
+                    <div className="w-full pt-10 text-6xl font-black text-green">
+                        <h1 style={{ fontFamily: 'Pacifico' }}>
+                            Patty's Pets
+                        </h1>
                     </div>
-                ))}
+                    <div className="border border-green flex flex-wrap w-full rounded-lg mt-10 mb-10 mr-10 pl-10">
+                        <div className='w-1/2 pt-10'>
+                            <h1 class="font-bold">Location</h1>
+                            <h1 class="font-bold">Phone Number</h1>
+                            <h1 class="font-bold">Email</h1>
+                            <h1 class="font-bold">Website</h1>
+                        </div>
+                        <div className='w-1/2 p-10'>
+                            <h2>Calgary, AB</h2>
+                            <h2>403-882-8080</h2>
+                            <h2>info@patty.com</h2>
+                            <h2>www.pattyspets.com</h2>
+                        </div>
+                    </div>
+                    <div className='w-full pr-10 pb-10'>
+                        <h2>We are a family-owned and operated pet breeder that specializes in raising healthy, happy, and well-socialized puppies and kittens of various breeds. We have been breeding animals for over 10 years, and we are passionate about providing quality pets to loving homes. We follow the highest standards of breeding practices, including genetic testing, health screening, vaccination, deworming, and microchipping. We also provide lifetime support and advice to our customers, and we offer a health guarantee for every pet we sell. Our animals are raised in a clean, comfortable, and stimulating environment, where they receive plenty of attention, care, and socialization. We welcome visitors to our facility, where you can meet our breeding stock and see our available puppies and kittens. We also have a website where you can view our photos, videos, testimonials, and contact information. Whether you are looking for a companion, a show prospect, or a service animal, we have the perfect pet for you. Contact us today to find your furry friend.</h2>
+                    </div>
+                </div>
             </div>
-        </div>
-    );
+            <div className="flex flex-row w-full">
+                <div className='w-1/2 flex flex-col md:flex-row m-10 border-green border rounded-lg p-2'>
+                    <div className='w-full p-10'>
+                        <h1 style={{ fontFamily: 'Pacifico' }} class="text-3xl w-full text-center text-green font-bold">
+                            Available Pets
+                        </h1>                    
+                    </div>
+                </div>
+                <div className='w-1/2 flex flex-col md:flex-col m-10 border-green border rounded-lg p-2'>
+                    <div className='w-full p-10'>
+                        <h2 style={{ fontFamily: 'Pacifico' }} className="text-3xl w-full text-center text-green font-bold">
+                            Reviews
+                        </h2>                  
+                    </div>
+                    <div>
+                        <Review/>
+                    </div>
+                </div>
+            </div>
+        </main>
+    )
 }

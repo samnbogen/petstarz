@@ -1,6 +1,7 @@
 "use client";
 import { usePathname } from "next/navigation";
 import React, { useState, useEffect } from 'react';
+import { useSession } from "next-auth/react";
 import Review from '../review';
 import DOMPurify from 'dompurify';
 import Link from "next/link";
@@ -9,6 +10,8 @@ import PetList from "./supplier-pets";
 export default function Page() {
     const pathname = usePathname();
     const lastPartOfPathname = pathname.split("/").pop();
+    const { data: session } = useSession();
+    const role = session?.user?.role;
 
     const [suppliers, setSuppliers] = useState([]);
 
@@ -92,11 +95,13 @@ export default function Page() {
                         </div>
                     </div>
                 </div>
+                { role === "user" &&(
                 <div className="flex justify-center">
                     <button className="bg-green hover:bg-gray text-white font-bold py-2 px-4 m-8 rounded w-40">
                         <Link href={"./reportFraud"}>Report Fraud</Link>
                     </button>
                 </div>
+                )}
             </main>
                 
             );

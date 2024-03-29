@@ -34,7 +34,7 @@ export default function SupplierList() {
             <div className="flex flex-col items-center justify-center pt-20">                
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3 p-16">
                     {suppliers.map((supplier) => (
-                        <Supplier {...supplier} />
+                        <Supplier key={supplier.id} {...supplier} />
                     ))}
                 </div>
             </div>

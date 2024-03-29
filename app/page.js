@@ -25,7 +25,7 @@ export default function Home() {
           </h1>
           <h1 
             className="text-2xl text-justify">
-            As PetStarz embarks on this journey, it's important to acknowledge that the challenges in the pet industry are complex 
+            As PetStarz embarks on this journey, it&apos;s important to acknowledge that the challenges in the pet industry are complex 
             and multifaceted and it will take time and dedication to ensure the well-being, ethical treatment, and responsible ownership 
             of pets. However, our commitment to uniting various stakeholders, enhancing transparency, and providing valuable resources is 
             a testament to our dedication to driving positive change.

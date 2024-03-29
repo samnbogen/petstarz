@@ -1,11 +1,6 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSession } from "next-auth/react";
-//to be able to add a photo
-//npm install react-quill
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
-import dynamic from 'next/dynamic';
 
 export default function PetCardForm() {
 const { data: session } = useSession();
@@ -134,13 +129,7 @@ return (
         </div>
         <div className='p-1'>
             <label className="text-gray block" htmlFor="photo">Add Photo</label>
-            <ReactQuill className="border border-light-gray rounded-lg w-full" 
-             value={photo} onChange={setPhoto}
-             modules={{
-                toolbar:[
-                    ['image']
-                ]
-             }} />
+            
         </div>
         <div className="flex flex-row p-1">
             <div className="w-1/2">

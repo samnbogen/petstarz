@@ -47,7 +47,9 @@ export default function Page() {
                     <Header text="Supplier Profile"/>
                     <div className=' flex flex-col md:flex-row mt-36 m-10 border-green border rounded-lg'>
                         <div className='w-full md:w-1/4 flex justify-center items-start m-10'>
-                            <img src='/sam.jpg' alt='profile picture' style={{width: '200px', height: '200px', objectFit: 'cover', borderRadius: '20px'}}/>
+                            <div 
+                            style={{width: '200px', height: '200px', objectFit: 'cover'}}
+                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(foundSupplier.photo) }} />
                         </div>
                         <div className='w-full md:w-3/4 flex flex-wrap'>
                             <div className="w-full pt-10 text-6xl font-black text-green">

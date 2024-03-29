@@ -42,48 +42,51 @@ export default function Page() {
             return (
                 <main>
                     <Header text="Pet Profile" />
-                    <div  className="border w-2/5 rounded-lg border-light-gray p-4 mx-auto bg-white">
-                        <div className="flex flex-row">
+                    <div className="border w-4/5 rounded-lg border-green p-4 mx-auto mt-36 mb-10 bg-white">
+                        <div className="flex flex-row">                        
+                            <div className="p-1 w-1/2">                                
+                                <div dangerouslySetInnerHTML={{ __html: foundPetCard.photo }} />
+                            </div>                            
                             <div className="p-1 w-1/2">
-                                <label className="text-gray block" htmlFor="petName">Pet Name</label>
-                                <p>{foundPetCard.name}</p>
+                                <div className="flex flex-row">
+                                    <div className="p-1 w-1/2">
+                                        <label className="font-bold block" htmlFor="petName">Pet Name</label>
+                                        <p>{foundPetCard.name}</p>
+                                    </div>
+                                    <div className="p-1 w-1/2">
+                                        <label className="font-bold block" htmlFor="petAge">Pet Age</label>
+                                        <p>{foundPetCard.age}</p>
+                                    </div>
+                                </div>
+                                <div className="flex flex-row">
+                                    <div className="p-1 w-1/2">
+                                        <label className="font-bold block" htmlFor="species">Species</label>
+                                        <p>{foundPetCard.species}</p>
+                                    </div>
+                                    <div className="p-1 w-1/2">
+                                        <label className="font-bold block" htmlFor="breed">Breed/Type</label>
+                                        <p>{foundPetCard.breed}</p>
+                                    </div>
+                                </div>
+                                <div className="flex flex-row">
+                                    <div className="p-1 w-1/3">
+                                        <label className="font-bold block" htmlFor="sex">Sex</label>
+                                        <p>{foundPetCard.sex}</p>
+                                    </div>
+                                    <div className="p-1 w-1/3">
+                                        <label className="font-bold block" htmlFor="size">Size</label>
+                                        <p>{foundPetCard.size}</p>
+                                    </div>
+                                    <div className="p-1 w-1/3">
+                                        <label className="font-bold block" htmlFor="fixed">Fixed</label>
+                                        <p>{foundPetCard.fixed}</p>
+                                    </div>
+                                </div>
+                                <div className="p-1">
+                                    <label className="font-bold block" htmlFor="additionalInfo">Additional Info</label>
+                                    <p>{foundPetCard.additionalInfo}</p>
+                                </div>                                
                             </div>
-                            <div className="p-1 w-1/2">
-                                <label className="text-gray block" htmlFor="petAge">Pet Age</label>
-                                <p>{foundPetCard.age}</p>
-                            </div>
-                        </div>
-                        <div className="flex flex-row">
-                            <div className="p-1 w-1/2">
-                                <label className="text-gray block" htmlFor="species">Species</label>
-                                <p>{foundPetCard.species}</p>
-                            </div>
-                            <div className="p-1 w-1/2">
-                                <label className="text-gray block" htmlFor="breed">Breed/Type</label>
-                                <p>{foundPetCard.breed}</p>
-                            </div>
-                        </div>
-                        <div className="flex flex-row">
-                            <div className="p-1 w-1/3">
-                                <label className="text-gray block" htmlFor="sex">Sex</label>
-                                <p>{foundPetCard.sex}</p>
-                            </div>
-                            <div className="p-1 w-1/3">
-                                <label className="text-gray block" htmlFor="size">Size</label>
-                                <p>{foundPetCard.size}</p>
-                            </div>
-                            <div className="p-1 w-1/3">
-                                <label className="text-gray block" htmlFor="fixed">Fixed</label>
-                                <p>{foundPetCard.fixed}</p>
-                            </div>
-                        </div>
-                        <div className="p-1">
-                            <label className="text-gray block" htmlFor="additionalInfo">Additional Info</label>
-                            <p>{foundPetCard.additionalInfo}</p>
-                        </div>
-                        <div className='p-1'>
-                            <label className="text-gray block" htmlFor="photo">Photo</label>
-                            <div dangerouslySetInnerHTML={{ __html: foundPetCard.photo }} />
                         </div>
                     </div>
                 </main>

@@ -1,10 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
 import Header from "@/app/components/header";
 
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 export default function Page(){
     const [userFirstName, setUserFirstName] = useState("");
@@ -103,15 +100,7 @@ export default function Page(){
                 value={userInteractions}
                 onChange={(e) => setUserInteractions(e.target.value)}
               />
-            </label>
-            <label className="mb-4 flex flex-row">
-              <h1 className="text-lg font-bold w-1/4">User Attachments:</h1>
-              <ReactQuill
-                type="file"
-                value={userAttachment}
-                onChange={setUserAttachment}
-              /> 
-            </label>
+            </label>            
             </div>
             <div className="m-10 p-10 pb-20 border-green border rounded-lg">
             <h1 className="text-3xl text-green font-bold mb-4">Supplier Information</h1>
@@ -138,29 +127,7 @@ export default function Page(){
                 onChange={(e) => setSupplierInteractions(e.target.value)}
               />
             </label>
-            <label className="mb-4 flex flex-row ">
-              <h1 className="text-lg font-bold w-1/4">Supplier Attachments:</h1>
-              <ReactQuill
-                value={supplierAttachment}
-                onChange={setSupplierAttachment}
-                modules={{
-                  toolbar: [
-                    [{ header: "1" }, { header: "2" }, { font: [] }],
-                    [{ size: [] }],
-                    ["bold", "italic", "underline", "strike", "blockquote"],
-                    [
-                      { list: "ordered" },
-                      { list: "bullet" },
-                      { indent: "-1" },
-                      { indent: "+1" },
-                    ],
-                    ["link", "image", "video"],
-                    ["clean"],
-                    ["code-block"],
-                  ],
-                }}
-              />
-            </label>
+            
             </div>
             <div className="flex flex-row justify-center m-4">
               <button className="bg-green hover:bg-gray text-white font-bold py-2 px-4 m-8 rounded w-40" type="submit">Submit</button>

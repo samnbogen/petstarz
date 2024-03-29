@@ -1,6 +1,10 @@
 "use client";
 import React, { useState } from 'react';
 import { useSession } from "next-auth/react";
+//to be able to add a photo
+//npm install react-quill
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 export default function PetCardForm() {
 const { data: session } = useSession();
@@ -129,8 +133,15 @@ return (
         </div>
         <div className='p-1'>
             <label className="text-gray block" htmlFor="photo">Add Photo</label>
-            
+            <ReactQuill className="border border-light-gray rounded-lg w-full" 
+             value={photo} onChange={setPhoto}
+             modules={{
+                toolbar:[
+                    ['image']
+                ]
+             }} />
         </div>
+       {/* {!photo && <img src="/noImage.png" alt="no photo" className='mt-2'/>} */}
         <div className="flex flex-row p-1">
             <div className="w-1/2">
                 <button type="submit" className="text-center text-white p-1 w-40 border-2 border-green bg-green rounded-lg hover:bg-white hover:cursor-pointer hover:text-green">

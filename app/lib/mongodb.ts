@@ -11,6 +11,10 @@ const options = {};
 // Declare variables to store the MongoClient instance and its promise
 let client;
 let clientPromise: Promise<MongoClient>;
+// Declare the global variable with an index signature
+declare global {
+  var _mongoClientPromise: Promise<MongoClient>;
+}
 
 // Check if the application is in development mode
 if (process.env.NODE_ENV === "development") {

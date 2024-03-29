@@ -3,8 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useSession } from "next-auth/react";
 //to be able to add a photo
 //npm install react-quill
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+
 import dynamic from 'next/dynamic';
 
 export default function PetCardForm() {

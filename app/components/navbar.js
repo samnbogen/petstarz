@@ -167,9 +167,11 @@ export default function Navbar() {
       <div className={`${isOpen ? "block" : "hidden"} md:hidden fixed right-0`}>
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col bg-white w-32 rounded-md ">
           <Link href={"/"}>Home</Link>
-          <Link href={"/apply"}>Apply</Link>
-          <Link href={"/about"}>About</Link>
-          <Link href={"/contact"}>Contact</Link>
+          <Link href={"/tab/apply"}>Apply</Link>
+          <Link href={"/tab/about"}>About</Link>
+          <Link href={"/tab/contact"}>Contact</Link>
+          <Link href={"/tab/pets"}>Pets</Link>
+          <Link href={"/tab/suppliers"}>Supplier List</Link>
         </div>
       </div>
     </nav>

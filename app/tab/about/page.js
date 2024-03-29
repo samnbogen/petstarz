@@ -12,9 +12,9 @@ export default function About() {
             <Header text="About Us"/>
             <div className="flex flex-col justify-evenly text-sm pt-36 p-20 text-justify">
             <div className='flex flex-row items-center justify-between'>
-            <p className="text-2xl max-w-none mr-4">
-    At PetStarz, our vision is to revolutionize the pet sourcing industry by providing a trusted, safe, and ethical online platform where people can find and connect with reputable pet suppliers. We strive to create a centralized hub that empowers individuals and families to make informed decisions when bringing a new furry (or non-furry) friend into their lives. By fostering transparency, promoting responsible pet ownership, and combating industry fraud, we aim to ensure the well-being and happiness of both pets and their human  companions.
-            </p>                
+                <p className="text-2xl max-w-none mr-4">
+                    At PetStarz, our vision is to revolutionize the pet sourcing industry by providing a trusted, safe, and ethical online platform where people can find and connect with reputable pet suppliers. We strive to create a centralized hub that empowers individuals and families to make informed decisions when bringing a new furry (or non-furry) friend into their lives. By fostering transparency, promoting responsible pet ownership, and combating industry fraud, we aim to ensure the well-being and happiness of both pets and their human  companions.
+                </p>                
             <img src={'/dog.svg'} alt="dog" className="h-full" style={{ flex: 'none' }} />                
             </div>
                 <div>

@@ -102,7 +102,7 @@ return (
         {signupSuccess ? (
             // Display success message
             <div className="flex flex-col items-center justify-center bg-gray-100 ">
-                <h1>Welcome {session.user.email}, you're successfully signed up!</h1>
+                <h1>Welcome {session.user.email}, you&apos;re successfully signed up!</h1>
                 <Link href="/">Click here to go to the main page</Link>
             </div>
         ) : (

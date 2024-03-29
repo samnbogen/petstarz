@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Header from '/app/components/header.js';
 import Review from '/app/review/review.js';
 
-// export default function Page() {
+export default function Page() {
 
     return (
         <main>

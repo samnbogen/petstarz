@@ -4,6 +4,8 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import Header from "@/app/components/header";
 
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+
 export default function Page(){
     const [userFirstName, setUserFirstName] = useState("");
     const [userLastName, setUserLastName] = useState("");

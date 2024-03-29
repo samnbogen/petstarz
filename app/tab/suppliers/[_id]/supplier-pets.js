@@ -49,7 +49,6 @@ export default function PetList({supplierID}) {
     
     }
 
-
     return (
         <div>
            {modalIsOpen && (
@@ -85,6 +84,6 @@ export default function PetList({supplierID}) {
                     </div>
                 ))}
             </div>     
-            </div>
+        </div>
     );
 }

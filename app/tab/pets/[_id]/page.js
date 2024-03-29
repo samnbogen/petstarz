@@ -1,6 +1,7 @@
 "use client";
 import { usePathname } from "next/navigation";
 import React, { useState, useEffect } from 'react';
+import Header from "@/app/components/header";
 
 export default function Page() {
     const pathname = usePathname();
@@ -39,7 +40,8 @@ export default function Page() {
         //console.log("foundPetCard", foundPetCard);
         if (foundPetCard) {
             return (
-                <main className="pt-36">
+                <main>
+                    <Header text="Pet Profile" />
                     <div  className="border w-2/5 rounded-lg border-light-gray p-4 mx-auto bg-white">
                         <div className="flex flex-row">
                             <div className="p-1 w-1/2">
@@ -85,9 +87,7 @@ export default function Page() {
                         </div>
                     </div>
                 </main>
-
             );
-
         }
     }
 }

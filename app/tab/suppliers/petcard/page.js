@@ -1,7 +1,7 @@
 "use client";
 
 import Header from '/app/components/header.js';
-import FormNav from '/app/userSupplier/petcard/formnav.js';
+import FormNav from './formnav.js';
 
 export default function Home() {
   return (

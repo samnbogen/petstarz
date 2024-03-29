@@ -53,7 +53,7 @@ export default function Page() {
     } else if (auth === true) {
       return(
         <div className="flex flex-col items-center justify-center bg-gray-100 ">
-            <h1>Welcome you're logged in!</h1>
+            <h1>Welcome you&apos;re logged in!</h1>
             <a href="/">Click here to go to main page</a>
             <button className="border-2 border-rose-500" onClick={signOut}>Log out</button>
         </div>

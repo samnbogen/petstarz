@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useSession } from "next-auth/react";
 //to be able to add a photo
 //npm install react-quill
-import ReactQuill from 'react-quill';
+import dynamic from "next/dynamic";
 import 'react-quill/dist/quill.snow.css';
 
 export default function PetCardForm() {
@@ -22,6 +22,8 @@ const { data: session } = useSession();
     const [fixed, setFixed] = useState("");
     const [additionalInfo, setAdditionalInfo] = useState("");
     const [photo, setPhoto] = useState("");
+
+    const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
     const supplierEmail = session?.user?.email;
 

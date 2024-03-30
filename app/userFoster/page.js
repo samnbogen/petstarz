@@ -1,10 +1,6 @@
-
 import Header from '/app/components/header.js';
 
-
 export default function Page() {
-
-  
 
     return (
         <main>

@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import ReactQuill from "react-quill";
+import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 
 export default function Page(){
@@ -12,6 +12,8 @@ export default function Page(){
     const [supplierInteractions, setSupplierInteractions] = useState("");
     const [supplierAttachment, setSupplierAttachment] = useState("");
     const [companyName, setCompanyName] = useState([]);
+
+    const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
     const fetchCompany = async () => {
         try {

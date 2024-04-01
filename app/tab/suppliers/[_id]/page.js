@@ -1,6 +1,7 @@
 "use client";
 import { usePathname } from "next/navigation";
 import React, { useState, useEffect } from 'react';
+import { useSession } from "next-auth/react";
 import Review from '../review';
 import DOMPurify from 'dompurify';
 import Link from "next/link";
@@ -10,6 +11,8 @@ import Header from "@/app/components/header";
 export default function Page() {
     const pathname = usePathname();
     const lastPartOfPathname = pathname.split("/").pop();
+    const { data: session } = useSession();
+    const role = session?.user?.role;
 
     const [suppliers, setSuppliers] = useState([]);
 

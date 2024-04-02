@@ -35,7 +35,7 @@ export default function Home() {
                     <div className="mx-28">                
                         <Link 
                                 href="/tab/signup" 
-                                className="bg-green hover:bg-gray text-white text-center font-bold text-4xl py-4 w-52 h-52 flex items-center justify-center rounded-full relative z-10 "> {/* Add relative positioning and z-index to bring the button to the front */}
+                                className="bg-green hover:bg-gray text-white text-center font-bold text-4xl py-4 w-52 h-52 flex items-center justify-center rounded-full relative z-10 ">
                                 Sign Up Today!
                             
                             <img 

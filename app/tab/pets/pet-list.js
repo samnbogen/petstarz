@@ -10,13 +10,16 @@ import DOMPurify from 'dompurify';
 export default function PetList() {
     const [filteredPets, setFilteredPets] = useState([]);
 
-    const handleSpecies = (event) => {
+    const handleSpecies = async (event) => {
         const species = event.target.value;
         if (species === "all") {
-            setFilteredPets(originalPets);
+            const response = await fetch(`/api/pets?page=${page}`);
+            const data = await response.json();
+            setFilteredPets(data);
         } else {
-            const filtered = originalPets.filter(pet => pet.species === species);
-            setFilteredPets(filtered);
+            const response = await fetch(`/api/pets?species=${species}&page=${page}`);
+            const data = await response.json();
+            setFilteredPets(data);
         }
     };
 

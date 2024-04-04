@@ -53,7 +53,7 @@ export default function Page() {
     } else if (auth === true) {
       return(
         <div className="flex flex-col items-center justify-center bg-gray-100 ">
-            <h1>Welcome you're logged in!</h1>
+            <h1>Welcome you&apos;re logged in!</h1>
             <a href="/">Click here to go to main page</a>
             <button className="border-2 border-rose-500" onClick={signOut}>Log out</button>
         </div>
@@ -74,7 +74,7 @@ export default function Page() {
               {message && <p className="text-red text-center">{message}</p>}
               <button className="self-center text-black font-bold py-2 px-4 rounded mt-2 border border-black" type="submit">Login</button>
               <div>
-                <Link href="/tab/signup" className="text-center block mt-4 font-semibold">Don't have an account? Sign up here</Link>
+                <Link href="/tab/signup" className="text-center block mt-4 font-semibold">Don&apos;t have an account? Sign up here</Link>
               </div>
             </form>
           </div>

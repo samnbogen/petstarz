@@ -1,39 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
 import Pet from "./pet.js";
-import Modal from 'react-modal';
-import DOMPurify from 'dompurify';
-//npm install dompurify
-//npm install react-modal
 
 export default function PetList() {
     const [filteredPets, setFilteredPets] = useState([]);
-
-    const handleSpecies = (event) => {
-        const species = event.target.value;
-        if (species === "all") {
-            setFilteredPets(originalPets);
-        } else {
-            const filtered = originalPets.filter(pet => pet.species === species);
-            setFilteredPets(filtered);
-        }
-    };
-
-    const handleBreed = () => {
-        const sortedPets = [...filteredPets].sort((a, b) => a.breed.localeCompare(b.breed));
-        setFilteredPets(sortedPets);
-    };
-    
-    const handleAge = () => {
-        const sortedPets = [...filteredPets].sort((a, b) => a.age - b.age);
-        setFilteredPets(sortedPets);
-    };    
-
     const [originalPets, setOriginalPets] = useState([]);
-    const [selectPets, setSelectPets] = useState(null);
-    const [modalIsOpen, setModalIsOpen] = useState(false);
 
-    //Testing getting th list of pets from the database
+    //Testing getting the list of pets from the database
     const fetchPets = async () => {
         try{
             const response = await fetch("/api/foster/petCard",{
@@ -54,19 +27,29 @@ export default function PetList() {
         }
     }
 
+    const handleSpecies = (event) => {
+        const species = event.target.value;
+        if (species === "all") {
+            setFilteredPets(originalPets);
+        } else {
+            const filtered = originalPets.filter(pet => pet.species === species);
+            setFilteredPets(filtered);
+        }
+    };
+
+    const handleBreed = () => {
+        const sortedPets = [...filteredPets].sort((a, b) => a.breed.localeCompare(b.breed));
+        setFilteredPets(sortedPets);
+    };
+    
+    const handleAge = () => {
+        const sortedPets = [...filteredPets].sort((a, b) => a.age - b.age);
+        setFilteredPets(sortedPets);
+    };      
+
     useEffect(() => {
         fetchPets();
     }, []);
-
-    const handleSelectPets = (pet) => {
-        setSelectPets(pet);
-        setModalIsOpen(true);
-    }
-
-    const closeModal = () => {
-        setModalIsOpen(false);
-    
-    }
 
     useEffect(() => {
         setFilteredPets(originalPets);
@@ -74,32 +57,6 @@ export default function PetList() {
 
     return (
         <div>
-           {modalIsOpen && (
-                <div className="fixed top-0 left-0 w-full h-100 pt-28 flex items-center justify-center bg-gray-900 bg-opacity-50 " onClick={closeModal}>
-                    <div className="border-green border-2 bg-lightest-gray p-4 rounded-lg w-60" onClick={(e) => e.stopPropagation()}>
-                        {selectPets && (
-                            <div className="flex flex-col items-center justify-center">
-                                <div className="rounded overflow-hidden mb-4" style={{ width: '150px', height: '150px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                    <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(selectPets.photo) }} />
-                                </div>
-                                <h1 className="text-lg font-bold">{selectPets.name}</h1>
-                                <h2>{selectPets.species}</h2>
-                                <h2>{selectPets.breed}</h2>
-                                <h2>{selectPets.age}</h2>
-                                <h2>{selectPets.sex}</h2>
-                                <h2>{selectPets.size}</h2>
-                                <h2>{selectPets.fixed}</h2>
-                                <h2>{selectPets.additionalInfo}</h2>
-                                <div className="flex flex-row justify-center">
-                                    <button className="border font-bold py-2 px-2 rounded mt-4">Favorites</button>
-                                    <button onClick={closeModal} className="border font-bold py-2 px-4 rounded mt-4">Close</button>
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            )}
-
             <div className="flex flex-row justify-center">
                 <select onChange={handleSpecies}
                     className="bg-green hover:bg-gray text-white font-bold py-2 px-4 m-2 rounded w-40">
@@ -113,11 +70,11 @@ export default function PetList() {
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 px-20 py-10 ">
                 {filteredPets.map(pet => (
-                    <div key={pet.id} onClick={() => handleSelectPets(pet)}>
+                    <div key={pet.id}>
                         <Pet {...pet} />
                     </div>
                 ))}
             </div>
-        </div>        
+        </div>   
     );
 }

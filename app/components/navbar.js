@@ -9,8 +9,9 @@ export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const pathname = usePathname();
   const { data: session } = useSession();
+  const role = session?.user?.role;
 
-  console.log(session);
+  //console.log(session);
 
   return (
     <nav className="fixed w-full z-50">
@@ -51,16 +52,16 @@ export default function Navbar() {
                 </p>
                 <p
                   className={`block py-2.5 px-4 rounded transition duration-200 
-                link ${pathname === "/apply" ? "text-green font-bold" : "hover:text-green text-white"}`}>
+                link ${pathname === "/userFoster/apply" ? "text-green font-bold" : "hover:text-green text-white"}`}>
                   <Link href={"/userFoster/apply"}>Apply</Link>
                 </p>
                 <p
                   className={`block py-2.5 px-4 rounded transition duration-200 
-                link ${pathname === "/about"? "text-green font-bold" : "hover:text-green text-white"}`}>
+                link ${pathname === "/tab/about"? "text-green font-bold" : "hover:text-green text-white"}`}>
                   <Link href={"/tab/about"}>About</Link>
                 </p>
                 <p className={`block py-2.5 px-4 rounded transition duration-200 
-                            link ${ pathname === "/contact" ? "text-green font-bold" : "hover:text-green text-white" }`}>
+                            link ${ pathname === "/tab/contact" ? "text-green font-bold" : "hover:text-green text-white" }`}>
                   <Link href={"/tab/contact"}>Contact</Link>
                 </p>
                 
@@ -81,36 +82,34 @@ export default function Navbar() {
                         role="menu"
                         aria-orientation="vertical"
                         aria-labelledby="options-menu">
+                      {role === "supplier" && ( 
                         <Link
-                          href={"/userSupplier/petcard"}
+                          href={"/tab/suppliers/petcard"}
                           className="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray"
                           role="menuitem">
                           Petcard
                         </Link>
+                      )}
                         <Link
                           href={"/tab/pets"}
                           className="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray"
                           role="menuitem">
                           Pets
-                        </Link>
-                        <Link
-                          href={"/userSupplier"}
-                          className="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray"
-                          role="menuitem">
-                          Supplier
-                        </Link>
+                        </Link>                        
                         <Link
                           href={"/tab/suppliers"}
                           className="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray"
                           role="menuitem">
                           Supplier List
                         </Link>
+                        { role === "user" &&(
                         <Link
-                          href={"/userSupplier/reportFraud"}
+                          href={"/tab/suppliers/reportFraud"}
                           className="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray"
                           role="menuitem">
                           Report Fraud
                         </Link>  
+                        )}
 
                       </div>
                     </div>
@@ -168,9 +167,11 @@ export default function Navbar() {
       <div className={`${isOpen ? "block" : "hidden"} md:hidden fixed right-0`}>
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col bg-white w-32 rounded-md ">
           <Link href={"/"}>Home</Link>
-          <Link href={"/apply"}>Apply</Link>
-          <Link href={"/about"}>About</Link>
-          <Link href={"/contact"}>Contact</Link>
+          <Link href={"/tab/apply"}>Apply</Link>
+          <Link href={"/tab/about"}>About</Link>
+          <Link href={"/tab/contact"}>Contact</Link>
+          <Link href={"/tab/pets"}>Pets</Link>
+          <Link href={"/tab/suppliers"}>Supplier List</Link>
         </div>
       </div>
     </nav>

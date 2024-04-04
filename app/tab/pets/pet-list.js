@@ -1,42 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
 import Pet from "./pet.js";
-import Link from "next/link.js";
-import Modal from 'react-modal';
-import DOMPurify from 'dompurify';
-//npm install dompurify
-//npm install react-modal
 
 export default function PetList() {
     const [filteredPets, setFilteredPets] = useState([]);
-
-    const handleSpecies = async (event) => {
-        const species = event.target.value;
-        if (species === "all") {
-            const response = await fetch(`/api/pets?page=${page}`);
-            const data = await response.json();
-            setFilteredPets(data);
-        } else {
-            const response = await fetch(`/api/pets?species=${species}&page=${page}`);
-            const data = await response.json();
-            setFilteredPets(data);
-        }
-    };
-
-    const handleBreed = () => {
-        const sortedPets = [...filteredPets].sort((a, b) => a.breed.localeCompare(b.breed));
-        setFilteredPets(sortedPets);
-    };
-    
-    const handleAge = () => {
-        const sortedPets = [...filteredPets].sort((a, b) => a.age - b.age);
-        setFilteredPets(sortedPets);
-    };    
-
     const [originalPets, setOriginalPets] = useState([]);
-    const [selectPets, setSelectPets] = useState(null);
 
-    //Testing getting th list of pets from the database
+    //Testing getting the list of pets from the database
     const fetchPets = async () => {
         try{
             const response = await fetch("/api/foster/petCard",{
@@ -57,14 +27,29 @@ export default function PetList() {
         }
     }
 
+    const handleSpecies = (event) => {
+        const species = event.target.value;
+        if (species === "all") {
+            setFilteredPets(originalPets);
+        } else {
+            const filtered = originalPets.filter(pet => pet.species === species);
+            setFilteredPets(filtered);
+        }
+    };
+
+    const handleBreed = () => {
+        const sortedPets = [...filteredPets].sort((a, b) => a.breed.localeCompare(b.breed));
+        setFilteredPets(sortedPets);
+    };
+    
+    const handleAge = () => {
+        const sortedPets = [...filteredPets].sort((a, b) => a.age - b.age);
+        setFilteredPets(sortedPets);
+    };      
+
     useEffect(() => {
         fetchPets();
     }, []);
-
-    const handleSelectPets = (pet) => {
-        setSelectPets(pet);
-    }
-
 
     useEffect(() => {
         setFilteredPets(originalPets);
@@ -72,7 +57,6 @@ export default function PetList() {
 
     return (
         <div>
-
             <div className="flex flex-row justify-center">
                 <select onChange={handleSpecies}
                     className="bg-green hover:bg-gray text-white font-bold py-2 px-4 m-2 rounded w-40">
@@ -86,7 +70,7 @@ export default function PetList() {
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 px-20 py-10 ">
                 {filteredPets.map(pet => (
-                    <div key={pet.id} onClick={() => handleSelectPets(pet)}>
+                    <div key={pet.id}>
                         <Pet {...pet} />
                     </div>
                 ))}

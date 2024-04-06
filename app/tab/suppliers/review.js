@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
+import StarRating from "./starRating";
 
 export default function Review({supplierID, email}) {
     const [filteredReview, setFilteredReview] = useState([]);

@@ -24,3 +24,4 @@ const PetCard = ({ photo, name, age, _id }) => {
 };
 
 export default PetCard;
+

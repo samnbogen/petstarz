@@ -48,8 +48,8 @@ export default function Page() {
             return (                
                 <main>
                     <Header text="Supplier Profile"/>
-                    <div className=' flex flex-col md:flex-row mt-36 m-10 border-green border rounded-lg'>
-                        <div className='w-full md:w-1/4 flex justify-center items-start m-10'>
+                    <div className=' flex flex-col md:flex-row mt-36 m-10'>
+                        <div className='w-full md:w-1/4 flex justify-center items-start mt-36'>
                             <div 
                             style={{width: '200px', height: '200px', objectFit: 'cover'}}
                             dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(foundSupplier.photo) }} />
@@ -73,14 +73,15 @@ export default function Page() {
                                     <h2>{foundSupplier.email}</h2>
                                     <h2>{foundSupplier.website}</h2>
                                 </div>
-                            </div>
-                            <div className='w-full pr-10 pb-10'>
+                                <div className='w-full pr-10 pb-10'>
                                 <h2>{foundSupplier.description}</h2>
                             </div>
+                            </div>
+                            
                         </div>
                     </div>
-                    <div className="flex flex-row w-full">
-                        <div className='w-1/2 flex flex-col md:flex-row m-10 border-green border rounded-lg p-2'>
+                    <div className="flex flex-col md:flex-row w-full">
+                        <div className='md:w-1/2 flex flex-col md:flex-row m-10 border-green border rounded-lg p-2'>
                             <div className='w-full p-10'>
                                 <h1 style={{ fontFamily: 'Pacifico' }} class="text-3xl w-full text-center text-green font-bold">
                                     Available Pets
@@ -88,7 +89,7 @@ export default function Page() {
                                 <PetList supplierID={lastPartOfPathname} />                     
                             </div>
                         </div>
-                        <div className='w-1/2 flex flex-col md:flex-col m-10 border-green border rounded-lg p-2'>
+                        <div className='md:w-1/2 flex flex-col md:flex-col m-10 border-green border rounded-lg p-2'>
                             <div className='w-full p-10'>
                                 <h2 style={{ fontFamily: 'Pacifico' }} className="text-3xl w-full text-center text-green font-bold">
                                     Reviews

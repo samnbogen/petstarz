@@ -80,8 +80,8 @@ export default function Page() {
                             
                         </div>
                     </div>
-                    <div className="flex flex-row w-full">
-                        <div className='w-1/2 flex flex-col md:flex-row m-10 border-green border rounded-lg p-2'>
+                    <div className="flex flex-col md:flex-row w-full">
+                        <div className='md:w-1/2 flex flex-col md:flex-row m-10 border-green border rounded-lg p-2'>
                             <div className='w-full p-10'>
                                 <h1 style={{ fontFamily: 'Pacifico' }} class="text-3xl w-full text-center text-green font-bold">
                                     Available Pets
@@ -89,7 +89,7 @@ export default function Page() {
                                 <PetList supplierID={lastPartOfPathname} />                     
                             </div>
                         </div>
-                        <div className='w-1/2 flex flex-col md:flex-col m-10 border-green border rounded-lg p-2'>
+                        <div className='md:w-1/2 flex flex-col md:flex-col m-10 border-green border rounded-lg p-2'>
                             <div className='w-full p-10'>
                                 <h2 style={{ fontFamily: 'Pacifico' }} className="text-3xl w-full text-center text-green font-bold">
                                     Reviews

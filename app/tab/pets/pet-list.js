@@ -57,25 +57,6 @@ export default function PetList() {
     setFilter(event.target.value);
   };
 
-  // Function to sort pets by breed
-  const sortPetsByBreed = () => {
-    const sortedPets = [...visiblePets].sort((a, b) => {
-      return a.breed.localeCompare(b.breed);
-    });
-    setVisiblePets(sortedPets);
-  };
-
-  // Function to sort pets by age
-  const sortPetsByAge = () => {
-    const sortedPets = [...visiblePets].sort((a, b) => {
-      return a.age - b.age;
-    });
-    setVisiblePets(sortedPets);
-  };
-
-  // Filter the pets based on the selected filter
-  const filteredPets = filter === "all" ? visiblePets : visiblePets.filter(pet => pet.species === filter);
-
   return (
     <div>
       <div className="flex flex-row justify-center">
@@ -89,22 +70,11 @@ export default function PetList() {
           <option value="dog">Dog</option>
           <option value="other">Other</option>
         </select>
-        <button
-          className="bg-green hover:bg-gray text-white font-bold py-2 px-4 m-2 rounded w-40"
-          onClick={sortPetsByBreed}
-        >
-          Sort by Breed
-        </button>
-        <button
-          className="bg-green hover:bg-gray text-white font-bold py-2 px-4 m-2 rounded w-40"
-          onClick={sortPetsByAge}
-        >
-          Sort by Age
-        </button>
+        
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 px-20 py-10">
-        {filteredPets.map((pet, index) => (
+        {visiblePets.map((pet, index) => (
           <Pet key={index} {...pet} />
         ))}
       </div>

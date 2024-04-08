@@ -48,8 +48,8 @@ export default function Page() {
             return (                
                 <main>
                     <Header text="Supplier Profile"/>
-                    <div className=' flex flex-col md:flex-row mt-36 m-10 border-green border rounded-lg'>
-                        <div className='w-full md:w-1/4 flex justify-center items-start m-10'>
+                    <div className=' flex flex-col md:flex-row mt-36 m-10'>
+                        <div className='w-full md:w-1/4 flex justify-center items-start mt-36'>
                             <div 
                             style={{width: '200px', height: '200px', objectFit: 'cover'}}
                             dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(foundSupplier.photo) }} />
@@ -73,10 +73,11 @@ export default function Page() {
                                     <h2>{foundSupplier.email}</h2>
                                     <h2>{foundSupplier.website}</h2>
                                 </div>
-                            </div>
-                            <div className='w-full pr-10 pb-10'>
+                                <div className='w-full pr-10 pb-10'>
                                 <h2>{foundSupplier.description}</h2>
                             </div>
+                            </div>
+                            
                         </div>
                     </div>
                     <div className="flex flex-row w-full">

@@ -1,9 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import Pet from "./pet.js";
-import Link from "next/link.js";
-import Modal from 'react-modal';
-import DOMPurify from 'dompurify';
 //npm install dompurify
 //npm install react-modal
 
